@@ -8,5 +8,19 @@ namespace FørsteSemester
 {
     class Room
     {
+        private int roomID;
+        private bool isBooked;
+        private Member renter;
+        List<Member> bookingList = new List<Member>();
+
+        public void AddRenter()
+        {
+
+        }
+
+
+
+
+
     }
 }

@@ -8,5 +8,31 @@ namespace FørsteSemester
 {
     class Class
     {
+
+        List<Member> membersInClass = new List<Member>();
+
+        private string activity;
+        private int classID;
+        private bool status;
+        private int availableSpots;
+        private int joinedAmount;
+        private bool requiredGender;
+        private byte requiredAge;
+        public void getStatus()
+        {
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
