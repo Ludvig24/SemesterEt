@@ -24,5 +24,16 @@ namespace FørsteSemester
             InitializeComponent();
         }
 
+        private void CreateUser_Click(object sender, RoutedEventArgs e)
+        {
+            char gender = 'x';
+
+            if (KønBox.Text == "Kvinde")
+            {
+                gender = 'F';
+            } else gender = 'M';
+
+            UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, Convert.ToByte(AlderBox.Text),  ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
+        }
     }
 }

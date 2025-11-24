@@ -26,6 +26,8 @@
             <ComboBoxItem Name="MandBox" Content="Mand"></ComboBoxItem>
             <ComboBoxItem Name="KvindeBox" Content="Kvinde"></ComboBoxItem>
         </ComboBox>
+        <Button x:Name="CreateUser" Content="Opret bruger" HorizontalAlignment="Left" Height="34" Margin="122,578,0,0" VerticalAlignment="Top" Width="182" Click="CreateUser_Click"/>
+        <Button Content="Tilbage" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="70"/>
 
 
 

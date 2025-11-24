@@ -6,25 +6,36 @@ using System.Threading.Tasks;
 
 namespace FørsteSemester
 {
-    class UserManager
+    internal abstract class UserManager
     {
-        public void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
+        public static void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
         {
             Member member = new Member();
-            
+            member.SetName(name);
+            member.SetSurname(surname);
+            member.SetGender(gender);
+            member.SetAge(age);
+            member.SetCity(city);
+            member.SetUserName(username);
+            member.SetPassword(password);
+            //member.SetEmail(email);
+            //member.SetPhoneNumber(PhoneNumber);
+
+
+
         }
 
-        public void SaveMember()
+        public static void SaveMember()
         {
 
         }
 
-        public void LoadMember()
+        public static void LoadMember()
         {
-
+            //returner liste af members - brug antal members/antal linjer i filen til at definere næste UserID
         }
 
-        public void Login()
+        public static void Login()
         {
 
         }
