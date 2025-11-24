@@ -29,8 +29,9 @@ namespace FørsteSemester
         public static void SaveMember(Member member)
         {
 
-            string directory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName; //ChatGPT inspireret
-            string filepath = Path.Combine(directory, "Members.txt"); 
+             //ChatGPT inspireret
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
 
             using (StreamWriter streamWriter = new StreamWriter(filepath,true))
             {
