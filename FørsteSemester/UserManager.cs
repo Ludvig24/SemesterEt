@@ -28,9 +28,14 @@ namespace FørsteSemester
 
         public static void SaveMember(Member member)
         {
-           
-            using (StreamWriter streamWriter = new StreamWriter("Members.txt"))
+
+            string directory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName; //ChatGPT inspireret
+            string filepath = Path.Combine(directory, "Members.txt"); 
+
+            using (StreamWriter streamWriter = new StreamWriter(filepath,true))
             {
+               
+
                 streamWriter.Write(member.GetName() + ";");
                 streamWriter.Write(member.GetSurname() + ";");
                 streamWriter.Write(member.GetGender() + ";");
