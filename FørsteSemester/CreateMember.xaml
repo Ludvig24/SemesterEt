@@ -1,0 +1,34 @@
+﻿<Window x:Class="FørsteSemester.CreateMember"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FørsteSemester"
+        mc:Ignorable="d"
+        Title="CreateMember" Height="800" Width="450">
+
+    <Grid>
+        <TextBox HorizontalAlignment="Center" Margin="0,55,0,0" TextWrapping="Wrap" Text="Ny bruger" VerticalAlignment="Top" Width="226" Height="71" FontSize="48" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="218,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="FornavnBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="218,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="EfternavnBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="225,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="AlderBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="218,426,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="ByBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="252,482,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="BrugernavnBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="244,533,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="PasswordBox"/>
+        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="70,222,0,0" VerticalAlignment="Top"/>
+        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="70,274,0,0" VerticalAlignment="Top"/>
+        <Label Content="Køn" HorizontalAlignment="Left" Margin="70,320,0,0" VerticalAlignment="Top"/>
+        <Label Content="Alder" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Center"/>
+        <Label Content="By" HorizontalAlignment="Left" Margin="70,422,0,0" VerticalAlignment="Top"/>
+        <Label Content="Brugernavn" HorizontalAlignment="Left" Margin="70,478,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="70,533,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="218,324,0,0" VerticalAlignment="Top" Width="120" Name="KønBox" Text="Vælg køn">
+            <ComboBoxItem Name="MandBox" Content="Mand"></ComboBoxItem>
+            <ComboBoxItem Name="KvindeBox" Content="Kvinde"></ComboBoxItem>
+        </ComboBox>
+
+
+
+
+    </Grid>
+</Window>

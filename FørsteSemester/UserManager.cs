@@ -8,9 +8,10 @@ namespace FørsteSemester
 {
     class UserManager
     {
-        public void CreateMember()
+        public void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
         {
-
+            Member member = new Member();
+            
         }
 
         public void SaveMember()

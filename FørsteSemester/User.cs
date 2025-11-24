@@ -20,7 +20,7 @@ namespace FørsteSemester
         private string city;
         private string password;
         private string userName;
-        private string emial;
+        private string email;
         private int phoneNumber;
         private int userID;
 

@@ -20,5 +20,11 @@ namespace FørsteSemester
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreateMember createMemberWindow = new CreateMember();
+            createMemberWindow.Show();
+        }
     }
 }
