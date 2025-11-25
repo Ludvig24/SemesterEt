@@ -23,7 +23,7 @@ namespace FørsteSemester
                 member.SetGender(gender);
                 member.SetAge(age);
                 member.SetCity(city);
-                member.SetUserName(username);
+                member.SetUserName(username.ToLower());
                 member.SetPassword(password);
 
             //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
@@ -42,6 +42,8 @@ namespace FørsteSemester
                 }
                 
             }
+            
+
 
                 SaveMember(member);
         }

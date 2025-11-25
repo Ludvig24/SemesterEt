@@ -66,6 +66,18 @@ namespace FørsteSemester
                 Fejlbox.Text = "Du skal være mellem 14 og 130 år";
                 return;
             }
+            for (int i = 0; i < UserManager.LoadMember().Count(); i++)
+            {
+                if (BrugernavnBox.Text == UserManager.GetUserData(5)[i])
+                {
+                    Fejlbox.Visibility = Visibility.Visible;
+                    Fejlbox.Text = "Brugernavn er allerede taget";
+                    return;
+                }
+
+
+            }
+
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
         }
 
