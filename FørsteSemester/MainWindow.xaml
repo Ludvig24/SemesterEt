@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FørsteSemester"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="450">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="334,168,0,0" VerticalAlignment="Top" Height="220" Width="338" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Height="220" Width="338" Click="Button_Click" RenderTransformOrigin="-0.469,0.596"/>
 
     </Grid>
 </Window>
