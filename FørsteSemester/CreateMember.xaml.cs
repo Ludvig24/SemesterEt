@@ -34,13 +34,13 @@ namespace FørsteSemester
                 gender = 'F';
             } else gender = 'M';
 
-            if ((FornavnBox.Text + EfternavnBox.Text + AlderBox.Text + ByBox.Text + BrugernavnBox.Text).Contains(";"))
+            if ((FornavnBox.Text + EfternavnBox.Text + AlderBox.Text + ByBox.Text).Contains(";"))
             {
                 //Indsæt message boks
                 return;
             }
 
-            if ((PasswordBox.Text).Contains(";"))
+            if ((BrugernavnBox.Text + PasswordBox.Text).Contains(";"))
             {
                 //Indsætboks
                 return;
@@ -56,6 +56,6 @@ namespace FørsteSemester
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
         }
 
-     
+
     }
 }

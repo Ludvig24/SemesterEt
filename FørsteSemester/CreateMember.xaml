@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CreateMember" Height="800" Width="450">
 
-    <Grid>
+    <Grid Margin="-1,0,1,0">
         <TextBox HorizontalAlignment="Center" Margin="0,55,0,0" TextWrapping="Wrap" Text="Ny bruger" VerticalAlignment="Top" Width="226" Height="71" FontSize="48" IsReadOnly="True"/>
         <TextBox HorizontalAlignment="Left" Margin="218,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="FornavnBox"/>
         <TextBox HorizontalAlignment="Left" Margin="218,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="EfternavnBox"/>
@@ -26,9 +26,9 @@
             <ComboBoxItem Name="MandBox" Content="Mand"></ComboBoxItem>
             <ComboBoxItem Name="KvindeBox" Content="Kvinde"></ComboBoxItem>
         </ComboBox>
-        <Button x:Name="CreateUser" Content="Opret bruger" HorizontalAlignment="Left" Height="34" Margin="122,578,0,0" VerticalAlignment="Top" Width="182" Click="CreateUser_Click"/>
+        <Button x:Name="CreateUser" Content="Opret bruger" HorizontalAlignment="Left" Height="34" Margin="112,628,0,0" VerticalAlignment="Top" Width="182" Click="CreateUser_Click"/>
         <Button Content="Tilbage" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="70"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Margin="372,392,0,0" TextWrapping="Wrap" Text="Du må kun bruge tal" VerticalAlignment="Top" Width="60" Name ="AlderFejl" Visibility="Hidden"/>
+        <Label x:Name="Fejl" Content="Du må ikke anvende ;" HorizontalAlignment="Left" Height="26" Margin="198,502,0,0" VerticalAlignment="Top" Width="174" RenderTransformOrigin="0.5,0.025"/>
 
 
 
