@@ -81,6 +81,8 @@ namespace FørsteSemester
             }
 
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
+            this.Close();
+            window.Show();
         }
 
         

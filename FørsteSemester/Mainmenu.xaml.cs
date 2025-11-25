@@ -19,9 +19,17 @@ namespace FørsteSemester
     /// </summary>
     public partial class Mainmenu : Window
     {
-        public Mainmenu()
+        Window window;
+        public Mainmenu(Window window)
         {
             InitializeComponent();
+            this.window = window;
+        }
+
+        private void Logud_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            window.Show();
         }
     }
 }

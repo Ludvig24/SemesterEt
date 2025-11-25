@@ -29,7 +29,7 @@
         </ComboBox>
         <Button x:Name="CreateUser" Content="Opret bruger" HorizontalAlignment="Center" Height="34" Margin="0,597,0,0" VerticalAlignment="Top" Width="182" Click="CreateUser_Click"/>
         <Button x:Name="TilbageKnap" Content="Tilbage" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="70" Click="Tilbage_Click"/>
-        <TextBox Name="Fejlbox" Foreground="Red" HorizontalAlignment="Left" Margin="143,588,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox Name="Fejlbox" Foreground="Red" HorizontalAlignment="Left" Margin="158,537,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
 
 
 

@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="Mainmenu" Height="700" Width="450">
     <Grid>
-        
+        <Button x:Name="Logud" Content="Logud" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="70" Click="Logud_Click"/>
     </Grid>
 </Window>

@@ -103,8 +103,27 @@ namespace FørsteSemester
             return members;
         }
 
-        public static void Login()
+        public static Member Login(string Username, string Password)
         {
+            List<string> Usernames = GetUserData(5);
+            List<string> Passwords = GetUserData(6);
+            int i = 0;
+            while(true)
+            {
+                if (Username == Usernames[i] && Password == Passwords[i])
+                {
+                    Member loggetIndMember = new Member();
+                    loggetIndMember = LoadMember()[i];
+                    return loggetIndMember;
+
+                }
+                else
+                {
+                    i++;
+
+                }
+
+            }
 
         }
 

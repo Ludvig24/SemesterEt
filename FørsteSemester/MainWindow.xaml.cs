@@ -35,9 +35,16 @@ namespace FørsteSemester
 
         private void Loggin_Click(object sender, RoutedEventArgs e)
         {
-            Mainmenu createMainmenu = new Mainmenu();
-            createMainmenu.Show();
-            this.Hide();
+            Mainmenu createMainmenu = new Mainmenu(this);
+
+            if (UserManager.Login(BrugernavnBox.Text, PasswordBox.Text).Equals(Member))
+            {
+                createMainmenu.Show();
+                this.Hide();
+            }
+
+
+            
         }
     }
 }
