@@ -26,9 +26,23 @@ namespace FørsteSemester
                 member.SetUserName(username);
                 member.SetPassword(password);
 
-                //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
-                //member.SetPhoneNumber(PhoneNumber);
-                member.SetUserID(LoadMember().Count + 1);
+            //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
+            //member.SetPhoneNumber(PhoneNumber);
+            int membercount = LoadMember().Count + 1;
+            while(true)
+            {
+                if (GetUserData(7).Contains(membercount.ToString()))
+                {
+                    membercount = membercount + 1;
+                }
+                else
+                {
+                    member.SetUserID(membercount);
+                    break;
+                }
+                
+            }
+
                 SaveMember(member);
         }
 
@@ -48,7 +62,8 @@ namespace FørsteSemester
                 streamWriter.Write(member.GetAge() + ";");
                 streamWriter.Write(member.GetCity() + ";");
                 streamWriter.Write(member.GetUserName() + ";");
-                streamWriter.Write(member.GetPassword());
+                streamWriter.Write(member.GetPassword() + ";");
+                streamWriter.Write(member.GetUserID());
                 streamWriter.WriteLine();
             }
             

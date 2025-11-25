@@ -1,6 +1,2 @@
-rastrat;astrat;M;12;arst;ssssssssssssssss;ttttttttttttttttttt
-1111;22222;M;122;arsttsratratrat;a;b
-ii;iii;F;9;ii;ii;ii
-aa;a;F;1;1;1;1
-aabebebebeeeebbeb;a;F;1;1;1;1rastratttrtratarst
-Anna;Banana;M;0;A;kkakak;akakak
+Karl;Hansen;M;25;Ans;Hansen123;123;1
+Lea;Skywalker;F;40;Herning;Skywalker;123;2

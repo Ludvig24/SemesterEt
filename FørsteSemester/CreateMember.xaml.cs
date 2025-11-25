@@ -34,25 +34,38 @@ namespace FørsteSemester
                 gender = 'F';
             } else gender = 'M';
 
-            if ((FornavnBox.Text + EfternavnBox.Text + AlderBox.Text + ByBox.Text).Contains(";"))
+            if ((FornavnBox.Text + EfternavnBox.Text + ByBox.Text).Contains(";" )) //Enten fang special tegn eller tal
             {
-                //Indsæt message boks
+               
+                
+                Fejlbox.Visibility = Visibility.Visible;
+                Fejlbox.Text = "Må ikke indeholde specialtegn og tal";
                 return;
             }
 
             if ((BrugernavnBox.Text + PasswordBox.Text).Contains(";"))
             {
-                //Indsætboks
+               
+                Fejlbox.Visibility = Visibility.Visible;
+                Fejlbox.Text = "Må ikke indeholde ;";
                 return;
             }
 
+            
             if (Byte.TryParse(AlderBox.Text, out age) != true)
             {
-                AlderFejl.Visibility = Visibility.Visible;
+                Fejlbox.Visibility = Visibility.Visible;
+                Fejlbox.Text = "Du må kun anvende tal";
+                
                 return;
 
             }
-
+            if (age <14 || age > 130)
+            {
+                Fejlbox.Visibility = Visibility.Visible;
+                Fejlbox.Text = "Du skal være mellem 14 og 130 år";
+                return;
+            }
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
         }
 
