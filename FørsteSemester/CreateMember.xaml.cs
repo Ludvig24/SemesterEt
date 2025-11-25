@@ -26,6 +26,7 @@ namespace FørsteSemester
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
+            byte age;
             char gender = 'x';
 
             if (KønBox.Text == "Kvinde")
@@ -33,7 +34,28 @@ namespace FørsteSemester
                 gender = 'F';
             } else gender = 'M';
 
-            UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, Convert.ToByte(AlderBox.Text),  ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
+            if ((FornavnBox.Text + EfternavnBox.Text + AlderBox.Text + ByBox.Text + BrugernavnBox.Text).Contains(";"))
+            {
+                //Indsæt message boks
+                return;
+            }
+
+            if ((PasswordBox.Text).Contains(";"))
+            {
+                //Indsætboks
+                return;
+            }
+
+            if (Byte.TryParse(AlderBox.Text, out age) != true)
+            {
+                AlderFejl.Visibility = Visibility.Visible;
+                return;
+
+            }
+
+            UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
         }
+
+     
     }
 }

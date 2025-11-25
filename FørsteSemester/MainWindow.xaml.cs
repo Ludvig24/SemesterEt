@@ -20,7 +20,7 @@ namespace FørsteSemester
         {
             InitializeComponent();
             UserManager.LoadMember();
-            UserManager.GetUserNames();
+            UserManager.GetUserData(5);
             UserManager.GetUserData(3);
         }
 
@@ -29,5 +29,6 @@ namespace FørsteSemester
             CreateMember createMemberWindow = new CreateMember();
             createMemberWindow.Show();
         }
+
     }
 }

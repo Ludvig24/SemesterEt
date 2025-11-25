@@ -16,19 +16,20 @@ namespace FørsteSemester
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
         public static void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
         {
-            Member member = new Member();
-            member.SetName(name);
-            member.SetSurname(surname);
-            member.SetGender(gender);
-            member.SetAge(age);
-            member.SetCity(city);
-            member.SetUserName(username);
-            member.SetPassword(password);
-            //member.SetEmail(email);
-            //member.SetPhoneNumber(PhoneNumber);
-            SaveMember(member);
+           
+                Member member = new Member();
+                member.SetName(name);
+                member.SetSurname(surname);
+                member.SetGender(gender);
+                member.SetAge(age);
+                member.SetCity(city);
+                member.SetUserName(username);
+                member.SetPassword(password);
 
-
+                //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
+                //member.SetPhoneNumber(PhoneNumber);
+                member.SetUserID(LoadMember().Count + 1);
+                SaveMember(member);
         }
 
         public static void SaveMember(Member member)
@@ -89,25 +90,6 @@ namespace FørsteSemester
         {
 
         }
-
-        //kunne laves generel hvor man bare sender et index i arrayet med som parameter
-        
-        /*public static List<string> GetUserNames()
-        {
-            List<string> usernames = new List<string>();
-            string username = "";
-            string[] lines = System.IO.File.ReadAllLines(filepath);
-            for(int i = 0; i < lines.Count(); i++)
-            {
-                string memberData = lines[i];
-                string[] memberSplit = memberData.Split(";");
-                username = memberSplit[5];
-                usernames.Add(username); 
-            }
-
-            return usernames;
-
-        }*/
 
         public static List<string> GetUserData(int a) 
         {
