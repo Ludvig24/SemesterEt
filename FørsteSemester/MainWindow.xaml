@@ -8,13 +8,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="450">
     <Grid>
-        <Button x:Name="Loggin" Content="Loggin" HorizontalAlignment="Center" Margin="0,357,0,0" VerticalAlignment="Top" Height="48" Width="102" Click="Loggin_Click"/>
-        <Button Content="Opret Bruger" HorizontalAlignment="Left" Margin="157,508,0,0" VerticalAlignment="Top" Height="59" Width="122" Click="Button_Click" RenderTransformOrigin="-0.469,0.596"/>
-        <TextBox x:Name="BrugernavnBox" HorizontalAlignment="Left" Margin="88,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="88,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Brugernavn" HorizontalAlignment="Left" Margin="8,216,0,0" VerticalAlignment="Top" Height="28" Width="75"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="16,259,0,0" VerticalAlignment="Top" Height="28" Width="60"/>
-        <Label Content="Velkommen" Foreground="Blue" HorizontalAlignment="Left" Margin="133,58,0,0" VerticalAlignment="Top" Height="74" Width="200" RenderTransformOrigin="0.5,0.5" FontSize="36">
+        <Button x:Name="Loggin" Content="Login" HorizontalAlignment="Center" Margin="0,342,0,0" VerticalAlignment="Top" Height="48" Width="102" Click="Loggin_Click" FontSize="14"/>
+        <Button Content="Opret Bruger" HorizontalAlignment="Center" Margin="0,436,0,0" VerticalAlignment="Top" Height="48" Width="102" Click="Button_Click" RenderTransformOrigin="-0.469,0.596" FontSize="14"/>
+        <TextBox x:Name="BrugernavnBox" HorizontalAlignment="Center" Margin="0,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PasswordBox" HorizontalAlignment="Center" Margin="0,289,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="BrugerNavn" Content="Brugernavn" HorizontalAlignment="Left" Margin="159,197,0,0" VerticalAlignment="Top" Height="38" Width="92" FontSize="16"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="159,263,0,0" VerticalAlignment="Top" Height="28" Width="81" FontSize="14"/>
+        <Label Content="Velkommen" Foreground="Blue" HorizontalAlignment="Left" Margin="112,64,0,0" VerticalAlignment="Top" Height="74" Width="257" RenderTransformOrigin="0.5,0.5" FontSize="48">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
