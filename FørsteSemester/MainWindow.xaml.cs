@@ -26,9 +26,18 @@ namespace FørsteSemester
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreateMember createMemberWindow = new CreateMember();
+
+            CreateMember createMemberWindow = new CreateMember(this);
             createMemberWindow.Show();
+            
+            this.Hide();
         }
 
+        private void Loggin_Click(object sender, RoutedEventArgs e)
+        {
+            Mainmenu createMainmenu = new Mainmenu();
+            createMainmenu.Show();
+            this.Hide();
+        }
     }
 }

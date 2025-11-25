@@ -19,9 +19,11 @@ namespace FørsteSemester
     /// </summary>
     public partial class CreateMember : Window
     {
-        public CreateMember()
+        Window window;
+        public CreateMember(Window window)
         {
             InitializeComponent();
+            this.window = window;
         }
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
@@ -81,6 +83,12 @@ namespace FørsteSemester
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
         }
 
+        
 
+        private void Tilbage_Click(object sender, RoutedEventArgs e)
+        {
+            window.Show();
+            this.Close();
+        }
     }
 }
