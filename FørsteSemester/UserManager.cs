@@ -107,7 +107,7 @@ namespace FørsteSemester
             List<string> Usernames = GetUserData(5);
             List<string> Passwords = GetUserData(6);
             int i = 0;
-            while(true)
+            while( i< LoadMember().Count)
             {
                 if (Username == Usernames[i] && Password == Passwords[i])
                 {
@@ -121,8 +121,9 @@ namespace FørsteSemester
                     i++;
 
                 }
-
+                
             }
+            return null;
 
         }
 
