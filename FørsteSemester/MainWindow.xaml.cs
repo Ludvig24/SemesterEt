@@ -37,8 +37,14 @@ namespace FørsteSemester
         {
             Mainmenu createMainmenu = new Mainmenu(this);
             Member loginMember = UserManager.Login(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
+            Admin loginAdmin = UserManager.AdminLogin(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
 
-            if (loginMember != null)
+            if (loginAdmin != null)
+            {
+                //createMainmenu.Show();
+                this.Hide();
+            }
+            else if (loginMember != null)
             {
                 createMainmenu.Show();
                 this.Hide();
@@ -47,6 +53,7 @@ namespace FørsteSemester
             {
                 Fejllogin.Visibility = Visibility.Visible;
             }
+           
 
 
             

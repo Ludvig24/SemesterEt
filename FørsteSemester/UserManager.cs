@@ -133,7 +133,7 @@ namespace FørsteSemester
             List<string> UserID = GetUserData(7);
             
             int i = 0;
-            while (true)
+            while (i < LoadMember().Count)
             {
                 if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")
                 {
@@ -163,7 +163,7 @@ namespace FørsteSemester
                 }
 
             }
-
+            return null;
         }
 
         public static List<string> GetUserData(int a) 
