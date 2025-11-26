@@ -18,8 +18,9 @@ namespace FørsteSemester
         private bool status;
         private int availableSpots;
         private int joinedAmount;
-        private bool requiredGender;
-        private byte requiredAge;
+        private char requiredGender;
+        private byte requiredMaxAge;
+        private byte requiredMinAge;
 
         public void getStatus()
         {
@@ -86,28 +87,44 @@ namespace FørsteSemester
             this.joinedAmount = joinedAmount;
         }
 
-        public bool GetRequiredGender()
+        public char GetRequiredGender()
         {
             return requiredGender;
         }
 
-        public void SetRequiredGender(bool requiredGender)
+        public void SetRequiredGender(char requiredGender)
         {
             this.requiredGender = requiredGender;
         }
 
-        public byte GetRequiredAge()
+        public byte GetRequiredMaxAge()
         {
-            return requiredAge;
+            return requiredMaxAge;
         }
 
-        public void SetRequiredAge(byte requiredAge)
+        public void SetRequiredMaxAge(byte requiredMaxAge)
         {
-            this.requiredAge = requiredAge;
+            this.requiredMaxAge = requiredMaxAge;
+        }
+        public byte GetRequiredMinAge()
+        {
+            return requiredMinAge;
         }
 
+        public void SetRequiredMinAge(byte requiredMinAge)
+        {
+            this.requiredMinAge = requiredMinAge;
+        }
+        public List<Member> GetMembersInClass()
+        {
+            return membersInClass;
 
+        }
+        public void SetMembersInClass(List<Member> membersInClass)
+        {
+            this.membersInClass = membersInClass;
 
+        }
 
 
     }
