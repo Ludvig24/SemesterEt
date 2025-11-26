@@ -36,11 +36,16 @@ namespace FørsteSemester
         private void Loggin_Click(object sender, RoutedEventArgs e)
         {
             Mainmenu createMainmenu = new Mainmenu(this);
+            Member loginMember = UserManager.Login(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
 
-            if (UserManager.Login(BrugernavnBox.Text, PasswordBox.Text).Equals(Member))
+            if (loginMember != null)
             {
                 createMainmenu.Show();
                 this.Hide();
+            }
+            else
+            {
+                Fejllogin.Visibility = Visibility.Visible;
             }
 
 
