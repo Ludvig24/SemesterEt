@@ -17,6 +17,8 @@ namespace FørsteSemester
 
         public void CreatClass()
         {
+            Class hold = new Class(); // Det skal hedde andet end class
+            
 
         }
 
