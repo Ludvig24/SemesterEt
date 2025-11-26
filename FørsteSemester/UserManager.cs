@@ -95,7 +95,6 @@ namespace FørsteSemester
                 member.SetUserName(memberSplit[5]);
                 member.SetPassword(memberSplit[6]);
 
-
                 members.Add(member);
             }
 
@@ -112,11 +111,51 @@ namespace FørsteSemester
             {
                 if (Username == Usernames[i] && Password == Passwords[i])
                 {
-                    Member loggetIndMember = new Member();
-                    loggetIndMember = LoadMember()[i];
-                    return loggetIndMember;
+                    Member loginMember = new Member();
+                    loginMember = LoadMember()[i];
+                    return loginMember;
 
                 }
+                else
+                {
+                    i++;
+
+                }
+
+            }
+
+        }
+
+        public static Admin AdminLogin(string Username, string Password)
+        {
+            List<string> Usernames = GetUserData(5);
+            List<string> Passwords = GetUserData(6);
+            List<string> UserID = GetUserData(7);
+            
+            int i = 0;
+            while (true)
+            {
+                if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")
+                {
+                    Admin loginAdmin = new Admin();
+                    string[] lines = System.IO.File.ReadAllLines(filepath);
+                    string adminLine = lines[0];
+                    adminLine.Split(";");
+                    string[] adminData = adminLine.Split(";");
+
+                    loginAdmin.SetName(adminData[0]);
+                    loginAdmin.SetSurname(adminData[1]);
+                    loginAdmin.SetGender(Convert.ToChar (adminData[2]));
+                    loginAdmin.SetAge(Convert.ToByte (adminData[3]));
+                    loginAdmin.SetCity(adminData[4]);
+                    loginAdmin.SetUserName(adminData[5]);
+                    loginAdmin.SetPassword(adminData[6]);
+                    loginAdmin.SetUserID(Convert.ToInt32 (adminData[7]));
+
+                    return loginAdmin;
+
+                }
+
                 else
                 {
                     i++;

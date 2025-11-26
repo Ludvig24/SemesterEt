@@ -86,7 +86,25 @@ namespace FørsteSemester
             this.joinedAmount = joinedAmount;
         }
 
+        public bool GetRequiredGender()
+        {
+            return requiredGender;
+        }
 
+        public void SetRequiredGender(bool requiredGender)
+        {
+            this.requiredGender = requiredGender;
+        }
+
+        public byte GetRequiredAge()
+        {
+            return requiredAge;
+        }
+
+        public void SetRequiredAge(byte requiredAge)
+        {
+            this.requiredAge = requiredAge;
+        }
 
 
 
