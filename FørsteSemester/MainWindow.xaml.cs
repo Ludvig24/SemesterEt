@@ -23,11 +23,6 @@ namespace FørsteSemester
             UserManager.GetUserData(5);
             UserManager.GetUserData(3);
 
-            Admin admin = new Admin();
-            Class yoga = new Class();
-            yoga.SetClassName("Yoga");
-            admin.SaveClass(yoga);
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
