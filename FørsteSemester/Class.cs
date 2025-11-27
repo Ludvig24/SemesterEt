@@ -10,9 +10,7 @@ namespace FørsteSemester
     class Class
     {
 
-        List<Member> membersInClass = new List<Member>();
-
-        int[] memberIDsInClass = new int[] {1, 2, 3, 4, 5};
+        //List<Member> membersInClass = new List<Member>();
 
         private string activity;
         private string className;
@@ -23,62 +21,11 @@ namespace FørsteSemester
         private char requiredGender;
         private byte requiredMaxAge;
         private byte requiredMinAge;
+        private string memberIDsInClass = "";
 
-        public void AddMemberToClass(int ID)
+        public void AddMemberIDToClass(int ID)
         {
-            int i = 0;
-            List<int> userID = UserManager.GetUserData(7).ConvertAll(int.Parse);
-            while (i < userID.Count)
-            {
-                if (ID == userID[i])
-                {
-                    Member joinMember = new Member();
-                    joinMember = UserManager.LoadMember()[i];
-                    membersInClass.Add(joinMember);
-                    return;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-
-
-
-
-            //string joinedName = UserManager.GetUserData(0).ToString();
-            //string joinedSurname = UserManager.GetUserData(1).ToString();
-            //string joinedID = UserManager.GetUserData(7).ToString();
-
-            //List<string> joinedMemberData  = new List<string>();
-            //joinedMemberData.Add(joinedName);
-            //joinedMemberData.Add(joinedSurname);
-            //joinedMemberData.Add(joinedID);
-
-            /*{
-                List<string> names = UserManager.GetUserData(0);
-                List<string> surnames = UserManager.GetUserData(1);
-                int i = 0;
-                while (i < UserManager.LoadMember().Count)
-                {
-                    if (name == names[i] && surname == surnames[i])
-                    {
-                        Member loginMember = new Member();
-                        loginMember = UserManager.LoadMember()[i];
-                        return loginMember;
-
-                    }
-                    else
-                    {
-                        i++;
-
-                    }
-
-                }
-                return null;
-
-            }*/
-
+            memberIDsInClass = memberIDsInClass + ";" + ID.ToString();
         }
         public void getStatus()
         {
@@ -173,18 +120,8 @@ namespace FørsteSemester
         {
             this.requiredMinAge = requiredMinAge;
         }
-        public List<Member> GetMembersInClass()
-        {
-            return membersInClass;
 
-        }
-        public void SetMembersInClass(List<Member> membersInClass)
-        {
-            this.membersInClass = membersInClass;
-
-        }
-
-        public int[] GetMemberIDsInClass()
+        public string GetMemberIDsInClass()
         {
             return memberIDsInClass;
         }
