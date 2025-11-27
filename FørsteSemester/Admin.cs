@@ -49,7 +49,7 @@ namespace FørsteSemester
                 }
 
             }
-            
+            SaveClass(Team);
         }
         
         public static List<string> GetClassData(int a)
