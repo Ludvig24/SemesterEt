@@ -10,8 +10,6 @@ namespace FørsteSemester
     class Class
     {
 
-        //List<Member> membersInClass = new List<Member>();
-
         private string activity;
         private string className;
         private int classID;
@@ -25,6 +23,7 @@ namespace FørsteSemester
 
         public void AddMemberIDToClass(int ID)
         {
+            
             memberIDsInClass = memberIDsInClass + ";" + ID.ToString();
         }
         public void getStatus()
@@ -126,6 +125,14 @@ namespace FørsteSemester
             return memberIDsInClass;
         }
 
+        public void SetMemberIDsInClass(string[] memberIDsInClass)
+        {
+            for (int i = 9; i<memberIDsInClass.Length; i++)
+            {
+                AddMemberIDToClass(Convert.ToInt32(memberIDsInClass[i]));
+            }
+
+        }
 
     }
 }

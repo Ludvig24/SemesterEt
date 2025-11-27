@@ -25,7 +25,7 @@ namespace FørsteSemester
 
         public void CreateClass(string activity, string classname, byte availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
-            Class Team = new Class(); // Det skal hedde andet end class
+            Class Team = new Class();
             Team.SetActivity(activity);
             Team.SetClassName(classname);
             Team.SetStatus(false);
@@ -74,8 +74,9 @@ namespace FørsteSemester
                 Teams.SetRequiredGender(Convert.ToChar(Teamsplit[6]));
                 Teams.SetRequiredMaxAge(Convert.ToByte(Teamsplit[7]));
                 Teams.SetRequiredMinAge(Convert.ToByte(Teamsplit[8]));
+                Teams.SetMemberIDsInClass(Teamsplit);
 
-                //Teams.SetMembersInClass();
+
 
                 teamsList.Add(Teams);
             }
