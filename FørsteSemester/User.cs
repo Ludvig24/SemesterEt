@@ -23,6 +23,7 @@ namespace FørsteSemester
         private string email;
         private int phoneNumber;
         private int userID;
+        
 
 
         public void ShowRooms()

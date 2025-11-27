@@ -9,12 +9,13 @@ namespace FørsteSemester
 {
     class Member : User
     {
-        List<Class> joinedClass = new List<Class>();
+        
 
-
-        public void JoinClass()
+        private string joinedClass = "0";
+        public void JoinClass(int classID)
         {
-
+            classID.ToString();
+            joinedClass = joinedClass + ";"+ classID;
         }
         
         public void LeaveClass()

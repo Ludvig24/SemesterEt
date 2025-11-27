@@ -74,6 +74,7 @@ namespace FørsteSemester
                 Teams.SetRequiredGender(Convert.ToChar(Teamsplit[6]));
                 Teams.SetRequiredMaxAge(Convert.ToByte(Teamsplit[7]));
                 Teams.SetRequiredMinAge(Convert.ToByte(Teamsplit[8]));
+
                 //Teams.SetMembersInClass();
 
                 teamsList.Add(Teams);
@@ -113,7 +114,7 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetRequiredMinAge());
                 streamWriter.Write(team.GetMembersInClass());// hvordan ser det ud i en txt?
                 streamWriter.Write(team.GetClassID());
-
+                streamWriter.Write(team.GetMemberIDsInClass());
             }
         }
 

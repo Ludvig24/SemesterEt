@@ -12,6 +12,8 @@ namespace FørsteSemester
 
         List<Member> membersInClass = new List<Member>();
 
+        int[] memberIDsInClass = new int[] {1, 2, 3, 4, 5};
+
         private string activity;
         private string className;
         private int classID;
@@ -180,6 +182,11 @@ namespace FørsteSemester
         {
             this.membersInClass = membersInClass;
 
+        }
+
+        public int[] GetMemberIDsInClass()
+        {
+            return memberIDsInClass;
         }
 
 
