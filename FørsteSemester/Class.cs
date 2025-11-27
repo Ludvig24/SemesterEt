@@ -22,6 +22,62 @@ namespace FørsteSemester
         private byte requiredMaxAge;
         private byte requiredMinAge;
 
+        public void AddMemberToClass(int ID)
+        {
+            int i = 0;
+            List<int> userID = UserManager.GetUserData(7).ConvertAll(int.Parse);
+            while (i < userID.Count)
+            {
+                if (ID == userID[i])
+                {
+                    Member joinMember = new Member();
+                    joinMember = UserManager.LoadMember()[i];
+                    membersInClass.Add(joinMember);
+                    return;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+
+
+
+            //string joinedName = UserManager.GetUserData(0).ToString();
+            //string joinedSurname = UserManager.GetUserData(1).ToString();
+            //string joinedID = UserManager.GetUserData(7).ToString();
+
+            //List<string> joinedMemberData  = new List<string>();
+            //joinedMemberData.Add(joinedName);
+            //joinedMemberData.Add(joinedSurname);
+            //joinedMemberData.Add(joinedID);
+
+            /*{
+                List<string> names = UserManager.GetUserData(0);
+                List<string> surnames = UserManager.GetUserData(1);
+                int i = 0;
+                while (i < UserManager.LoadMember().Count)
+                {
+                    if (name == names[i] && surname == surnames[i])
+                    {
+                        Member loginMember = new Member();
+                        loginMember = UserManager.LoadMember()[i];
+                        return loginMember;
+
+                    }
+                    else
+                    {
+                        i++;
+
+                    }
+
+                }
+                return null;
+
+            }*/
+
+        }
         public void getStatus()
         {
 
