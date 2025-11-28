@@ -16,12 +16,12 @@ namespace FørsteSemester
         private string joinedClass = "";
         public void JoinClass(int classID, int userID)
         {
+            List<string> userIDs = UserManager.GetUserData(7);
+            string[] lines = System.IO.File.ReadAllLines(filepath);
             classID.ToString();
             joinedClass = ";"+ classID;
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
             {
-                string[] lines = System.IO.File.ReadAllLines(filepath);
-                List<string> userIDs = UserManager.GetUserData(7);
                 int lineNumber = 0;
 
                 for(int i = 0; i < userIDs.Count; i++)
@@ -36,6 +36,7 @@ namespace FørsteSemester
                 for(int i = 0; i < lines.Length; i++)
                 {
                     streamWriter.Write(lines[i]);
+                    streamWriter.WriteLine();
                 }
                 
             }

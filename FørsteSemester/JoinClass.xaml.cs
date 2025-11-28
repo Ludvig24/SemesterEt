@@ -28,5 +28,10 @@ namespace FørsteSemester
             this.member = member;
             InitializeComponent();
         }
+
+        private void Tilmeld_Click(object sender, RoutedEventArgs e)
+        {
+            member.JoinClass(1, member.GetUserID());
+        }
     }
 }

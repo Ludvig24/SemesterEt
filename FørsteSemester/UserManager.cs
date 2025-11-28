@@ -57,7 +57,7 @@ namespace FørsteSemester
             using (StreamWriter streamWriter = new StreamWriter(filepath,true))
             {
                
-
+                
                 streamWriter.Write(member.GetName() + ";");
                 streamWriter.Write(member.GetSurname() + ";");
                 streamWriter.Write(member.GetGender() + ";");
@@ -94,7 +94,7 @@ namespace FørsteSemester
                 member.SetCity(memberSplit[4]);
                 member.SetUserName(memberSplit[5]);
                 member.SetPassword(memberSplit[6]);
-
+                member.SetUserID(Convert.ToInt32(memberSplit[7]));
                 members.Add(member);
             }
 
