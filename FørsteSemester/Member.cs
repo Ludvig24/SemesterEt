@@ -14,13 +14,30 @@ namespace FørsteSemester
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
 
         private string joinedClass = "";
-        public void JoinClass(int classID)
+        public void JoinClass(int classID, int userID)
         {
             classID.ToString();
             joinedClass = ";"+ classID;
-            using (StreamWriter streamWriter = new StreamWriter(filepath, true))
+            using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
             {
-                streamWriter.Write(
+                string[] lines = System.IO.File.ReadAllLines(filepath);
+                List<string> userIDs = UserManager.GetUserData(7);
+                int lineNumber = 0;
+
+                for(int i = 0; i < userIDs.Count; i++)
+                {
+                    if(userID.ToString() == userIDs[i])
+                    {
+                        lineNumber = i;
+                    }
+                }
+
+                lines[lineNumber] = lines[lineNumber] + joinedClass;  
+                for(int i = 0; i < lines.Length; i++)
+                {
+                    streamWriter.Write(lines[i]);
+                }
+                
             }
         }
         
