@@ -53,6 +53,7 @@ namespace FørsteSemester
                 for (int i = 0; i < lines.Length; i++)
                 {
                     streamWriter.Write(lines[i]);
+                    streamWriter.WriteLine();
                 }
 
             }

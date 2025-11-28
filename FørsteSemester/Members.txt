@@ -1,4 +1,4 @@
 Admin;Admin;M;45;Admin;admin;admin;1
 Lea;Skywalker;F;40;Naboo;skywalkerlover;1234;2;1
-a;a;M;20;a;a;a;3;1
-b;b;F;40;b;b;b;4;1;
+a;a;M;20;a;a;a;3;1;1
+b;b;F;40;b;b;b;4;1;;1
