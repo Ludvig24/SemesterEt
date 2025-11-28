@@ -19,8 +19,13 @@ namespace FørsteSemester
     /// </summary>
     public partial class JoinClass : Window
     {
-        public JoinClass()
+        Window window;
+        Member member;
+
+        internal JoinClass(Window window, Member member)
         {
+            this.window = window;
+            this.member = member;
             InitializeComponent();
         }
     }

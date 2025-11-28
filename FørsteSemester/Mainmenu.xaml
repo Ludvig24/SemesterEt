@@ -9,5 +9,6 @@
         Title="Mainmenu" Height="700" Width="450">
     <Grid>
         <Button x:Name="Logud" Content="Logud" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="70" Click="Logud_Click"/>
+        <Button x:Name="OpretHold" Content="Tilmeld Hold" HorizontalAlignment="Center" Margin="0,177,0,0" VerticalAlignment="Top" Click="Tilmeld_Click"/>
     </Grid>
 </Window>

@@ -50,6 +50,7 @@ namespace FørsteSemester
 
             }
             SaveClass(Team);
+
         }
         
         public static List<string> GetClassData(int a)
@@ -71,7 +72,7 @@ namespace FørsteSemester
 
         public void SaveClass(Class team)
         {
-            using (StreamWriter streamWriter = new StreamWriter(filepath))
+            using (StreamWriter streamWriter = new StreamWriter(filepath, true))
             {
                 streamWriter.Write(team.GetActivity()+ ";");
                 streamWriter.Write(team.GetClassName()+";");
@@ -83,6 +84,7 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetRequiredMinAge()+";");
                 streamWriter.Write(team.GetClassID()+";");
                 streamWriter.Write(team.GetMemberIDsInClass()+";");
+                streamWriter.WriteLine();
             }
         }
 

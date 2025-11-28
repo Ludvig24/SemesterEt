@@ -20,10 +20,12 @@ namespace FørsteSemester
     public partial class Mainmenu : Window
     {
         Window window;
-        public Mainmenu(Window window)
+        Member member;
+        internal Mainmenu(Window window, Member member)
         {
             InitializeComponent();
             this.window = window;
+            this.member = member;
         }
 
         private void Logud_Click(object sender, RoutedEventArgs e)
@@ -31,5 +33,16 @@ namespace FørsteSemester
             this.Close();
             window.Show();
         }
+
+        private void Tilmeld_Click(object sender, RoutedEventArgs e) 
+        {
+
+            JoinClass joinClass = new JoinClass(this, member);
+            joinClass.Show();
+
+            this.Hide();
+        }
     }
+    
+    
 }

@@ -36,7 +36,7 @@ namespace FørsteSemester
 
         private void Loggin_Click(object sender, RoutedEventArgs e)
         {
-            Mainmenu createMainmenu = new Mainmenu(this);
+            
             
             Member loginMember = UserManager.Login(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
             Admin loginAdmin = UserManager.AdminLogin(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
@@ -47,8 +47,10 @@ namespace FørsteSemester
                 createAdminmenu.Show();
                 this.Hide();
             }
+
             else if (loginMember != null)
             {
+                Mainmenu createMainmenu = new Mainmenu(this, loginMember);
                 createMainmenu.Show();
                 this.Hide();
             }
