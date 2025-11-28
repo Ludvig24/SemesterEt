@@ -42,13 +42,13 @@ namespace FørsteSemester
 
                 Teams.SetActivity(Teamsplit[0]);
                 Teams.SetClassName(Teamsplit[1]);
-                Teams.SetClassID(Convert.ToInt32(Teamsplit[2]));
-                Teams.SetStatus(Convert.ToBoolean(Teamsplit[3]));
-                Teams.SetAvailableSpots(Convert.ToInt32(Teamsplit[4]));
-                Teams.SetJoinedAmount(Convert.ToInt32(Teamsplit[5]));
-                Teams.SetRequiredGender(Convert.ToChar(Teamsplit[6]));
-                Teams.SetRequiredMaxAge(Convert.ToByte(Teamsplit[7]));
-                Teams.SetRequiredMinAge(Convert.ToByte(Teamsplit[8]));
+                Teams.SetStatus(Convert.ToBoolean(Teamsplit[2]));
+                Teams.SetAvailableSpots(Convert.ToInt32(Teamsplit[3]));
+                Teams.SetJoinedAmount(Convert.ToInt32(Teamsplit[4]));
+                Teams.SetRequiredGender(Convert.ToChar(Teamsplit[5]));
+                Teams.SetRequiredMaxAge(Convert.ToByte(Teamsplit[6]));
+                Teams.SetRequiredMinAge(Convert.ToByte(Teamsplit[7]));
+                Teams.SetClassID(Convert.ToInt32(Teamsplit[8]));
                 Teams.SetMemberIDsInClass(Teamsplit);
 
 

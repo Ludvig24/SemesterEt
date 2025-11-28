@@ -23,7 +23,7 @@ namespace FørsteSemester
 
         }
 
-        public void CreateClass(string activity, string classname, byte availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
+        public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
             Class Team = new Class();
             Team.SetActivity(activity);

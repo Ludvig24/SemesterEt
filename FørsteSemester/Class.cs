@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,40 @@ namespace FørsteSemester
         private char requiredGender;
         private byte requiredMaxAge;
         private byte requiredMinAge;
-        private string memberIDsInClass = "";
+        private string memberIDsInClass;
 
-        public void AddMemberIDToClass(int ID)
+        public void AddMemberIDToClass(int UserID, int classID)
         {
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
+            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
+
             
-            memberIDsInClass = memberIDsInClass + ";" + ID.ToString();
+            classID.ToString();
+
+            string MemberIDClass = "0";
+
+            MemberIDClass = ";" + UserID;
+            using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
+            {
+                string[] lines = System.IO.File.ReadAllLines(filepath);
+                List<string> ClassIDs = Admin.GetClassData(8);
+                int lineNumber = 0;
+
+                for (int i = 0; i < ClassIDs.Count; i++)
+                {
+                    if (classID.ToString() == ClassIDs[i])
+                    {
+                        lineNumber = i;
+                    }
+                }
+
+                lines[lineNumber] = lines[lineNumber] + MemberIDClass;
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    streamWriter.Write(lines[i]);
+                }
+
+            }
         }
         public void getStatus()
         {
@@ -127,9 +156,11 @@ namespace FørsteSemester
 
         public void SetMemberIDsInClass(string[] memberIDsInClass)
         {
-            for (int i = 9; i<memberIDsInClass.Length; i++)
+            
+            for (int i = 9; i < memberIDsInClass.Length; i++) 
             {
-                AddMemberIDToClass(Convert.ToInt32(memberIDsInClass[i]));
+                this.memberIDsInClass = this.memberIDsInClass + memberIDsInClass[i];
+
             }
 
         }
