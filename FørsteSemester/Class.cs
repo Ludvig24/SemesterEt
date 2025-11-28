@@ -33,10 +33,12 @@ namespace FørsteSemester
             string MemberIDClass = "0";
 
             MemberIDClass = ";" + UserID;
+
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            List<string> ClassIDs = Admin.GetClassData(8);
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
             {
-                string[] lines = System.IO.File.ReadAllLines(filepath);
-                List<string> ClassIDs = Admin.GetClassData(8);
+                
                 int lineNumber = 0;
 
                 for (int i = 0; i < ClassIDs.Count; i++)

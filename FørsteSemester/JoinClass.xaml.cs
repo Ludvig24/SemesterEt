@@ -31,7 +31,22 @@ namespace FørsteSemester
 
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {
-            member.JoinClass(1, member.GetUserID());
+            int classID = 1;
+            member.JoinClass(classID, member.GetUserID());
+            List<Class> Teams = member.LoadTeams();
+
+            int i = 0;
+            while (i < Teams.Count)
+            {
+                if (classID == Teams[i].GetClassID())
+                {
+                    Teams[i].AddMemberIDToClass(member.GetUserID(), classID);
+
+                }
+                i++;
+            }
+
+
         }
     }
 }
