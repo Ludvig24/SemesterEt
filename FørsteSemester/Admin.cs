@@ -73,16 +73,16 @@ namespace FørsteSemester
         {
             using (StreamWriter streamWriter = new StreamWriter(filepath))
             {
-                streamWriter.Write(team.GetActivity());
-                streamWriter.Write(team.GetClassName());
-                streamWriter.Write(team.GetStatus());
-                streamWriter.Write(team.GetAvailableSpots());
-                streamWriter.Write(team.GetJoinedAmount());
-                streamWriter.Write(team.GetRequiredGender());
-                streamWriter.Write(team.GetRequiredMaxAge());
-                streamWriter.Write(team.GetRequiredMinAge());
-                streamWriter.Write(team.GetClassID());
-                streamWriter.Write(team.GetMemberIDsInClass());
+                streamWriter.Write(team.GetActivity()+ ";");
+                streamWriter.Write(team.GetClassName()+";");
+                streamWriter.Write(team.GetStatus()+";");
+                streamWriter.Write(team.GetAvailableSpots()+";");
+                streamWriter.Write(team.GetJoinedAmount()+";");
+                streamWriter.Write(team.GetRequiredGender()+";");
+                streamWriter.Write(team.GetRequiredMaxAge()+";");
+                streamWriter.Write(team.GetRequiredMinAge()+";");
+                streamWriter.Write(team.GetClassID()+";");
+                streamWriter.Write(team.GetMemberIDsInClass()+";");
             }
         }
 

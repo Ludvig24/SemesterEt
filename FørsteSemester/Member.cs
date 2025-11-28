@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +10,18 @@ namespace FørsteSemester
 {
     class Member : User
     {
-        
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
+        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
 
-        private string joinedClass = "0";
+        private string joinedClass = "";
         public void JoinClass(int classID)
         {
             classID.ToString();
-            joinedClass = joinedClass + ";"+ classID;
+            joinedClass = ";"+ classID;
+            using (StreamWriter streamWriter = new StreamWriter(filepath, true))
+            {
+                streamWriter.Write(
+            }
         }
         
         public void LeaveClass()
