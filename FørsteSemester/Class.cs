@@ -53,6 +53,7 @@ namespace FørsteSemester
                     }
                 }
 
+                //Cursed ting og sager der tæller joinedAmount op
                 string[] classString = lines[lineNumber].Split(";");
                 int CurrentJoinAmount = Convert.ToInt32(classString[4]);
                 CurrentJoinAmount++;
