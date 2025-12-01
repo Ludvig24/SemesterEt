@@ -28,10 +28,29 @@ namespace FørsteSemester
             this.member = member;
             InitializeComponent();
 
-            //Ludvigs- for at tilføje til listen?
-            // ClassesList.Items.Add()
-        }
+            List<Class> Classes = member.LoadTeams();
+            for (int i = 0; i < Classes.Count; i++)
+            {
+                if (Classes[i].GetStatus() == false)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
+                    StackPanel stackPanel = new StackPanel();
+                    item.Content = stackPanel;
+                    TextBlock classNameText = new TextBlock();
+                    classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
+                    TextBlock classActivityText = new TextBlock();
+                    classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
 
+                    stackPanel.Children.Add(classNameText);
+                    stackPanel.Children.Add(classActivityText);
+
+
+                    ClassesList.Items.Add(item);
+                }
+
+            }
+        }
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {
             int classID = 1;
