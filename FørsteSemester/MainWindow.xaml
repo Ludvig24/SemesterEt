@@ -24,7 +24,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="Fejllogin" HorizontalAlignment="Left" Height="21" Margin="184,525,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="92"/>
+        <TextBox x:Name="Fejllogin" Foreground="Red" Visibility="Hidden" HorizontalAlignment="Center" Height="34" Margin="0,514,0,0" TextWrapping="Wrap" Text="Brugernavn og Password matcher ikke" VerticalAlignment="Top" Width="150" TextAlignment="Center"/>
 
     </Grid>
 </Window>
