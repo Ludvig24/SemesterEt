@@ -35,34 +35,47 @@ namespace FørsteSemester
 
             MemberIDClass = ";" + UserID;
 
+            //læser alle linjer i tekstfilen Classes.txt og gemmer dem i arrayet lines
             string[] lines = System.IO.File.ReadAllLines(filepath);
+
+            //opretter en liste over class Id'er via GetClassData metoden
             List<string> ClassIDs = Admin.GetClassData(8);
           
+
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
             {
-                
+                //opretter int variabel lineNumber
                 int lineNumber = 0;
 
                
-
+                //loop der itererer gennem listen ClassIDs og tjekker hvornår ClassIDs på index i er lig classID variablen
                 for (int i = 0; i < ClassIDs.Count; i++)
                 {
-                    if (classID.ToString() == ClassIDs[i])
+                    //if statement der tjekker hvornår det class id i ClassIDs på index i er lig med classID 
+                    if (classID.ToString() == ClassIDs[i]) 
                     {
-                        lineNumber = i;
+                        lineNumber = i; //sætter lineNumber lig med i for at få den linje i lines hvor id'et classID er
                     }
                 }
 
-                string[] classString = lines[lineNumber].Split(";");
-                int CurrentJoinAmount = Convert.ToInt32(classString[4]);
+                //gemmer informationerne om den class på linjen "lineNumber" i et string array. Split kaldes for at splitte stringen op ved hvert semicolon 
+                string[] currentClass = lines[lineNumber].Split(";");
+                //opretter en int og gemmer værdien på index 4 (som svarer til joinedAmount) i currentClass arrayet. Convert.ToInt32 kaldes for at konverterer fra string til int
+                int CurrentJoinAmount = Convert.ToInt32(currentClass[4]);
+                //tæller CurrentJoinAmount op med 1
                 CurrentJoinAmount++;
-                classString[4] = CurrentJoinAmount.ToString();
-                string classStringJoined = string.Join(";", classString);
+                // tildeler index 4 i currentClass den nye værdi af CurrentJoinAmount
+                currentClass[4] = CurrentJoinAmount.ToString();
+                //kalder string.Join og kombinerer hvert element i currentClass arrayet med et semicolon og gemmer det i en string.
+                string classStringJoined = string.Join(";", currentClass); 
+                //Erstatter elementet på pladsen "lineNumber" i arrayet lines med den nye string classStringJoined
                 lines[lineNumber] = classStringJoined;
 
                 
-
+                // tilføjer stringen på pladsen "linenumber" i lines arrayet stringen MemberIDClass
                 lines[lineNumber] = lines[lineNumber] + MemberIDClass;
+                //for loop der skriver arrayet lines ned i text filen Classes.txt. loopet kører så længe tællervariablen i er mindre end længden på lines arrayet
+                //for hver iteration skrives stringen på index "i" i lines arrayet ned i filen Classes.txt
                 for (int i = 0; i < lines.Length; i++)
                 {
                     streamWriter.Write(lines[i]);
