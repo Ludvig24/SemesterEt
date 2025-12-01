@@ -53,9 +53,39 @@ namespace FørsteSemester
         }
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {
-            int classID = 1;
-            member.JoinClass(classID, member.GetUserID());
+
             List<Class> Teams = member.LoadTeams();
+            Class team = new Class();
+            int classID = 1;
+
+            int j = 0;
+            while (j < Teams.Count)
+            {
+                if (classID == Teams[j].GetClassID())
+                {
+
+                    team = Teams[j];
+                }
+                j++;
+            }
+
+           
+            
+            
+
+            if (team.GetAvailableSpots() == team.GetJoinedAmount())
+            {
+                    team.SetStatus(true);
+                    //messagebox tingeling
+                    return;
+            }
+
+               
+
+            
+            
+            member.JoinClass(classID, member.GetUserID());
+            
 
             int i = 0;
             while (i < Teams.Count)
@@ -63,7 +93,7 @@ namespace FørsteSemester
                 if (classID == Teams[i].GetClassID())
                 {
                     Teams[i].AddMemberIDToClass(member.GetUserID(), classID);
-
+                    Teams[i].SetJoinedAmount(Teams[i].GetJoinedAmount() + 1);
                 }
                 i++;
             }

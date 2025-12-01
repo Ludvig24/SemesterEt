@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml.Linq;
 
 namespace FørsteSemester
@@ -36,10 +37,13 @@ namespace FørsteSemester
 
             string[] lines = System.IO.File.ReadAllLines(filepath);
             List<string> ClassIDs = Admin.GetClassData(8);
+          
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
             {
                 
                 int lineNumber = 0;
+
+               
 
                 for (int i = 0; i < ClassIDs.Count; i++)
                 {
@@ -48,6 +52,15 @@ namespace FørsteSemester
                         lineNumber = i;
                     }
                 }
+
+                string[] classString = lines[lineNumber].Split(";");
+                int CurrentJoinAmount = Convert.ToInt32(classString[4]);
+                CurrentJoinAmount++;
+                classString[4] = CurrentJoinAmount.ToString();
+                string classStringJoined = string.Join(";", classString);
+                lines[lineNumber] = classStringJoined;
+
+                
 
                 lines[lineNumber] = lines[lineNumber] + MemberIDClass;
                 for (int i = 0; i < lines.Length; i++)

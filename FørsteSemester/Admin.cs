@@ -39,7 +39,7 @@ namespace FørsteSemester
             int TeamID = LoadTeams().Count + 1;
             while (true)
             {
-                if (GetClassData(9).Contains(TeamID.ToString()))
+                if (GetClassData(8).Contains(TeamID.ToString())) //ændret GetClassData() fra (9) til (8)
                 {
                     TeamID = TeamID + 1;
                 }
