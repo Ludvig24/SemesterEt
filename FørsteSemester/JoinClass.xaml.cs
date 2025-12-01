@@ -41,10 +41,19 @@ namespace FørsteSemester
                     classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
                     TextBlock classActivityText = new TextBlock();
                     classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
+                    TextBlock ClassGenderText = new TextBlock();
+                    ClassGenderText.Text = $"Tilladte Køn: {Classes[i].GetRequiredGender()}";
+                    TextBlock ClassMinAge = new TextBlock();
+                    ClassMinAge.Text = $"Minimum Alder: {Classes[i].GetRequiredMinAge()}";
+                    TextBlock ClassMaxAge = new TextBlock();
+                    ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
+
 
                     stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
-
+                    stackPanel.Children.Add(ClassGenderText);
+                    stackPanel.Children.Add(ClassMinAge);
+                    stackPanel.Children.Add(ClassMaxAge);
 
                     ClassesList.Items.Add(item);
                 }
