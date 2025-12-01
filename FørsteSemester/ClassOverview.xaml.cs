@@ -19,9 +19,15 @@ namespace FørsteSemester
     /// </summary>
     public partial class ClassOverview : Window
     {
-        public ClassOverview()
+
+        Window window;
+        Member member;
+        internal ClassOverview(Window window, Member member)
         {
+            this.window = window;
+            this.member = member;
             InitializeComponent();
         }
+
     }
 }

@@ -27,6 +27,9 @@ namespace FørsteSemester
             this.window = window;
             this.member = member;
             InitializeComponent();
+
+            //Ludvigs- for at tilføje til listen?
+            // ClassesList.Items.Add()
         }
 
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
@@ -47,6 +50,11 @@ namespace FørsteSemester
             }
 
 
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

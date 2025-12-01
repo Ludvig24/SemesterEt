@@ -42,6 +42,14 @@ namespace FørsteSemester
 
             this.Hide();
         }
+
+        private void MineHold_Click(object sender, RoutedEventArgs e)
+        {
+            ClassOverview classOverview = new ClassOverview(this, member);
+            classOverview.Show();
+
+                this.Hide();
+        }
     }
     
     
