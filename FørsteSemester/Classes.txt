@@ -1,3 +1,7 @@
-Yoga;;False;10;0;F;20;70;1;;;4;3
+Yoga;;False;10;0;F;20;70;6;;;4;3;5
 Pilates;;False;10;0;M;20;70;2;;
 Pilates;;False;100;0;M;30;50;3;;
+Yoga;Herning;False;100;0;M;19;30;4;;
+Pilates;PiratPilates;False;100;0;B;20;100;6;;5;5
+Pilates;arst;False;20;0;F;30;70;7;
+Pilates;ratsrat;False;20;0;B;20;40;1;5;5;5

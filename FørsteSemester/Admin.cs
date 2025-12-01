@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -82,8 +83,12 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetRequiredGender()+";");
                 streamWriter.Write(team.GetRequiredMaxAge()+";");
                 streamWriter.Write(team.GetRequiredMinAge()+";");
-                streamWriter.Write(team.GetClassID()+";");
-                streamWriter.Write(team.GetMemberIDsInClass()+";");
+                streamWriter.Write(team.GetClassID());
+                if(team.GetMemberIDsInClass() != null)
+                {
+                    streamWriter.Write(team.GetMemberIDsInClass() + ";");
+                }
+                
                 streamWriter.WriteLine();
             }
         }
