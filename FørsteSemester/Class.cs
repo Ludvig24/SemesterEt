@@ -80,7 +80,7 @@ namespace FørsteSemester
 
         public void SetClassName(string ClassName)
         {
-            this.className = className;
+            this.className = ClassName;
         }
 
         public int GetClassID()
@@ -120,7 +120,7 @@ namespace FørsteSemester
 
         public void SetJoinedAmount(int joinedamount)
         {
-            this.joinedAmount = joinedAmount;
+            this.joinedAmount = joinedamount;
         }
 
         public char GetRequiredGender()
