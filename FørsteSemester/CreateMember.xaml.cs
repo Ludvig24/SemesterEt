@@ -24,8 +24,18 @@ namespace FørsteSemester
         {
             InitializeComponent();
             this.window = window;
+
+
+
+            //HUSK AT SLET HVIS IKKE LØST!!!!
+          //  if (FornavnBox.Text != "" && EfternavnBox.Text != "" && AlderBox.Text != "" && ByBox.Text != "" && BrugernavnBox.Text != "" && PasswordBox.Text != "")
+          //  {
+          //      CreateUser.IsEnabled = true;
+          //  }
+
         }
 
+        
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
             byte age;
@@ -79,6 +89,9 @@ namespace FørsteSemester
 
 
             }
+
+
+            
 
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
             this.Close();

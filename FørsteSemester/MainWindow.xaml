@@ -7,7 +7,10 @@
         xmlns:local="clr-namespace:FørsteSemester"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="450">
+    
+        
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="112*"/>
             <ColumnDefinition Width="113*"/>
@@ -30,7 +33,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="Fejllogin" Foreground="Red" Visibility="Hidden" HorizontalAlignment="Left" Height="34" Margin="151,514,0,0" TextWrapping="Wrap" Text="Brugernavn og Password matcher ikke" VerticalAlignment="Top" Width="150" TextAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Fejllogin" Foreground="Red" Visibility="Hidden" HorizontalAlignment="Left" Height="34" Margin="150,511,0,0" TextWrapping="Wrap" Text="Brugernavn og Password matcher ikke" VerticalAlignment="Top" Width="150" TextAlignment="Center" Grid.ColumnSpan="2"/>
+        <Grid Grid.Column="1"/>
 
     </Grid>
 </Window>
