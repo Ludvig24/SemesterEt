@@ -11,18 +11,22 @@
             <ComboBoxItem x:Name="Yoga" Content="Yoga"/>
             <ComboBoxItem x:Name="Pilates" Content="Pilates"/>
         </ComboBox>
-        <Label Content="Hold navn" HorizontalAlignment="Left" Margin="181,366,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Hold navn" HorizontalAlignment="Left" Margin="86,244,0,0" VerticalAlignment="Top" Width="57" Height="32"/>
         <TextBox x:Name="HoldNavnBox" HorizontalAlignment="Center" Margin="0,251,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PladsBox" HorizontalAlignment="Center" Margin="0,274,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AlderMaxBox" HorizontalAlignment="Center" Margin="0,320,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AlderMinBox" HorizontalAlignment="Center" Margin="0,343,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="OpretHold" Content="Opret Hold" HorizontalAlignment="Left" Margin="191,397,0,0" VerticalAlignment="Top" Click="OpretHold_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="163,297,0,0" VerticalAlignment="Top" Width="120" x:Name="KønBox" Text="" Height="20">
             <ComboBoxItem x:Name="M" Content="Mand"/>
             <ComboBoxItem x:Name="F" Content="Kvinde"/>
             <ComboBoxItem x:Name="B" Content="Begge"/>
         </ComboBox>
+        <TextBox x:Name="AlderMaxBox" HorizontalAlignment="Center" Margin="0,320,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AlderMinBox" HorizontalAlignment="Center" Margin="0,343,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="OpretHold" Content="Opret Hold" HorizontalAlignment="Left" Margin="191,397,0,0" VerticalAlignment="Top" Click="OpretHold_Click"/>
         <Label Content="Aktivitet" HorizontalAlignment="Left" Margin="86,223,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal Pladser" HorizontalAlignment="Left" Margin="86,270,0,0" VerticalAlignment="Top" Height="25" Width="82"/>
+        <Label Content="Køn" HorizontalAlignment="Left" Margin="86,295,0,0" VerticalAlignment="Top"/>
+        <Label Content="Min Alder" HorizontalAlignment="Left" Margin="86,316,0,0" VerticalAlignment="Top"/>
+        <Label Content="Max Alder" HorizontalAlignment="Left" Margin="86,339,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
