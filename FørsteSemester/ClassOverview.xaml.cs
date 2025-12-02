@@ -27,8 +27,61 @@ namespace FørsteSemester
             this.window = window;
             this.member = member;
             InitializeComponent();
-        }
 
+            //Her har jeg koppieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
+
+            List<Class> Classes = member.LoadTeams();
+            for (int i = 0; i < Classes.Count; i++)
+            {
+                //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
+                //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
+                char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
+                string Køn = "";
+                if (GetRequiredGenderInChar == 'F')
+                {
+                    Køn = "Kvinde";
+                }
+                else if (GetRequiredGenderInChar == 'M')
+                {
+                    Køn = "Mand";
+                }
+                if (GetRequiredGenderInChar == 'B')
+                {
+                    Køn = "Begge køn";
+                }
+
+                if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
+                {
+
+                    ListBoxItem item = new ListBoxItem();
+                    //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
+                    StackPanel stackPanel = new StackPanel();
+                    item.Content = stackPanel;
+                    TextBlock classNameText = new TextBlock();
+                    classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
+                    TextBlock classActivityText = new TextBlock();
+                    classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
+                    TextBlock ClassGenderText = new TextBlock();
+                    ClassGenderText.Text = $"Tilladte Køn: {Køn}";
+                    TextBlock ClassMinAge = new TextBlock();
+                    ClassMinAge.Text = $"Minimum Alder: {Classes[i].GetRequiredMinAge()}";
+                    TextBlock ClassMaxAge = new TextBlock();
+                    ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
+
+
+                    stackPanel.Children.Add(classNameText);
+                    stackPanel.Children.Add(classActivityText);
+                    stackPanel.Children.Add(ClassGenderText);
+                    stackPanel.Children.Add(ClassMinAge);
+                    stackPanel.Children.Add(ClassMaxAge);
+
+                    ClassesListBox.Items.Add(item);
+                    
+
+
+                }
+            }
+        }
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
