@@ -31,7 +31,7 @@ namespace FørsteSemester
             List<Class> Classes = member.LoadTeams();
             for (int i = 0; i < Classes.Count; i++)
             {
-                if (Classes[i].GetStatus() == false)
+                if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
                 {
                     ListBoxItem item = new ListBoxItem();
                     //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
