@@ -12,8 +12,8 @@ namespace FørsteSemester
     class Admin : User
     {
 
-
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
+        //opretter sti til dokumentmappen og til Classes.txt filen
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
 
 
@@ -24,6 +24,7 @@ namespace FørsteSemester
 
         }
 
+        //metode til at oprette et hold med parametre for de forskellige attributter et hold har
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
             Class Team = new Class();
@@ -36,7 +37,7 @@ namespace FørsteSemester
             Team.SetRequiredMaxAge(requiredMaxAge);
             Team.SetRequiredMinAge(requiredMinAge);
 
-            int TeamID = LoadTeams().Count + 1;
+            int TeamID = LoadTeams().Count + 1; //Tager mængden af hold i systemet og sætter det antal+1 og sætter det som ID for det nye hold
             while (true)
             {
                 if (GetClassData(8).Contains(TeamID.ToString())) //ændret GetClassData() fra (9) til (8)
@@ -50,16 +51,17 @@ namespace FørsteSemester
                 }
 
             }
-            SaveClass(Team);
+            SaveClass(Team); //Gemmer det nye hold i tekstfilen
 
         }
         
-        public static List<string> GetClassData(int a)
+        //Metode til at få en en specifik type date fra alle hold i en liste baseret på deres indeks (int a)
+        public static List<string> GetClassData(int a) 
         {
             List<string> data = new List<string>();
             string dataPoint = "";
-            string[] lines = System.IO.File.ReadAllLines(filepath);
-            for (int i = 0; i < lines.Count(); i++)
+            string[] lines = System.IO.File.ReadAllLines(filepath); //henter data fra tekstfilen i et array
+            for (int i = 0; i < lines.Count(); i++) //looper igennem array og splitter ved hver ;
             {
                 string ClassData = lines[i];
                 string[] ClassSplit = ClassData.Split(";");
@@ -71,6 +73,7 @@ namespace FørsteSemester
 
         }
 
+        //metode til at putte et hold objekt ind i tekstfilen
         public void SaveClass(Class team)
         {
             using (StreamWriter streamWriter = new StreamWriter(filepath, true))

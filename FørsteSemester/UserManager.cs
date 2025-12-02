@@ -9,11 +9,14 @@ namespace FørsteSemester
 {
     internal abstract class UserManager
     {
-        //Lav exception så man ikke kan skrive ; i input felter da vi bruger det til split
 
-        //ChatGPT inspireret
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
+
+        //opretter sti til Members.txt filen som skal være static
+        //da den ellers ville kunne tilgå alle filer på ens computer
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
+
+        //metode til at oprette et medlem med relevante parametre
         public static void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
         {
            
@@ -28,6 +31,8 @@ namespace FørsteSemester
 
             //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
             //member.SetPhoneNumber(PhoneNumber);
+
+            //Sætter unikt UserID til medlemmet baseret på antal medlemmer i systemet
             int membercount = LoadMember().Count + 1;
             while(true)
             {
@@ -42,12 +47,14 @@ namespace FørsteSemester
                 }
                 
             }
-            
 
 
-                SaveMember(member);
+            //gemmer nyt medlem i som objekt
+            SaveMember(member);
         }
 
+
+        //tilføjer medlemmet til Members.txt filen
         public static void SaveMember(Member member)
         {
 
@@ -73,6 +80,7 @@ namespace FørsteSemester
 
         }
 
+        //indlæser alle medlemmer fra Members.txt filen og returnerer dem som en liste af Member objekter
         public static List<Member> LoadMember()
         {
 
@@ -102,6 +110,8 @@ namespace FørsteSemester
             return members;
         }
 
+        //metode til at logge et medlem ind baseret på brugernavn og password
+        //ved at iterære gennem brugernavne indtil et password passer dertil
         public static Member Login(string Username, string Password)
         {
             List<string> Usernames = GetUserData(5);
@@ -112,7 +122,7 @@ namespace FørsteSemester
                 if (Username == Usernames[i] && Password == Passwords[i])
                 {
                     Member loginMember = new Member();
-                    loginMember = LoadMember()[i];
+                    loginMember = LoadMember()[i]; //sender member data med til wpf
                     return loginMember;
 
                 }
@@ -127,6 +137,7 @@ namespace FørsteSemester
 
         }
 
+        //metode til at logge en admin ind baseret på brugernavn, password og dets ID
         public static Admin AdminLogin(string Username, string Password)
         {
             List<string> Usernames = GetUserData(5);
@@ -167,6 +178,8 @@ namespace FørsteSemester
             return null;
         }
 
+        //metode til at hente en specifik type data fra alle medlemmer i en liste
+        //baseret på dets indeks
         public static List<string> GetUserData(int a) 
         {
             List<string> data = new List<string>();

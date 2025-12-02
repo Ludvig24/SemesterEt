@@ -10,10 +10,13 @@ namespace FørsteSemester
 {
     class Member : User
     {
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
+        //opretter sti til Members filen
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
 
         private string joinedClass = "";
+
+        //metode som tilføjer et holds ID til brugeren i Members filen
         public void JoinClass(int classID, int userID)
         {
             List<string> userIDs = UserManager.GetUserData(7);

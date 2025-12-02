@@ -11,7 +11,7 @@ namespace FørsteSemester
 {
     class Class
     {
-
+        //attributter til class
         private string activity;
         private string className;
         private int classID;
@@ -23,17 +23,18 @@ namespace FørsteSemester
         private byte requiredMinAge;
         private string memberIDsInClass;
 
+        //metode til at tilføje et medlems ID til et hold 
         public void AddMemberIDToClass(int UserID, int classID)
         {
-            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
-            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //sti til Classes.txt fil
 
-            
+
             classID.ToString();
 
-            string MemberIDClass = "0";
+            string MemberIDClass = "0"; //starter med ID 0 for at undgå fejl ved første tilføjelse
 
-            MemberIDClass = ";" + UserID;
+            MemberIDClass = ";" + UserID; //tilføjer et semicolon før ID'et for at matche formatet i tekstfilen
 
             //læser alle linjer i tekstfilen Classes.txt og gemmer dem i arrayet lines
             string[] lines = System.IO.File.ReadAllLines(filepath);
@@ -186,7 +187,7 @@ namespace FørsteSemester
         public void SetMemberIDsInClass(string[] memberIDsInClass)
         {
             
-            for (int i = 9; i < memberIDsInClass.Length; i++) 
+            for (int i = 9; i < memberIDsInClass.Length; i++) //starter fra index 9 for at undgå de første attributter i klassen
             {
                 this.memberIDsInClass = this.memberIDsInClass + memberIDsInClass[i];
 

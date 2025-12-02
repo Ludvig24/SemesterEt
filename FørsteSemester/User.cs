@@ -9,12 +9,13 @@ namespace FørsteSemester
 {
     class User 
     {
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //forklar static
+        //Opretter sti til Classes filen
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
 
         List<Class> ClassList = new List<Class>();
 
-
+        //attributter til User klassen
         private string name;
         private string surname;
         private char gender;
@@ -26,6 +27,7 @@ namespace FørsteSemester
         private int phoneNumber;
         private int userID;
 
+        //metode til at loade alle hold fra tekstfilen og gemme dem i en liste af Class objekter
         public List<Class> LoadTeams()
         {
             string[] lines = System.IO.File.ReadAllLines(filepath);
@@ -38,7 +40,7 @@ namespace FørsteSemester
 
                 string teamData = lines[i];
                 Class Teams = new Class();
-                string[] Teamsplit = teamData.Split(";");
+                string[] Teamsplit = teamData.Split(";"); //splitter ved ; for at tilføje dataen til et array
 
                 Teams.SetActivity(Teamsplit[0]);
                 Teams.SetClassName(Teamsplit[1]);
