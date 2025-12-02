@@ -1,4 +1,5 @@
 ﻿<Window x:Class="FørsteSemester.Adminmenu"
+        WindowStartupLocation="CenterScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +8,8 @@
         mc:Ignorable="d"
         Title="Adminmenu" Height="700" Width="450">
     <Grid>
-        <Button Content="HOLD" HorizontalAlignment="Left" Margin="280,248,0,0" VerticalAlignment="Top" Click="OpretHold_Click"/>
+        <Button Content="HOLD" HorizontalAlignment="Center" Margin="0,147,0,0" VerticalAlignment="Top" Click="OpretHold_Click" Height="88" Width="150"/>
+        <Button Content="Logud" Name="TilbageKnap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="46" Width="70" Click="TilbageKnap_Click" />
 
     </Grid>
 </Window>

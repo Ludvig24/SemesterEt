@@ -22,11 +22,11 @@ namespace FørsteSemester
     {
         Window window;
         Admin admin;
+
         internal CreateClass(Admin admin)
         {
-            
-            InitializeComponent();
             this.admin = admin;
+            InitializeComponent();
         }
 
         private void OpretHold_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,8 @@ namespace FørsteSemester
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            window.Show();
+            Adminmenu adminmenu = new Adminmenu(admin);
+            adminmenu.Show();
         }
     }
 }
