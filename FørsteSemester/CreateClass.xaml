@@ -9,8 +9,10 @@
     <Grid>
         <ComboBox HorizontalAlignment="Center" Margin="0,226,0,0" VerticalAlignment="Top" Width="120" x:Name="AktivitetBox" Text="" Height="20">
             <ComboBoxItem x:Name="Yoga" Content="Yoga"/>
-            <ComboBoxItem x:Name="Pilates" Content="Pilates"/>
-            <ComboBoxItem x:Name="Zumba" Content="Zumba"/>
+            <ComboBoxItem x:Name="Cirkeltræning" Content="Cirkeltræning"/>
+            <ComboBoxItem x:Name="Step" Content="Step"/>
+            <ComboBoxItem x:Name="Styrketræning" Content="Styrketræning"/>
+            <ComboBoxItem x:Name="ReformerPilates" Content="Reformer Pilates"/>
         </ComboBox>
         <Label Content="Hold navn" HorizontalAlignment="Left" Margin="86,244,0,0" VerticalAlignment="Top" Width="57" Height="32"/>
         <TextBox x:Name="HoldNavnBox" HorizontalAlignment="Center" Margin="0,251,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
@@ -28,6 +30,7 @@
         <Label Content="Køn" HorizontalAlignment="Left" Margin="86,295,0,0" VerticalAlignment="Top"/>
         <Label Content="Min Alder" HorizontalAlignment="Left" Margin="86,316,0,0" VerticalAlignment="Top"/>
         <Label Content="Max Alder" HorizontalAlignment="Left" Margin="86,339,0,0" VerticalAlignment="Top"/>
+        <Button Name="TilbageKnap" Content="Tilbage" HorizontalAlignment="Left" Margin="10,10,0,0" Height="46" Width="70" VerticalAlignment="Top" Click="TilbageKnap_Click"/>
 
     </Grid>
 </Window>

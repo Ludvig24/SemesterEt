@@ -31,8 +31,26 @@ namespace FørsteSemester
             List<Class> Classes = member.LoadTeams();
             for (int i = 0; i < Classes.Count; i++)
             {
-                if (Classes[i].GetStatus() == false)
+                char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
+                //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
+                //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
+                string Køn = "";
+                if (GetRequiredGenderInChar == 'F')
                 {
+                    Køn = "Kvinde";
+                }
+                else if (GetRequiredGenderInChar == 'M')
+                {
+                    Køn = "Mand";
+                }
+                if (GetRequiredGenderInChar == 'B')
+                {
+                    Køn = "Begge køn";
+                }
+
+                if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
+                {
+
                     ListBoxItem item = new ListBoxItem();
                     //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                     StackPanel stackPanel = new StackPanel();
@@ -42,12 +60,12 @@ namespace FørsteSemester
                     TextBlock classActivityText = new TextBlock();
                     classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
                     TextBlock ClassGenderText = new TextBlock();
-                    ClassGenderText.Text = $"Tilladte Køn: {Classes[i].GetRequiredGender()}";
+                    ClassGenderText.Text = $"Tilladte Køn: {Køn}";
                     TextBlock ClassMinAge = new TextBlock();
                     ClassMinAge.Text = $"Minimum Alder: {Classes[i].GetRequiredMinAge()}";
                     TextBlock ClassMaxAge = new TextBlock();
                     ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
-
+                    
 
                     stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
@@ -56,16 +74,24 @@ namespace FørsteSemester
                     stackPanel.Children.Add(ClassMaxAge);
 
                     ClassesList.Items.Add(item);
+
+                    
                 }
 
-            }
+            } 
+
+
         }
+        
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {
+            
+            
 
             List<Class> Teams = member.LoadTeams();
             Class team = new Class();
-            int classID = 1;
+            int classID = ClassesList.SelectedIndex +1; //Skal ændres hvis vi kunne tænke os at ændre rækkefølgen
+            
 
             int j = 0;
             while (j < Teams.Count)
@@ -92,7 +118,6 @@ namespace FørsteSemester
                
 
             
-            
             member.JoinClass(classID, member.GetUserID());
             
 
@@ -113,6 +138,12 @@ namespace FørsteSemester
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void Tilbageknap_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            window.Show();
         }
     }
 }

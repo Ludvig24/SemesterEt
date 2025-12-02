@@ -19,8 +19,8 @@ namespace FørsteSemester
         private int availableSpots;
         private int joinedAmount;
         private char requiredGender;
-        private byte requiredMaxAge;
         private byte requiredMinAge;
+        private byte requiredMaxAge;
         private string memberIDsInClass;
 
         //metode til at tilføje et medlems ID til et hold 

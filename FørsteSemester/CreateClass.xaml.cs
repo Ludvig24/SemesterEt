@@ -20,9 +20,11 @@ namespace FørsteSemester
     /// </summary>
     public partial class CreateClass : Window
     {
+        Window window;
         Admin admin;
         internal CreateClass(Admin admin)
         {
+            
             InitializeComponent();
             this.admin = admin;
         }
@@ -40,6 +42,12 @@ namespace FørsteSemester
             }
 
             admin.CreateClass(AktivitetBox.Text, HoldNavnBox.Text, Convert.ToByte(PladsBox.Text), gender ,Convert.ToByte(AlderMaxBox.Text), Convert.ToByte(AlderMinBox.Text));
+        }
+
+        private void TilbageKnap_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            window.Show();
         }
     }
 }
