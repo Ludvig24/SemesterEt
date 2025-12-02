@@ -17,7 +17,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="OpretHold" Content="Tilmeld Hold" Margin="0,141,0,0" VerticalAlignment="Top" Click="Tilmeld_Click" Height="20" HorizontalAlignment="Center" Width="70"/>
-                <Button x:Name="Logud" Content="Logud" Click="Logud_Click" Margin="0,0,0,613" Height="46" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70"/>
+                <Button x:Name="Logud" Content="Logud" Click="Logud_Click" Margin="10,0,0,628" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="46" Width="70"/>
                 <Button x:Name="MineHold" Content="Mine Hold" Margin="0,227,0,0" VerticalAlignment="Top" Height="20" Click="MineHold_Click" HorizontalAlignment="Center" Width="72"/>
             </Grid>
         </Grid>

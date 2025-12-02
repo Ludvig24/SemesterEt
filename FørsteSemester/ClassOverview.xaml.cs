@@ -29,5 +29,10 @@ namespace FørsteSemester
             InitializeComponent();
         }
 
+        private void TilbageKnap_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            window.Show();
+        }
     }
 }

@@ -30,6 +30,7 @@
         <Label Content="Køn" HorizontalAlignment="Left" Margin="86,295,0,0" VerticalAlignment="Top"/>
         <Label Content="Min Alder" HorizontalAlignment="Left" Margin="86,316,0,0" VerticalAlignment="Top"/>
         <Label Content="Max Alder" HorizontalAlignment="Left" Margin="86,339,0,0" VerticalAlignment="Top"/>
+        <Button Name="TilbageKnap" Content="Tilbage" HorizontalAlignment="Left" Margin="10,10,0,0" Height="46" Width="70" VerticalAlignment="Top" Click="TilbageKnap_Click"/>
 
     </Grid>
 </Window>
