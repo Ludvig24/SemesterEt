@@ -33,7 +33,22 @@ namespace FørsteSemester
             {
                 if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
                 {
-                    ListBoxItem item = new ListBoxItem();
+                    char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
+
+                    if (GetRequiredGenderInChar = F)
+                    {   if (member.GetGender() != 'F')
+                        {
+                            continue;
+                        }
+                    }
+                    else if (GetRequiredGenderInChar == 'M')
+                    {
+                        if (member.GetGender() != 'M')
+                        {
+                            continue;
+                        }
+
+                        ListBoxItem item = new ListBoxItem();
                     //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                     StackPanel stackPanel = new StackPanel();
                     item.Content = stackPanel;
