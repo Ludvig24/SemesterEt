@@ -51,6 +51,8 @@ namespace FørsteSemester
             else if (loginMember != null)
             {
                 Mainmenu createMainmenu = new Mainmenu(this, loginMember);
+                BrugernavnBox.Clear();
+                PasswordBox.Clear();
                 createMainmenu.Show();
                 this.Hide();
             }
