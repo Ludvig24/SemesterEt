@@ -96,8 +96,6 @@ namespace FørsteSemester
             }
         }
 
-
-
         public void DeleteClass()
         {
 
