@@ -26,7 +26,7 @@ namespace FørsteSemester
             InitializeComponent();
             this.window = window;
             this.member = member;
-            member.LeaveClass(3);
+            
         }
 
         private void Logud_Click(object sender, RoutedEventArgs e)

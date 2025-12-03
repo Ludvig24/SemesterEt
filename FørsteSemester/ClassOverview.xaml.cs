@@ -30,8 +30,16 @@ namespace FørsteSemester
 
             //Her har jeg koppieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
 
+            List<Class> membersClasses = new List<Class>();
             List<Class> Classes = member.LoadTeams();
-            for (int i = 0; i < Classes.Count; i++)
+            foreach (Class cls in Classes)
+            {
+                if (member.GetJoinedClasses().Contains(cls.GetClassID()))
+                {
+                    membersClasses.Add(cls);
+                }
+            }   
+            for (int i = 0; i < membersClasses.Count; i++)
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
                 //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
@@ -50,21 +58,19 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
-                if (Classes[i].) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
-                {
 
                     ListBoxItem item = new ListBoxItem();
                     //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                     StackPanel stackPanel = new StackPanel();
                     item.Content = stackPanel;
                     TextBlock classNameText = new TextBlock();
-                    classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
+                    classNameText.Text = $"Holdnavn: {membersClasses[i].GetClassName()}";
                     TextBlock classActivityText = new TextBlock();
-                    classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
+                    classActivityText.Text = $"Aktivitet: {membersClasses[i].GetActivity()}";
                     TextBlock antalPladser = new TextBlock();
-                    antalPladser.Text = $"Antal pladser: {Classes[i].GetAvailableSpots()}";
+                    antalPladser.Text = $"Antal pladser: {membersClasses[i].GetAvailableSpots()}";
                     TextBlock ledigePladser = new TextBlock();
-                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}";
+                    ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}";
 
 
                     stackPanel.Children.Add(classNameText);
@@ -75,7 +81,7 @@ namespace FørsteSemester
                     
 
 
-                }
+                
             }
         }
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)

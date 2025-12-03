@@ -139,7 +139,10 @@ namespace FørsteSemester
 
         }
 
-
+        public List<int> GetJoinedClasses()
+        {
+            return joinedClasses;
+        }
 
 
 

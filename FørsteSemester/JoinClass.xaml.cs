@@ -66,7 +66,7 @@ namespace FørsteSemester
                     TextBlock ClassMaxAge = new TextBlock();
                     ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
                     TextBlock ledigePladser = new TextBlock();
-                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}";
+                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}"; //Fix regnestykke
 
 
                     stackPanel.Children.Add(classNameText);
