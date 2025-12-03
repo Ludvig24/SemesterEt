@@ -11,12 +11,13 @@ namespace FørsteSemester
 {
     class Admin : User
     {
-
-        //opretter sti til dokumentmappen og til Classes.txt filen
+        //Opretter sti til dokumentmappen og til Classes.txt filen
+        //Følgende kode del, bliv vi insprieret af fra AI.
+        //AI fortalte her om Enviroment, så vi kun find frem til understående gennem Mircosoft.
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
 
-
+        //Fields/Attribut for Klassen Admin
         List<Member> memberList = new List<Member>();
 
         public void SletMember()
