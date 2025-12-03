@@ -47,7 +47,7 @@ namespace FørsteSemester
             }
         }
         
-        //Metoden LeaveClass,
+        //Metoden LeaveClass, som fjerner et medlem fra et specifikt hold
         public void LeaveClass(int classID)
         {
             //Vi fjerner holdID
