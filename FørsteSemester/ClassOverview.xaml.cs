@@ -50,7 +50,7 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
-                if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
+                if (Classes[i].) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
                 {
 
                     ListBoxItem item = new ListBoxItem();
@@ -61,19 +61,15 @@ namespace FørsteSemester
                     classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
                     TextBlock classActivityText = new TextBlock();
                     classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
-                    TextBlock ClassGenderText = new TextBlock();
-                    ClassGenderText.Text = $"Tilladte Køn: {Køn}";
-                    TextBlock ClassMinAge = new TextBlock();
-                    ClassMinAge.Text = $"Minimum Alder: {Classes[i].GetRequiredMinAge()}";
-                    TextBlock ClassMaxAge = new TextBlock();
-                    ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
+                    TextBlock antalPladser = new TextBlock();
+                    antalPladser.Text = $"Antal pladser: {Classes[i].GetAvailableSpots()}";
+                    TextBlock ledigePladser = new TextBlock();
+                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}";
 
 
                     stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
-                    stackPanel.Children.Add(ClassGenderText);
-                    stackPanel.Children.Add(ClassMinAge);
-                    stackPanel.Children.Add(ClassMaxAge);
+                    stackPanel.Children.Add(ledigePladser);
 
                     ClassesListBox.Items.Add(item);
                     

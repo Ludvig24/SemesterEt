@@ -65,13 +65,16 @@ namespace FørsteSemester
                     ClassMinAge.Text = $"Minimum Alder: {Classes[i].GetRequiredMinAge()}";
                     TextBlock ClassMaxAge = new TextBlock();
                     ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
-                    
+                    TextBlock ledigePladser = new TextBlock();
+                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}";
+
 
                     stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
                     stackPanel.Children.Add(ClassGenderText);
                     stackPanel.Children.Add(ClassMinAge);
                     stackPanel.Children.Add(ClassMaxAge);
+                    stackPanel.Children.Add(ledigePladser);
 
                     //Tilføjer item til listen med holdet
                     ClassesList.Items.Add(item);
