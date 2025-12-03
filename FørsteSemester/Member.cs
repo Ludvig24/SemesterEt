@@ -64,20 +64,31 @@ namespace FørsteSemester
             {
                 string[]lineArray = line.Split(";");
 
-                for (int i = 9; i < lineArray.Count(); i++)
+                if (lineArray[8]==classID.ToString())
                 {
-                    if (lineArray[i] == GetUserID().ToString())
+                    for (int i = 9; i < lineArray.Count(); i++)
                     {
-                        List<string> lineList = new List<string>(lineArray);
-                        lineList.RemoveAt(i);
-                        lineArray = lineList.ToArray<List>;
-                        lines[x] = lineArray;
+                        if (lineArray[i] == GetUserID().ToString())
+                        {
+                            List<string> lineList = new List<string>(lineArray);
+                            lineList.RemoveAt(i);
+                            string[] newLine = lineList.ToArray();
+                            lines[x] = string.Join(";", newLine);
+                        }
                     }
                 }
 
                 x++;
             }
 
+            using (StreamWriter streamWriter = new StreamWriter(filepath))
+            {
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    streamWriter.Write(lines[i]);
+                    streamWriter.WriteLine();
+                }
+            }
         }
 
         //Metoden DeleteProfile, 
