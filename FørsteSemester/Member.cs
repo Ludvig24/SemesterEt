@@ -55,7 +55,28 @@ namespace FørsteSemester
 
             //Opretter sti til mappen "Documents" også kombinere det med stien ind til Class.txt filen
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //sti til Classes.txt fil
+            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
+            
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+
+            int x = 0;
+            foreach (string line in lines)
+            {
+                string[]lineArray = line.Split(";");
+
+                for (int i = 9; i < lineArray.Count(); i++)
+                {
+                    if (lineArray[i] == GetUserID().ToString())
+                    {
+                        List<string> lineList = new List<string>(lineArray);
+                        lineList.RemoveAt(i);
+                        lineArray = lineList.ToArray<List>;
+                        lines[x] = lineArray;
+                    }
+                }
+
+                x++;
+            }
 
         }
 
