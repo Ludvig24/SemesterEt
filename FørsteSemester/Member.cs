@@ -10,9 +10,10 @@ namespace FørsteSemester
 {
     class Member : User
     {
-        //Opretter sti til mappen "Documents" også kombinere det med stien ind til Members.txt filen
+        //Opretter sti til mappen "Documents" også kombinere det med stien ind til Members.txt filen og Classes.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
+        static string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
 
         private string joinedClass = "";
         private List<int> joinedClasses = new List<int>();
@@ -53,11 +54,8 @@ namespace FørsteSemester
             //Vi fjerner holdID
             joinedClasses.Remove(classID);
 
-            //Opretter sti til mappen "Documents" også kombinere det med stien ind til Class.txt filen
-            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
-            
-            string[] lines = System.IO.File.ReadAllLines(filepath);
+            string[] lines = System.IO.File.ReadAllLines(classesFilepath);
+            string[] memberLines = System.IO.File.ReadAllLines(filepath);
 
             int x = 0;
             foreach (string line in lines)
@@ -81,11 +79,50 @@ namespace FørsteSemester
                 x++;
             }
 
-            using (StreamWriter streamWriter = new StreamWriter(filepath))
+            using (StreamWriter streamWriter = new StreamWriter(classesFilepath))
             {
                 for (int i = 0; i < lines.Length; i++)
                 {
                     streamWriter.Write(lines[i]);
+                    streamWriter.WriteLine();
+                }
+            }
+
+            int z = 0;
+            int linenumber = 0;
+            List<string> userIDs = UserManager.GetUserData(7);
+            while (z < userIDs.Count())
+            {
+                if (userIDs[z] == GetUserID().ToString())
+                {
+                    linenumber = z;
+                }
+
+                z++;
+            }
+
+            string member = memberLines[linenumber];
+            string[] memberSplit = member.Split(";");
+
+            int y = 8;
+            while (y < memberSplit.Count())
+            {
+                if (memberSplit[y] == GetUserID().ToString())
+                {
+                    List<string> memberList = new List<string>(memberSplit);
+                    memberList.RemoveAt(y);
+                    string[] newMemberLine = memberList.ToArray();
+                    memberLines[linenumber] = string.Join(";", newMemberLine);
+                }
+              
+                y++;
+            }
+
+            using (StreamWriter streamWriter = new StreamWriter(filepath))
+            {
+                for (int i = 0; i < memberLines.Length; i++)
+                {
+                    streamWriter.Write(memberLines[i]);
                     streamWriter.WriteLine();
                 }
             }

@@ -1,3 +1,0 @@
-Admin;Admin;M;45;Admin;admin;admin;1
-Test;Person;M;23;Bynavn;a;a;2
-Mark;Markensen;M;30;Markenstrup;m;m;3;1;2;3
