@@ -28,6 +28,7 @@ namespace FørsteSemester
         //Metoden CreateClass, hvor vi oprette et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
+            //Attributterne et hold skal have
             Class Team = new Class();
             Team.SetActivity(activity);
             Team.SetClassName(classname);
@@ -38,7 +39,8 @@ namespace FørsteSemester
             Team.SetRequiredMaxAge(requiredMaxAge);
             Team.SetRequiredMinAge(requiredMinAge);
 
-            int TeamID = LoadTeams().Count + 1; //Tager mængden af hold i systemet og sætter det antal+1 og sætter det som ID for det nye hold
+            //Tager mængen af hold og + 1, og sætter det som ID for det nye hold
+            int TeamID = LoadTeams().Count + 1;
             while (true)
             {
                 if (GetClassData(8).Contains(TeamID.ToString())) //ændret GetClassData() fra (9) til (8)
