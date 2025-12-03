@@ -11,9 +11,7 @@ namespace FørsteSemester
 {
     class Admin : User
     {
-        //Opretter sti til dokumentmappen og til Classes.txt filen
-        //Følgende kode del, bliv vi insprieret af fra AI.
-        //AI fortalte her om Enviroment, så vi kun find frem til understående gennem Mircosoft.
+        //Opretter sti til mappen "Documents" også kombinere det med stien ind til Classes.txt filen
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
 

@@ -36,8 +36,6 @@ namespace FørsteSemester
 
             for (int i = 0; i < lines.Count(); i++)
             {
-
-
                 string teamData = lines[i];
                 Class Teams = new Class();
                 string[] Teamsplit = teamData.Split(";"); //splitter ved ; for at tilføje dataen til et array

@@ -10,15 +10,17 @@ namespace FørsteSemester
 {
     class Member : User
     {
-        //opretter sti til Members filen
+        //Opretter sti til mappen "Documents" også kombinere det med stien ind til Members.txt filen
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
 
         private string joinedClass = "";
+        private List<int> joinedClasses = new List<int>();
 
         //metode som tilføjer et holds ID til brugeren i Members filen
         public void JoinClass(int classID, int userID)
         {
+            joinedClasses.Add(classID); //Tilføjer HoldId til en liste
             List<string> userIDs = UserManager.GetUserData(7);
             string[] lines = System.IO.File.ReadAllLines(filepath);
             classID.ToString();
@@ -45,21 +47,19 @@ namespace FørsteSemester
             }
         }
         
-        public void LeaveClass()
+        //Metoden LeaveClass,
+        public void LeaveClass(int classID)
         {
+            //Vi fjerner holdID
+            joinedClasses.Remove(classID);
+
+            //Opretter sti til mappen "Documents" også kombinere det med stien ind til Class.txt filen
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //sti til Classes.txt fil
 
         }
 
-        public void RentRoom()
-        {
-
-        }
-
-        public void CancelRentRoom()
-        {
-
-        }
-
+        //Metoden DeleteProfile, 
         public void DeleteProfile()
         {
 

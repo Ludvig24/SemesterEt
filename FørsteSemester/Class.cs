@@ -11,7 +11,7 @@ namespace FørsteSemester
 {
     class Class
     {
-        //attributter til class
+        //attributter til Hold
         private string activity;
         private string className;
         private int classID;
@@ -23,7 +23,7 @@ namespace FørsteSemester
         private byte requiredMaxAge;
         private string memberIDsInClass;
 
-        //metode til at tilføje et medlems ID til et hold 
+        //Metoden AddMemberIDToClass, som tilføje et medlems ID til et specifikt hold 
         public void AddMemberIDToClass(int UserID, int classID)
         {
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -48,7 +48,6 @@ namespace FørsteSemester
                 //opretter int variabel lineNumber
                 int lineNumber = 0;
 
-               
                 //loop der itererer gennem listen ClassIDs og tjekker hvornår ClassIDs på index i er lig classID variablen
                 for (int i = 0; i < ClassIDs.Count; i++)
                 {
