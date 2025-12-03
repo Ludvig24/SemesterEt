@@ -73,6 +73,7 @@ namespace FørsteSemester
                     stackPanel.Children.Add(ClassMinAge);
                     stackPanel.Children.Add(ClassMaxAge);
 
+                    //Tilføjer item til listen med holdet
                     ClassesList.Items.Add(item);
 
                     
@@ -131,7 +132,8 @@ namespace FørsteSemester
                 }
                 i++;
             }
-
+            // så for at blokkere den box efter tilmelding, så man ikke tilmelder sig det samme hold flere gange
+            ClassesList.Items.RemoveAt(ClassesList.SelectedIndex);
 
         }
 

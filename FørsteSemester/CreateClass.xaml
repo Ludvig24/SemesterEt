@@ -25,7 +25,7 @@
         </ComboBox>
         <TextBox x:Name="AlderMaxBox" HorizontalAlignment="Center" Margin="0,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="24"/>
         <TextBox x:Name="AlderMinBox" HorizontalAlignment="Center" Margin="0,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="26"/>
-        <Button x:Name="OpretHold" Content="Opret Hold" HorizontalAlignment="Left" Margin="191,397,0,0" VerticalAlignment="Top" Click="OpretHold_Click"/>
+        <Button x:Name="OpretHold" Content="Opret Hold" HorizontalAlignment="Left" Margin="176,397,0,0" VerticalAlignment="Top" Click="OpretHold_Click" Height="36" Width="84"/>
         <Label Content="Aktivitet" HorizontalAlignment="Left" Margin="36,143,0,0" VerticalAlignment="Top" Height="38" Width="68"/>
         <Label Content="Antal Pladser" HorizontalAlignment="Left" Margin="36,213,0,0" VerticalAlignment="Top" Height="35" Width="104"/>
         <Label Content="Køn" HorizontalAlignment="Left" Margin="36,248,0,0" VerticalAlignment="Top" Height="38" Width="39"/>
