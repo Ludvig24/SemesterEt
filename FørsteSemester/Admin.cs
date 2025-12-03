@@ -25,7 +25,7 @@ namespace FørsteSemester
 
         }
 
-        //metode til at oprette et hold med parametre for de forskellige attributter et hold har
+        //Metoden CreateClass, hvor vi oprette et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
             Class Team = new Class();
