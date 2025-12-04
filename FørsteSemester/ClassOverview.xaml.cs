@@ -22,7 +22,6 @@ namespace FørsteSemester
 
         Window window;
         Member member;
-        string UsynligClassID;
         internal ClassOverview(Window window, Member member)
         {
             this.window = window;

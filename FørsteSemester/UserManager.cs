@@ -95,6 +95,7 @@ namespace FørsteSemester
                 Member member = new Member();
                 string[] memberSplit = memberData.Split(";");
 
+
                 member.SetName(memberSplit[0]);
                 member.SetSurname(memberSplit[1]);
                 member.SetGender(Convert.ToChar(memberSplit[2]));
