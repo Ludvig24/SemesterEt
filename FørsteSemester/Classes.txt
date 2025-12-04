@@ -1,6 +1,6 @@
-Cirkeltræning;Hennings Cirkeltræning;False;15;1;M;25;40;1;2
-Styrketræning;Dortes Powerlift;False;20;1;F;18;30;2;2
+Cirkeltræning;Hennings Cirkeltræning;False;15;4;M;25;40;1;2
+Styrketræning;Dortes Powerlift;False;20;1;F;18;30;2
 Reformer Pilates;Pers Pilates;False;40;1;B;20;60;3
-Step;Stigs Step;False;15;2;F;25;40;4;2
-Step;dafs;False;15;1;F;20;30;5;2
-Reformer Pilates;Hop;False;15;1;B;20;80;6;2
+Step;Stigs Step;False;15;2;F;25;40;4
+Step;dafs;False;15;1;F;20;30;5
+Reformer Pilates;Hop;False;15;1;B;20;80;6

@@ -88,12 +88,12 @@ namespace FørsteSemester
             string[] lines = System.IO.File.ReadAllLines(filepath);
 
             List<Member> members = new List<Member>();
-            List<int> JoinedClasses = new List<int>();
             for (int i = 0; i < lines.Count(); i++)
             {
                 string memberData = lines[i];
                 Member member = new Member();
                 string[] memberSplit = memberData.Split(";");
+                List<int> JoinedClasses = new List<int>();
 
 
                 member.SetName(memberSplit[0]);
