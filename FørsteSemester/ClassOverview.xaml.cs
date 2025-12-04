@@ -121,7 +121,7 @@ namespace FørsteSemester
             }
 
             // Refresh the list (simple approach: clear; you may want to repopulate)
-            ClassesListBox.Items.Clear();
+            ClassesListBox.Items.RemoveAt(ClassesListBox.SelectedIndex);
         }
     }
 }
