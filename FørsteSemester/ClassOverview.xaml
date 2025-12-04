@@ -11,5 +11,6 @@
         <ListBox Name="ClassesListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="86,109,86,169"/>
         <Button Content="Tilbage" Name="TilbageKnap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="46" Width="70" Click="TilbageKnap_Click"/>
         <Label Content="Her kan du se&#xD;&#xA;dine tilmeldte hold" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="53" Width="163"/>
+        <Button Content="Frameld Hold" Name="FrameldHold" HorizontalAlignment="Center" Margin="0,551,0,0" VerticalAlignment="Top" Height="37" Width="118" Click="FrameldHold_Click"/>
     </Grid>
 </Window>

@@ -68,16 +68,25 @@ namespace FørsteSemester
                     {
                         if (lineArray[i] == GetUserID().ToString())
                         {
+                            int currentJoinedAmount = Convert.ToInt32(lineArray[i]);
+                            currentJoinedAmount--;
+                            lineArray[4] = currentJoinedAmount.ToString();
+
                             List<string> lineList = new List<string>(lineArray);
                             lineList.RemoveAt(i);
                             string[] newLine = lineList.ToArray();
                             lines[x] = string.Join(";", newLine);
+
+                            
                         }
                     }
                 }
-
                 x++;
+
             }
+
+            
+
 
             using (StreamWriter streamWriter = new StreamWriter(classesFilepath))
             {
@@ -85,6 +94,7 @@ namespace FørsteSemester
                 {
                     streamWriter.Write(lines[i]);
                     streamWriter.WriteLine();
+
                 }
             }
 

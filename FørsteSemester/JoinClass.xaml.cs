@@ -28,6 +28,8 @@ namespace FørsteSemester
             this.member = member;
             InitializeComponent();
 
+            
+
             List<Class> Classes = member.LoadTeams();
             for (int i = 0; i < Classes.Count; i++)
             {
@@ -79,17 +81,11 @@ namespace FørsteSemester
                     //Tilføjer item til listen med holdet
                     ClassesList.Items.Add(item);
 
-                    
                 }
-
             } 
-
-
         }
-        
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {
-            
             
 
             List<Class> Teams = member.LoadTeams();
@@ -102,7 +98,6 @@ namespace FørsteSemester
             {
                 if (classID == Teams[j].GetClassID())
                 {
-
                     team = Teams[j];
                 }
                 j++;

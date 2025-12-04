@@ -22,6 +22,7 @@ namespace FørsteSemester
 
         Window window;
         Member member;
+        string UsynligClassID;
         internal ClassOverview(Window window, Member member)
         {
             this.window = window;
@@ -59,6 +60,7 @@ namespace FørsteSemester
                 }
 
 
+
                     ListBoxItem item = new ListBoxItem();
                     //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                     StackPanel stackPanel = new StackPanel();
@@ -70,10 +72,14 @@ namespace FørsteSemester
                     TextBlock antalPladser = new TextBlock();
                     antalPladser.Text = $"Antal pladser: {membersClasses[i].GetAvailableSpots()}";
                     TextBlock ledigePladser = new TextBlock();
-                    ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}";
+                    ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - membersClasses[i].GetJoinedAmount()}";
+                    //TextBlock UsynligID = new TextBlock();
+                    //UsynligID.Text = $"{membersClasses[i].GetClassID()}";
+                    item.SetValue(TagProperty, membersClasses[i].GetClassID());
 
+                //UsynligClassID = UsynligID.Text;
 
-                    stackPanel.Children.Add(classNameText);
+                stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
                     stackPanel.Children.Add(ledigePladser);
 
@@ -88,6 +94,30 @@ namespace FørsteSemester
         {
             this.Hide();
             window.Show();
+        }
+
+        private void FrameldHold_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<Class> Teams = member.LoadTeams();
+            int classID = Convert.ToInt32(UsynligClassID);
+            
+            member.LeaveClass(classID);
+            ListBoxItem selectedItem = (ListBoxItem)ClassesListBox.SelectedItem;
+            StackPanel selectedStackPanel = (StackPanel)selectedItem.Content;
+
+
+            int i = 0;
+            while (i < Teams.Count)
+            {
+                if (classID == Teams[i].GetClassID())
+                {
+                    Teams[i].SetJoinedAmount(Teams[i].GetJoinedAmount() - 1);
+                }
+                i++;
+            }
+            ClassesListBox.Items.Clear();
+
         }
     }
 }

@@ -22,6 +22,7 @@ namespace FørsteSemester
         private byte requiredMinAge;
         private byte requiredMaxAge;
         private string memberIDsInClass;
+         
 
         //Metoden AddMemberIDToClass, som tilføje et medlems ID til et specifikt hold 
         public void AddMemberIDToClass(int UserID, int classID)
