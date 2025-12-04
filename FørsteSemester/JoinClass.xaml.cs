@@ -131,6 +131,10 @@ namespace FørsteSemester
                 i++;
             }
             // så for at blokkere den box efter tilmelding, så man ikke tilmelder sig det samme hold flere gange
+            ListBoxItem tomitem = new ListBoxItem();
+            ListBoxItem listBoxItem = (ListBoxItem)ClassesList.SelectedItem;
+            listBoxItem = tomitem;
+            ClassesList.Items.Insert(ClassesList.SelectedIndex,listBoxItem);
             ClassesList.Items.RemoveAt(ClassesList.SelectedIndex);
 
         }
