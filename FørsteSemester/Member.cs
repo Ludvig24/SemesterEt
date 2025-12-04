@@ -153,7 +153,10 @@ namespace FørsteSemester
         {
             return joinedClasses;
         }
-
+        public void SetJoinedClasses(List<int> joinedClasses)
+        {
+            this.joinedClasses = joinedClasses;
+        }
 
 
     }

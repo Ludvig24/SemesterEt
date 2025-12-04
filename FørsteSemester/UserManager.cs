@@ -88,8 +88,8 @@ namespace FørsteSemester
             string[] lines = System.IO.File.ReadAllLines(filepath);
 
             List<Member> members = new List<Member>();
-
-            for(int i = 0; i < lines.Count(); i++)
+            List<int> JoinedClasses = new List<int>();
+            for (int i = 0; i < lines.Count(); i++)
             {
                 string memberData = lines[i];
                 Member member = new Member();
@@ -104,6 +104,11 @@ namespace FørsteSemester
                 member.SetUserName(memberSplit[5]);
                 member.SetPassword(memberSplit[6]);
                 member.SetUserID(Convert.ToInt32(memberSplit[7]));
+                for (int j = 8; j < memberSplit.Count(); j++)
+                {
+                    JoinedClasses.Add(Convert.ToInt32(memberSplit[j]));
+                }
+                member.SetJoinedClasses(JoinedClasses);
                 members.Add(member);
             }
 

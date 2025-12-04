@@ -28,7 +28,7 @@ namespace FørsteSemester
             this.member = member;
             InitializeComponent();
 
-            
+
 
             List<Class> Classes = member.LoadTeams();
             for (int i = 0; i < Classes.Count; i++)
@@ -37,6 +37,7 @@ namespace FørsteSemester
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
                 //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
                 string Køn = "";
+                //SWIIIIIITCH!!!!!!!
                 if (GetRequiredGenderInChar == 'F')
                 {
                     Køn = "Kvinde";
@@ -49,6 +50,7 @@ namespace FørsteSemester
                 {
                     Køn = "Begge køn";
                 }
+
 
                 if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
                 {
@@ -78,11 +80,19 @@ namespace FørsteSemester
                     stackPanel.Children.Add(ClassMaxAge);
                     stackPanel.Children.Add(ledigePladser);
 
-                    //Tilføjer item til listen med holdet
-                    ClassesList.Items.Add(item);
 
+                    if (member.GetJoinedClasses().Contains(Classes[i].GetClassID()))
+                    {
+                        ListBoxItem tomitem = new ListBoxItem();
+                        ClassesList.Items.Add(tomitem);
+                    }
+                    else
+                    {
+                        //Tilføjer item til listen med holdet
+                        ClassesList.Items.Add(item);
+                    }
                 }
-            } 
+            }
         }
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {

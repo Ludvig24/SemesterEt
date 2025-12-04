@@ -21,16 +21,13 @@ namespace FørsteSemester
     {
         Window window;
         Member member;
-        JoinClass joinClass;
 
         internal Mainmenu(Window window, Member member)
         {
             InitializeComponent();
             this.window = window;
             this.member = member;
-            JoinClass joinClass = new JoinClass(this, member);
-            this.joinClass = joinClass;
-            joinClass.Hide();
+            
         }
 
         private void Logud_Click(object sender, RoutedEventArgs e)
@@ -40,10 +37,12 @@ namespace FørsteSemester
         }
 
         private void Tilmeld_Click(object sender, RoutedEventArgs e) 
-        {      
-           joinClass.Show();
+        {
+            JoinClass joinClass = new JoinClass(this, member);
+            joinClass.Show();
+            this.Hide();
 
-            //this.Hide();
+           
         }
 
         private void MineHold_Click(object sender, RoutedEventArgs e)
