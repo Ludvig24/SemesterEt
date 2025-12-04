@@ -59,35 +59,33 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
+                ListBoxItem item = new ListBoxItem();
+                //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
+                StackPanel stackPanel = new StackPanel();
+                item.Content = stackPanel;
+                TextBlock classNameText = new TextBlock();
+                classNameText.Text = $"Holdnavn: {membersClasses[i].GetClassName()}";
+                TextBlock classActivityText = new TextBlock();
+                classActivityText.Text = $"Aktivitet: {membersClasses[i].GetActivity()}";
+                TextBlock antalPladser = new TextBlock();
+                antalPladser.Text = $"Antal pladser: {membersClasses[i].GetAvailableSpots()}";
+                TextBlock ledigePladser = new TextBlock();
+                ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - membersClasses[i].GetJoinedAmount()}";
+                // store the class ID on the ListBoxItem.Tag (preferred) so we can read it later from the selected item
+                item.Tag = membersClasses[i].GetClassID();
 
 
-                    ListBoxItem item = new ListBoxItem();
-                    //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
-                    StackPanel stackPanel = new StackPanel();
-                    item.Content = stackPanel;
-                    TextBlock classNameText = new TextBlock();
-                    classNameText.Text = $"Holdnavn: {membersClasses[i].GetClassName()}";
-                    TextBlock classActivityText = new TextBlock();
-                    classActivityText.Text = $"Aktivitet: {membersClasses[i].GetActivity()}";
-                    TextBlock antalPladser = new TextBlock();
-                    antalPladser.Text = $"Antal pladser: {membersClasses[i].GetAvailableSpots()}";
-                    TextBlock ledigePladser = new TextBlock();
-                    ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - membersClasses[i].GetJoinedAmount()}";
-                    //TextBlock UsynligID = new TextBlock();
-                    //UsynligID.Text = $"{membersClasses[i].GetClassID()}";
-                    item.SetValue(TagProperty, membersClasses[i].GetClassID());
-
-                //UsynligClassID = UsynligID.Text;
+               
 
                 stackPanel.Children.Add(classNameText);
-                    stackPanel.Children.Add(classActivityText);
-                    stackPanel.Children.Add(ledigePladser);
+                stackPanel.Children.Add(classActivityText);
+                stackPanel.Children.Add(ledigePladser);
 
-                    ClassesListBox.Items.Add(item);
-                    
+                ClassesListBox.Items.Add(item);
 
 
-                
+
+
             }
         }
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
@@ -98,26 +96,95 @@ namespace FørsteSemester
 
         private void FrameldHold_Click(object sender, RoutedEventArgs e)
         {
+            // Ensure an item is selected
+            if (ClassesListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Vælg et hold først.", "Ingen markering", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
-            List<Class> Teams = member.LoadTeams();
-            int classID = Convert.ToInt32(UsynligClassID);
-            
-            member.LeaveClass(classID);
+            // Get selected ListBoxItem and read the class ID from its Tag
             ListBoxItem selectedItem = (ListBoxItem)ClassesListBox.SelectedItem;
-            StackPanel selectedStackPanel = (StackPanel)selectedItem.Content;
+            int classID = Convert.ToInt32(selectedItem.Tag);
 
+            // Do the leave operation using the selected class ID
+            List<Class> Teams = member.LoadTeams();
+            member.LeaveClass(classID);
 
-            int i = 0;
-            while (i < Teams.Count)
+            // Update joined counts in memory (if needed)
+            for (int i = 0; i < Teams.Count; i++)
             {
                 if (classID == Teams[i].GetClassID())
                 {
                     Teams[i].SetJoinedAmount(Teams[i].GetJoinedAmount() - 1);
                 }
-                i++;
             }
-            ClassesListBox.Items.Clear();
 
+            // Refresh the list (simple approach: clear; you may want to repopulate)
+            ClassesListBox.Items.Clear();
         }
     }
 }
+/*
+    ListBoxItem item = new ListBoxItem();
+    //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
+    StackPanel stackPanel = new StackPanel();
+    item.Content = stackPanel;
+    TextBlock classNameText = new TextBlock();
+    classNameText.Text = $"Holdnavn: {membersClasses[i].GetClassName()}";
+    TextBlock classActivityText = new TextBlock();
+    classActivityText.Text = $"Aktivitet: {membersClasses[i].GetActivity()}";
+    TextBlock antalPladser = new TextBlock();
+    antalPladser.Text = $"Antal pladser: {membersClasses[i].GetAvailableSpots()}";
+    TextBlock ledigePladser = new TextBlock();
+    ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - membersClasses[i].GetJoinedAmount()}";
+    TextBlock UsynligID = new TextBlock();
+    UsynligID.Text = $"{membersClasses[i].GetClassID()}";
+    item.SetValue(TagProperty, membersClasses[i].GetClassID());
+
+
+UsynligClassID = UsynligID.Text;
+
+stackPanel.Children.Add(classNameText);
+    stackPanel.Children.Add(classActivityText);
+    stackPanel.Children.Add(ledigePladser);
+
+    ClassesListBox.Items.Add(item);
+
+
+
+
+}
+}
+private void TilbageKnap_Click(object sender, RoutedEventArgs e)
+{
+this.Hide();
+window.Show();
+}
+
+private void FrameldHold_Click(object sender, RoutedEventArgs e)
+{
+
+List<Class> Teams = member.LoadTeams();
+int classID = Convert.ToInt32(UsynligClassID);
+
+member.LeaveClass(classID);
+ListBoxItem selectedItem = (ListBoxItem)ClassesListBox.SelectedItem;
+StackPanel selectedStackPanel = (StackPanel)selectedItem.Content;
+
+
+int i = 0;
+while (i < Teams.Count)
+{
+if (classID == Teams[i].GetClassID())
+{
+    Teams[i].SetJoinedAmount(Teams[i].GetJoinedAmount() - 1);
+}
+i++;
+}
+ClassesListBox.Items.Clear();
+
+}
+}
+}
+*/
