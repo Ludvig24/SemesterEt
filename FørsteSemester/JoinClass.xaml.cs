@@ -89,6 +89,7 @@ namespace FørsteSemester
                     {
                         ListBoxItem tomitem = new ListBoxItem();
                         ClassesList.Items.Add(tomitem);
+                        
                     }
                     else
                     {
@@ -151,6 +152,7 @@ namespace FørsteSemester
             listBoxItem = tomitem;
             ClassesList.Items.Insert(ClassesList.SelectedIndex,listBoxItem);
             ClassesList.Items.RemoveAt(ClassesList.SelectedIndex);
+            
 
         }
 

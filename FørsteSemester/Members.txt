@@ -1,4 +1,4 @@
 Admin;Admin;M;45;Admin;admin;admin;1
-Test;Person;M;23;Bynavn;a;a;2;1;3
+Test;Person;M;23;Bynavn;a;a;2;6;1;3
 Mark;Markensen;M;30;Markenstrup;m;m;3;1;6
 c;c;F;25;C;c;c;4
