@@ -11,7 +11,7 @@
         <Button x:Name="Tilmeld" Content="Tilmeld" HorizontalAlignment="Center" Margin="0,550,0,0" VerticalAlignment="Top" Click="Tilmeld_Click" Height="38" Width="78"/>
         <ListBox Name="ClassesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="86,109,86,169" SelectionChanged="ListBox_SelectionChanged" RenderTransformOrigin="0.53,0.526"/>
         <Button Content="Tilbage" Name="Tilbageknap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="46" Width="70" Click="Tilbageknap_Click"/>
-        <TextBox HorizontalAlignment="Center" Name="FejlBox" Margin="0,515,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="160" Height="35" Foreground="Black" IsReadOnly="True" BorderBrush="Black" Visibility="Visible"/>
+        <TextBox HorizontalAlignment="Center" Name="FejlBox" Margin="0,515,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="160" Height="35" Foreground="Black" IsReadOnly="True" BorderBrush="Black" Visibility="Hidden"/>
 
     </Grid>
 </Window>

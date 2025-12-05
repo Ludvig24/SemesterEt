@@ -26,17 +26,6 @@ namespace FørsteSemester
             this.window = window;
 
 
-            for (int i = 0; i < UserManager.LoadMember().Count(); i++)
-            {
-                if (UserManager.GetUserData(0)[i] == "")
-                {
-                    Fejlbox.Visibility = Visibility.Visible;
-                    Fejlbox.Text = "Du kan ikke oprette en bruger med dette brugernavn";
-                    CreateUser.IsEnabled = false;
-                    return;
-                }
-
-            }
         }
         
         private void CreateUser_Click(object sender, RoutedEventArgs e)
@@ -93,8 +82,19 @@ namespace FørsteSemester
 
             }
 
+            for (int i = 0; i < UserManager.LoadMember().Count(); i++)
+            {
+                if (BrugernavnBox.Text == "")
+                {
+                    Fejlbox.Visibility = Visibility.Visible;
+                    Fejlbox.Text = "Du kan ikke oprette en bruger med dette brugernavn";
+                    CreateUser.IsEnabled = false;
+                    return;
+                }
 
-            
+            }
+
+
 
             UserManager.CreateMember(FornavnBox.Text, EfternavnBox.Text, gender, age, ByBox.Text, BrugernavnBox.Text, PasswordBox.Text);
             this.Close();

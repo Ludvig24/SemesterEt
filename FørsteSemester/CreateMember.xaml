@@ -26,9 +26,9 @@
         <Label Content="By" HorizontalAlignment="Left" Margin="96,403,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Brugernavn" HorizontalAlignment="Left" Margin="96,462,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="96,522,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button x:Name="CreateUser" Content="Opret bruger" HorizontalAlignment="Center" Height="34" Margin="0,597,0,0" VerticalAlignment="Top" Width="182" Click="CreateUser_Click"/>
+        <Button x:Name="CreateUser" Content="Opret bruger" HorizontalAlignment="Center" Height="34" Margin="0,607,0,0" VerticalAlignment="Top" Width="182" Click="CreateUser_Click"/>
         <Button x:Name="TilbageKnap" Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="70" Click="Tilbage_Click" Margin="10,10,0,0"/>
-        <TextBox Name="Fejlbox" Foreground="Red" HorizontalAlignment="Left" Margin="158,537,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox Name="Fejlbox" Foreground="Red" HorizontalAlignment="Left" Margin="161,567,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
         <Label Content="Ny bruger" HorizontalAlignment="Center" Height="80" Margin="0,48,0,0" VerticalAlignment="Top" Width="234" FontSize="48"/>
 
 
