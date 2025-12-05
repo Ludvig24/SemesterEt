@@ -83,6 +83,7 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetRequiredMaxAge()+";");
                 streamWriter.Write(team.GetRequiredMinAge()+";");
                 streamWriter.Write(team.GetClassID());
+
                 if(team.GetMemberIDsInClass() != null)
                 {
                     streamWriter.Write(team.GetMemberIDsInClass() + ";");

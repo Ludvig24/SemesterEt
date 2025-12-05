@@ -11,7 +11,7 @@ namespace FørsteSemester
 {
     class Class
     {
-        //attributter til Hold
+        //Attributter til klassen Hold
         private string activity;
         private string className;
         private int classID;
@@ -23,7 +23,6 @@ namespace FørsteSemester
         private byte requiredMaxAge;
         private string memberIDsInClass;
          
-
         //Metoden AddMemberIDToClass, som tilføje et medlems ID til et specifikt hold 
         public void AddMemberIDToClass(int UserID, int classID)
         {
@@ -84,11 +83,8 @@ namespace FørsteSemester
 
             }
         }
-        public void getStatus()
-        {
-
-        }
-
+    
+        //Get og set, så man kan kalde på følgende privat Fields/Attributter i andre klasser
         public string GetActivity()
         {
             return activity;
