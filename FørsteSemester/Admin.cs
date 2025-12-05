@@ -18,11 +18,6 @@ namespace FørsteSemester
         //Fields/Attribut for Klassen Admin
         List<Member> memberList = new List<Member>();
 
-        public void SletMember()
-        {
-
-        }
-
         //Metoden CreateClass, hvor vi oprette et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
@@ -74,7 +69,7 @@ namespace FørsteSemester
 
         }
 
-        //metode til at putte et hold objekt ind i tekstfilen
+        //Metoden SaveClass, som gemmer et hold og tiføjer hold objekt til en tekstfil
         public void SaveClass(Class team)
         {
             using (StreamWriter streamWriter = new StreamWriter(filepath, true))
@@ -96,26 +91,5 @@ namespace FørsteSemester
                 streamWriter.WriteLine();
             }
         }
-
-        public void DeleteClass()
-        {
-
-        }
-
-        public void RemoveMemberFromClass()
-        {
-
-        }
-
-        public void RoomRecord()
-        {
-
-        }
-
-
-
-
-
-
     }
 }
