@@ -30,7 +30,6 @@ namespace FørsteSemester
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //sti til Classes.txt fil
 
-
             classID.ToString();
 
             string MemberIDClass = "0"; //starter med ID 0 for at undgå fejl ved første tilføjelse
