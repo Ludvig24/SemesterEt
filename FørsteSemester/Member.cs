@@ -117,7 +117,7 @@ namespace FørsteSemester
             int y = 8;
             while (y < memberSplit.Count())
             {
-                if (memberSplit[y] == GetUserID().ToString())
+                if (memberSplit[y] == classID.ToString())
                 {
                     List<string> memberList = new List<string>(memberSplit);
                     memberList.RemoveAt(y);
