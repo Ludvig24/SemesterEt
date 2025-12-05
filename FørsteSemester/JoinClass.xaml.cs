@@ -37,20 +37,24 @@ namespace FørsteSemester
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
                 //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
                 string Køn = "";
-                //SWIIIIIITCH!!!!!!!
-                if (GetRequiredGenderInChar == 'F')
+              
+                switch (GetRequiredGenderInChar)
                 {
-                    Køn = "Kvinde";
+                    case 'F':
+                        
+                        Køn = "Kvinde";
+                        break;
+                        
+                    case 'M':
+                        
+                        Køn = "Mand";
+                        break;
+                    
+                    case 'B':
+                        
+                        Køn = "Begge køn";
+                        break;
                 }
-                else if (GetRequiredGenderInChar == 'M')
-                {
-                    Køn = "Mand";
-                }
-                if (GetRequiredGenderInChar == 'B')
-                {
-                    Køn = "Begge køn";
-                }
-
 
                 if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
                 {
@@ -97,12 +101,10 @@ namespace FørsteSemester
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
         {
             
-
             List<Class> Teams = member.LoadTeams();
             Class team = new Class();
             int classID = ClassesList.SelectedIndex +1; //Skal ændres hvis vi kunne tænke os at ændre rækkefølgen
             
-
             int j = 0;
             while (j < Teams.Count)
             {
@@ -113,10 +115,6 @@ namespace FørsteSemester
                 j++;
             }
 
-           
-            
-            
-
             if (team.GetAvailableSpots() == team.GetJoinedAmount())
             {
                     team.SetStatus(true);
@@ -124,12 +122,19 @@ namespace FørsteSemester
                     return;
             }
 
-               
+            char GetRequiredGenderInChar = team.GetRequiredGender();
+           
+            if (team.GetRequiredGender() == member.GetGender() || team.GetRequiredGender() == 'B')
+            {
 
-            
+            } else
+            {
+                //Besked til bruger
+                return;
+            }
+
             member.JoinClass(classID, member.GetUserID());
             
-
             int i = 0;
             while (i < Teams.Count)
             {
