@@ -143,30 +143,35 @@ namespace FørsteSemester
                 }
                 
             }
-            return null;
+            return null; //returnerer null hvis der ikke findes noget match efter hele loopen er kørt igennem
 
         }
 
         //metode til at logge en admin ind baseret på brugernavn, password og dets ID
         public static Admin AdminLogin(string Username, string Password)
         {
+            //Bruger GetUserData() metoden til at hente brugernavne, passwords og UserID's fra filen members.txt
             List<string> Usernames = GetUserData(5); 
             List<string> Passwords = GetUserData(6);
             List<string> UserID = GetUserData(7);
-            
 
+            //while loop der itererer gennem members og tjekker om username og password i input passer med username og password for en bestemt member i filen members.txt
+            //der tjekkes om userID'et på den bestemte bruger er 1 da det er vores Admins id
             int i = 0;
             while (i < LoadMember().Count)
             {
-
-                if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")
+                
+                if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")//hvis der findes et match mellem username og password i input og text fil samt at UserID på plads i er 1:
                 {
-                    Admin loginAdmin = new Admin();
-                    string[] lines = System.IO.File.ReadAllLines(filepath);
-                    string adminLine = lines[0];
-                    adminLine.Split(";");
+                    Admin loginAdmin = new Admin(); //opretter objekt af klassen Admin
+                    string[] lines = System.IO.File.ReadAllLines(filepath); //læser alle linjer i filen filepath peger på og gemmer det i et string array
+                    string adminLine = lines[0]; //gemmer stringen på index 0 i en string kaldet adminLine
+                   
+                    //hey hvad fanden? Vi kalder split nedenunder i adminData linjen anyway kan vi så ikke bare fjerne det der:
+                    adminLine.Split(";"); //kalder split på stringen ved hvert ";"
                     string[] adminData = adminLine.Split(";");
 
+                    //setter alle oplysninger for Admin objektet med Set metoder
                     loginAdmin.SetName(adminData[0]);
                     loginAdmin.SetSurname(adminData[1]);
                     loginAdmin.SetGender(Convert.ToChar (adminData[2]));
@@ -176,36 +181,37 @@ namespace FørsteSemester
                     loginAdmin.SetPassword(adminData[6]);
                     loginAdmin.SetUserID(Convert.ToInt32 (adminData[7]));
 
-                    return loginAdmin;
+                    return loginAdmin; //returnerer Admin objektet
 
                 }
 
                 else
                 {
-                    i++;
+                    i++; //hvis der ikke findes et match øges i med 1 og loopet starter forfra
 
                 }
 
             }
-            return null;
+            return null; //returnerer null hvis der ikke findes noget match efter hele loopen er kørt igennem
         }
 
         //metode til at hente en specifik type data fra alle medlemmer i en liste
         //baseret på dets indeks
         public static List<string> GetUserData(int a) 
         {
-            List<string> data = new List<string>();
-            string dataPoint = "";
-            string[] lines = System.IO.File.ReadAllLines(filepath);
+            List<string> data = new List<string>(); //opretter en liste af strings
+            string dataPoint = ""; //opretter en tom string
+            string[] lines = System.IO.File.ReadAllLines(filepath); //læser alle linjer i den fil filepath peger på og gemmer dem i et string array
+            //for loop der itererer gennem hver linje i lines
             for (int i = 0; i < lines.Count(); i++)
             {
-                string memberData = lines[i];
-                string[] memberSplit = memberData.Split(";");
-                dataPoint = memberSplit[a];
-                data.Add(dataPoint);
+                string memberData = lines[i]; //opretter en string kaldet memberData som vi tildeler værdien a lines på index i.
+                string[] memberSplit = memberData.Split(";"); //kalder split på memberData på ";" og gemmer arrayet i memberSplit
+                dataPoint = memberSplit[a]; //tildeler dataPoint værdien af memberSplit på index a
+                data.Add(dataPoint); //tilføjer dataPoint stringen til listen data
             }
 
-            return data;
+            return data; //returnerer listen data
 
         }
 
