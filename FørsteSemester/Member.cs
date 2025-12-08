@@ -111,57 +111,68 @@ namespace FørsteSemester
                 }
             }
 
-            int z = 0;
-            int linenumber = 0;
-            List<string> userIDs = UserManager.GetUserData(7);
+            
+            int z = 0; //tællervariabel for while loop
+            int linenumber = 0; //int variabel der holder styr på linjenummer i tekstfilen Members.txt
+            List<string> userIDs = UserManager.GetUserData(7); //gemmer alle userIDs fra textfilen Members.txt i en liste af strings
+            //while loop der itererer gennem userIDs listen
             while (z < userIDs.Count())
             {
+                //if statement der tjekker om userID'et for memberen er det samme som userIDs på index z
                 if (userIDs[z] == GetUserID().ToString())
                 {
-                    linenumber = z;
+                    linenumber = z; //hvis if statement er sandt tildeles variablen linenumber z
                 }
 
                 z++;
             }
 
-            string member = memberLines[linenumber];
-            string[] memberSplit = member.Split(";");
+            string member = memberLines[linenumber]; //opretter en string og tildeler den element på index "lineumber" i arrayet memberLines
+            string[] memberSplit = member.Split(";"); //splitter stringen member ved hvert semikolon så vi har et array kaldet memberSplit med alt memberens data
 
+            //hvile loop der itererer fra index 8 i memberSplit arrayet
             int y = 8;
             while (y < memberSplit.Count())
             {
+                //if statement der tjekker om index y i memberSplit er lig med classID fra input
                 if (memberSplit[y] == classID.ToString())
                 {
-                    List<string> memberList = new List<string>(memberSplit);
-                    memberList.RemoveAt(y);
-                    string[] newMemberLine = memberList.ToArray();
-                    memberLines[linenumber] = string.Join(";", newMemberLine);
+
+                    List<string> memberList = new List<string>(memberSplit); //omkonverterer memberSplit til en liste så vi kan bruge RemoveAt metoden
+                    memberList.RemoveAt(y); //kalder RemoveAt() på memberList for at fjerne elementet på index y
+                    string[] newMemberLine = memberList.ToArray(); //vi konverterer memberList tilbage til et nyt array kaldet newMemberLine med ToArray() metoden
+                    memberLines[linenumber] = string.Join(";", newMemberLine); //kalder join på newMemberLine og sender ";" med som parameter. Dette sammenskriver hver elememt i newMemberLine sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i MemberLines arrayet på plads linenumber
                 }
 
                 y++;
             }
 
-            using (StreamWriter streamWriter = new StreamWriter(filepath))
+            //bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på (Members.txt)
+            using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
             {
+                //for loop der itererer gennem memberLines arrayet
                 for (int i = 0; i < memberLines.Length; i++)
                 {
+                    //for hver iteration skrives den string på index "i" ned i txt filen Members
                     streamWriter.Write(memberLines[i]);
                     streamWriter.WriteLine();
                 }
             }
         }
 
-        //Metoden DeleteProfile, 
+        //Metoden DeleteProfile, SKAL SQU NOK FJERNES DA VI IKKE LAVER DEN - SKRIV NOGET OM DEN I EN TIDLIGERE ITERATION AF KLASSEDIAGRAM
         public void DeleteProfile()
         {
 
         }
 
+        //SKAL SQU NOK FJERNES DA VI IKKE LAVER DEN - SKRIV NOGET OM DEN I EN TIDLIGERE ITERATION AF KLASSEDIAGRAM
         public void ViewStatus()
         {
 
         }
 
+        //Get Set metoder 
         public List<int> GetJoinedClasses()
         {
             return joinedClasses;
