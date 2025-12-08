@@ -89,8 +89,6 @@ namespace FørsteSemester
                     {
                         ListBoxItem tomitem = new ListBoxItem();
                         ClassesList.Items.Add(tomitem);
-                        tomitem.IsEnabled = false;
-                        tomitem.Visibility = Visibility.Hidden;
                     }
                     else
                     {
@@ -171,8 +169,7 @@ namespace FørsteSemester
             listBoxItem = tomitem;
             ClassesList.Items.Insert(ClassesList.SelectedIndex,listBoxItem);
             ClassesList.Items.RemoveAt(ClassesList.SelectedIndex);
-            listBoxItem.IsEnabled = false;
-            listBoxItem.Visibility = Visibility.Hidden;
+
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
