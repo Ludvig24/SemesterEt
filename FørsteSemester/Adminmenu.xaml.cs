@@ -40,5 +40,12 @@ namespace FørsteSemester
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
+
+        private void OversightOverHold_Click(object sender, RoutedEventArgs e)
+        {
+            AdminClassOverview adminClassOverview = new AdminClassOverview(this, admin);
+            adminClassOverview.Show();
+            this.Hide();
+        }
     }
 }
