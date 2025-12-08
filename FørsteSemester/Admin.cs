@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FørsteSemester
 {
-    class Admin : User
+    internal class Admin : User
     {
         //Opretter sti til mappen "Documents" også kombinere det med stien ind til Classes.txt filen
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
