@@ -13,29 +13,29 @@ namespace FørsteSemester
 
         //opretter sti til Members.txt filen som skal være static
         //da den ellers ville kunne tilgå alle filer på ens computer
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
 
         //metode til at oprette et medlem med relevante parametre
         public static void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
         {
-           
-                Member member = new Member(); //Opretter objekt af Member klassen
-                //setter alle oplysninger for member via Set Metoder
-                member.SetName(name);
-                member.SetSurname(surname);
-                member.SetGender(gender);
-                member.SetAge(age);
-                member.SetCity(city);
-                member.SetUserName(username.ToLower());
-                member.SetPassword(password);
+
+            Member member = new Member(); //Opretter objekt af Member klassen
+                                          //setter alle oplysninger for member via Set Metoder
+            member.SetName(name);
+            member.SetSurname(surname);
+            member.SetGender(gender);
+            member.SetAge(age);
+            member.SetCity(city);
+            member.SetUserName(username.ToLower());
+            member.SetPassword(password);
 
             //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
             //member.SetPhoneNumber(PhoneNumber);
 
             //Sætter unikt UserID til medlemmet baseret på antal medlemmer i systemet
             int membercount = LoadMember().Count + 1;
-            while(true)
+            while (true)
             {
                 //if statement der tjekker det UserID vi kalder membercount allerede findes i vores program
                 if (GetUserData(7).Contains(membercount.ToString())) //tjekker om listen returnerert med GetUserData indeholder værdien gemt i membercount
@@ -47,7 +47,7 @@ namespace FørsteSemester
                     member.SetUserID(membercount); //tildeler membercount som UserID til memberobjektet
                     break;
                 }
-                
+
             }
 
 
@@ -59,7 +59,7 @@ namespace FørsteSemester
         //Metode der tilføjer medlemmet til Members.txt filen
         public static void SaveMember(Member member)
         {   //bruger en StreamWriter til at skrive memberens oplysninger ned på en linje i den text fil filepath peger på
-            using (StreamWriter streamWriter = new StreamWriter(filepath,true)) //filepath er stien til den fil vi vil skrive i og vi skriver true for at sige at den skal append hver gang der skrives frem for at overskrive
+            using (StreamWriter streamWriter = new StreamWriter(filepath, true)) //filepath er stien til den fil vi vil skrive i og vi skriver true for at sige at den skal append hver gang der skrives frem for at overskrive
             {
                 //kalder Write på hver af memberens oplysninger gennem Get metoder. Der sættes ; bagerst på hver linjen så den nemt kan splittes
                 streamWriter.Write(member.GetName() + ";");
@@ -72,8 +72,8 @@ namespace FørsteSemester
                 streamWriter.Write(member.GetUserID());
                 streamWriter.WriteLine(); //kalder WriteLine for at gå ned til næste linje i filen så næste member kan skrives ned
             }
-            
-           
+
+
 
         }
 
@@ -84,7 +84,7 @@ namespace FørsteSemester
             //opretter et string array kaldet lines. Vi tildeler arrayet alle linjer i filen Members.txt via ReadAllLines
             string[] lines = System.IO.File.ReadAllLines(filepath);
 
-            
+
             List<Member> members = new List<Member>(); //liste af typen Member
 
             //for loop der itererer gennem arrayet lines.
@@ -124,16 +124,16 @@ namespace FørsteSemester
         {
             List<string> Usernames = GetUserData(5); //henter en liste af alle usernames i members.txt
             List<string> Passwords = GetUserData(6); //henter en liste af alle passwords i members.txt
-            
+
             //while loop der itererer gennem members og tjekker om username og password i input passer med username og password for en bestemt member i filen members.txt
             int i = 0;
-            while( i< LoadMember().Count)
+            while (i < LoadMember().Count)
             {
                 if (Username == Usernames[i] && Password == Passwords[i]) //hvis der findes et match mellem username og password i input og text fil:
                 {
                     Member loginMember = new Member(); //der oprettes et objekt af member klassen
                     loginMember = LoadMember()[i]; //tildeler member objektet det specifikke member objekt vi er kommet til i loopen
-                    return loginMember; 
+                    return loginMember;
 
                 }
                 else //hvis der ikke findes et match øges i med 1 og loopet starter forfra
@@ -141,7 +141,7 @@ namespace FørsteSemester
                     i++;
 
                 }
-                
+
             }
             return null; //returnerer null hvis der ikke findes noget match efter hele loopen er kørt igennem
 
@@ -151,7 +151,7 @@ namespace FørsteSemester
         public static Admin AdminLogin(string Username, string Password)
         {
             //Bruger GetUserData() metoden til at hente brugernavne, passwords og UserID's fra filen members.txt
-            List<string> Usernames = GetUserData(5); 
+            List<string> Usernames = GetUserData(5);
             List<string> Passwords = GetUserData(6);
             List<string> UserID = GetUserData(7);
 
@@ -160,13 +160,13 @@ namespace FørsteSemester
             int i = 0;
             while (i < LoadMember().Count)
             {
-                
+
                 if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")//hvis der findes et match mellem username og password i input og text fil samt at UserID på plads i er 1:
                 {
                     Admin loginAdmin = new Admin(); //opretter objekt af klassen Admin
                     string[] lines = System.IO.File.ReadAllLines(filepath); //læser alle linjer i filen filepath peger på og gemmer det i et string array
                     string adminLine = lines[0]; //gemmer stringen på index 0 i en string kaldet adminLine
-                   
+
                     //hey hvad fanden? Vi kalder split nedenunder i adminData linjen anyway kan vi så ikke bare fjerne det der:
                     adminLine.Split(";"); //kalder split på stringen ved hvert ";"
                     string[] adminData = adminLine.Split(";");
@@ -174,12 +174,12 @@ namespace FørsteSemester
                     //setter alle oplysninger for Admin objektet med Set metoder
                     loginAdmin.SetName(adminData[0]);
                     loginAdmin.SetSurname(adminData[1]);
-                    loginAdmin.SetGender(Convert.ToChar (adminData[2]));
-                    loginAdmin.SetAge(Convert.ToByte (adminData[3]));
+                    loginAdmin.SetGender(Convert.ToChar(adminData[2]));
+                    loginAdmin.SetAge(Convert.ToByte(adminData[3]));
                     loginAdmin.SetCity(adminData[4]);
                     loginAdmin.SetUserName(adminData[5]);
                     loginAdmin.SetPassword(adminData[6]);
-                    loginAdmin.SetUserID(Convert.ToInt32 (adminData[7]));
+                    loginAdmin.SetUserID(Convert.ToInt32(adminData[7]));
 
                     return loginAdmin; //returnerer Admin objektet
 
@@ -197,7 +197,7 @@ namespace FørsteSemester
 
         //metode til at hente en specifik type data fra alle medlemmer i en liste
         //baseret på dets indeks
-        public static List<string> GetUserData(int a) 
+        public static List<string> GetUserData(int a)
         {
             List<string> data = new List<string>(); //opretter en liste af strings
             string dataPoint = ""; //opretter en tom string

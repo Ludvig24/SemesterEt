@@ -25,34 +25,34 @@ namespace FørsteSemester
             List<string> userIDs = UserManager.GetUserData(7); //henter alle UserIDs med GetUserData() metoden
             string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer stien filepath peger på (members.txt)
             classID.ToString(); //konverterer classID til en string
-            joinedClass = ";"+ classID; //sætter joinedClass lig semikolon + classID for at matche formattet i tekstfilen Members.txt
+            joinedClass = ";" + classID; //sætter joinedClass lig semikolon + classID for at matche formattet i tekstfilen Members.txt
             //bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
             {
                 int lineNumber = 0; //opretter variabel der holder styr på linjenummer i tekstfilen
 
                 //for loop der itererer gennem userIDs listen
-                for(int i = 0; i < userIDs.Count; i++)
+                for (int i = 0; i < userIDs.Count; i++)
                 {
                     //if statement der tjekker om userID fra input er det samme som userIDs på index i
-                    if(userID.ToString() == userIDs[i])
+                    if (userID.ToString() == userIDs[i])
                     {
                         lineNumber = i; //hvis if statement udsagn er sandt tildeles linenumber i
                     }
                 }
 
                 lines[lineNumber] = lines[lineNumber] + joinedClass;  //vi appender joinedclass variablen på pladsen "linenumber" i arrayet lines
-                
+
                 //for loop der kører så længe i er mindre end længden på lines
-                for(int i = 0; i < lines.Length; i++)
+                for (int i = 0; i < lines.Length; i++)
                 {
                     streamWriter.Write(lines[i]); // for hver iteration kaldes Write på streamWriter objektet. lines på index i skrives ned i tekstfilen Members.txtx
                     streamWriter.WriteLine(); //kalder writeLine efter hver linje er skrevet
                 }
-                
+
             }
         }
-        
+
         //Metoden LeaveClass, som fjerner et medlem fra et specifikt hold
         //Metoden fjerner et UserID fra Classes.txt og et ClassID fra Members.txt
         public void LeaveClass(int classID)
@@ -68,10 +68,10 @@ namespace FørsteSemester
             foreach (string line in lines)
             {
                 //opretter array der indeholder dataet fra en bestemt linje i Classes.txt
-                string[]lineArray = line.Split(";"); //for hver iteration kaldes Split() på ";" på den string loopet er nået til og resultatet gemmes i et string array
+                string[] lineArray = line.Split(";"); //for hver iteration kaldes Split() på ";" på den string loopet er nået til og resultatet gemmes i et string array
 
                 //if statement der tjekker om plads 8 i lineArray (klassens id) er lig med classID variablen fra input
-                if (lineArray[8]==classID.ToString())
+                if (lineArray[8] == classID.ToString())
                 {
                     //hvis if statement er sandt køres et for loop der itererer gennem arrayet lineArray fra plads 9 da det er derfra og frem hvor userIDs i classes er gemt
                     for (int i = 9; i < lineArray.Count(); i++)
@@ -88,7 +88,7 @@ namespace FørsteSemester
                             string[] newLine = lineList.ToArray(); //vi konverterer lineList tilbage til et nyt array kaldet newLine med ToArray() metoden
                             lines[x] = string.Join(";", newLine);//kalder join på newLine og sender ";" med som parameter. Dette sammenskriver hver elememt i newLine sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i lines arrayet på plads x (den iteration i foreach loopet vi er nået til)
 
-                            
+
                         }
                     }
                 }
@@ -137,7 +137,7 @@ namespace FørsteSemester
                     string[] newMemberLine = memberList.ToArray();
                     memberLines[linenumber] = string.Join(";", newMemberLine);
                 }
-              
+
                 y++;
             }
 
@@ -174,3 +174,4 @@ namespace FørsteSemester
 
     }
 }
+

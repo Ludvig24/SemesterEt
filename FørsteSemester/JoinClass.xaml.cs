@@ -69,10 +69,10 @@ namespace FørsteSemester
                     classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
                     TextBlock ClassGenderText = new TextBlock();
                     ClassGenderText.Text = $"Tilladte Køn: {Køn}";
-                    TextBlock ClassMinAge = new TextBlock();
-                    ClassMinAge.Text = $"Minimum Alder: {Classes[i].GetRequiredMinAge()}";
-                    TextBlock ClassMaxAge = new TextBlock();
-                    ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
+                    TextBlock AlderText = new TextBlock();
+                    AlderText.Text = $"Alders Grænse: {Classes[i].GetRequiredMinAge()} - {Classes[i].GetRequiredMaxAge()} år";
+                    //TextBlock ClassMaxAge = new TextBlock();
+                    //ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
                     TextBlock ledigePladser = new TextBlock();
                     ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}"; //Fix regnestykke
 
@@ -80,8 +80,8 @@ namespace FørsteSemester
                     stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
                     stackPanel.Children.Add(ClassGenderText);
-                    stackPanel.Children.Add(ClassMinAge);
-                    stackPanel.Children.Add(ClassMaxAge);
+                    stackPanel.Children.Add(AlderText);
+                    //stackPanel.Children.Add(ClassMaxAge);
                     stackPanel.Children.Add(ledigePladser);
 
 
@@ -89,7 +89,8 @@ namespace FørsteSemester
                     {
                         ListBoxItem tomitem = new ListBoxItem();
                         ClassesList.Items.Add(tomitem);
-                        
+                        tomitem.IsEnabled = false;
+                        tomitem.Visibility = Visibility.Hidden;
                     }
                     else
                     {
@@ -119,22 +120,40 @@ namespace FørsteSemester
             if (team.GetAvailableSpots() == team.GetJoinedAmount())
             {
                     team.SetStatus(true);
-                    //messagebox tingeling
-                    return;
+                    FejlBox.Visibility = Visibility.Visible;
+                    FejlBox.Text = "Der er desværre ikke flere ledige pladser på dette hold.";
+                    
+                return;
+            }
+            else
+            {
+                FejlBox.Visibility = Visibility.Hidden;
             }
 
-            char GetRequiredGenderInChar = team.GetRequiredGender();
+                char GetRequiredGenderInChar = team.GetRequiredGender();
            
             if (team.GetRequiredGender() == member.GetGender() || team.GetRequiredGender() == 'B')
             {
-
+                FejlBox.Visibility = Visibility.Hidden;
             } else
             {
-                //Besked til bruger
+                FejlBox.Visibility = Visibility.Visible;
+                FejlBox.Text = "Du opfylder ikke kønskravet for dette hold.";
                 return;
             }
 
-            member.JoinClass(classID, member.GetUserID());
+            if (member.GetAge() < team.GetRequiredMinAge() || member.GetAge() > team.GetRequiredMaxAge())
+            {
+                FejlBox.Visibility = Visibility.Visible;
+                FejlBox.Text = "Du opfylder ikke alderskravet for dette hold.";
+                return;
+            }
+            else
+            {
+                FejlBox.Visibility = Visibility.Hidden;
+            }
+
+                member.JoinClass(classID, member.GetUserID());
             
             int i = 0;
             while (i < Teams.Count)
@@ -152,7 +171,8 @@ namespace FørsteSemester
             listBoxItem = tomitem;
             ClassesList.Items.Insert(ClassesList.SelectedIndex,listBoxItem);
             ClassesList.Items.RemoveAt(ClassesList.SelectedIndex);
-            
+            tomitem.IsEnabled = false;
+            tomitem.Visibility = Visibility.Hidden;
 
         }
 
