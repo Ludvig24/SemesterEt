@@ -29,7 +29,6 @@ namespace FørsteSemester
             InitializeComponent();
 
 
-
             List<Class> Classes = member.LoadTeams();
             for (int i = 0; i < Classes.Count; i++)
             {
@@ -37,21 +36,21 @@ namespace FørsteSemester
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
                 //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
                 string Køn = "";
-              
+
                 switch (GetRequiredGenderInChar)
                 {
                     case 'F':
-                        
+
                         Køn = "Kvinde";
                         break;
-                        
+
                     case 'M':
-                        
+
                         Køn = "Mand";
                         break;
-                    
+
                     case 'B':
-                        
+
                         Køn = "Begge køn";
                         break;
                 }
@@ -120,37 +119,33 @@ namespace FørsteSemester
             if (team.GetAvailableSpots() == team.GetJoinedAmount())
             {
                     team.SetStatus(true);
-                    FejlBox.Visibility = Visibility.Visible;
-                    FejlBox.Text = "Der er desværre ikke flere ledige pladser på dette hold.";
-                    
+                    MessageBox.Show("Der er desværre ikke flere ledige pladser på dette hold.", "Fyldt Hold");
                 return;
             }
             else
             {
-                FejlBox.Visibility = Visibility.Hidden;
+                
             }
 
                 char GetRequiredGenderInChar = team.GetRequiredGender();
            
             if (team.GetRequiredGender() == member.GetGender() || team.GetRequiredGender() == 'B')
             {
-                FejlBox.Visibility = Visibility.Hidden;
+               
             } else
             {
-                FejlBox.Visibility = Visibility.Visible;
-                FejlBox.Text = "Du opfylder ikke kønskravet for dette hold.";
+                MessageBox.Show("Du opfylder ikke kønskravet for dette hold.", "Uopfyldt Krav");
                 return;
             }
 
             if (member.GetAge() < team.GetRequiredMinAge() || member.GetAge() > team.GetRequiredMaxAge())
             {
-                FejlBox.Visibility = Visibility.Visible;
-                FejlBox.Text = "Du opfylder ikke alderskravet for dette hold.";
+                MessageBox.Show("Du opfylder ikke alderskravet for dette hold.", "Uopfyldt krav");
                 return;
             }
             else
             {
-                FejlBox.Visibility = Visibility.Hidden;
+                
             }
 
                 member.JoinClass(classID, member.GetUserID());
