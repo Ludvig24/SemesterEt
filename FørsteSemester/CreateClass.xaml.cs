@@ -42,6 +42,10 @@ namespace FørsteSemester
             }
 
             admin.CreateClass(AktivitetBox.Text, HoldNavnBox.Text, Convert.ToByte(PladsBox.Text), gender ,Convert.ToByte(AlderMaxBox.Text), Convert.ToByte(AlderMinBox.Text));
+            MessageBox.Show("Hold oprettet!");
+            this.Close();
+            Adminmenu adminmenu = new Adminmenu(admin);
+            adminmenu.Show();
         }
 
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)

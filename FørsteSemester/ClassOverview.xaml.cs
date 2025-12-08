@@ -98,7 +98,7 @@ namespace FørsteSemester
             // Ensure an item is selected
             if (ClassesListBox.SelectedItem == null)
             {
-                MessageBox.Show("Vælg et hold først.", "Ingen markering", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Vælg et hold først.", "Ingen markering");
                 return;
             }
 
