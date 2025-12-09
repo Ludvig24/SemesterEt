@@ -1,6 +1,11 @@
-Admin;Admin;M;45;Admin;admin;admin;1
-Test;Person;M;23;Bynavn;a;a;2;8;3
-Mark;Markensen;M;30;Markenstrup;m;m;3
-c;c;F;25;C;c;c;4
-b;b;F;50;b;b;b;5
-Rasmus;Mortensen;M;27;8600;franner;1234qwer;6
+Admin;Admin;F;45;Admin;admin;admin;1
+James;Bond;M;70;London;bondjames;007;2;9
+Anakin;Skywalker;M;22;Tatooine;podracer321;Lea1234;3
+Lara;Croft;F;21;Surrey;tombraider;RaiderX;4;9
+Harry;Potter;M;18;Hogwarts;theboywholived;MagicWand9;5
+Tony;Stark;M;35;Malibu;ironman;IAmIronMan;6
+John;Connor;M;30;Los Angeles;terminator;HastaLaVista;7;9
+Ellen;Ripley;F;32;Space;alienhunter;Nostromo1;8;9
+Beatrix;Kiddo;F;28;Texas;blackmamba;PaiMei4;9;9
+Roy;Batty;M;40;Los Angeles;nexus6;MoreHumanThanHuman;10
+John;McClane;M;38;New York;diehard;YippeeKiYay;11
