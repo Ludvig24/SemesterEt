@@ -160,17 +160,6 @@ namespace FørsteSemester
             }
         }
 
-        //Metoden DeleteProfile, SKAL SQU NOK FJERNES DA VI IKKE LAVER DEN - SKRIV NOGET OM DEN I EN TIDLIGERE ITERATION AF KLASSEDIAGRAM
-        public void DeleteProfile()
-        {
-
-        }
-
-        //SKAL SQU NOK FJERNES DA VI IKKE LAVER DEN - SKRIV NOGET OM DEN I EN TIDLIGERE ITERATION AF KLASSEDIAGRAM
-        public void ViewStatus()
-        {
-
-        }
 
         //Get Set metoder 
         public List<int> GetJoinedClasses()
