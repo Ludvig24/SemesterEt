@@ -30,11 +30,14 @@ namespace FørsteSemester
         {
             string[] lines = System.IO.File.ReadAllLines(filepath);
             List<Class> teamsList = new List<Class>();
+            string[] lines = System.IO.File.ReadAllLines(filepath); //array der indeholder alle linjer i tekstfilen
+            List<Class> teamsList = new List<Class>();//opretter en liste til at gemme Class objekterne
 
 
             for (int i = 0; i < lines.Count(); i++)
             {
                 string teamData = lines[i];
+                string teamData = lines[i]; //laver array indeks i om til en string variabel
                 Class Teams = new Class();
                 string[] Teamsplit = teamData.Split(";"); //splitter ved ; for at tilføje dataen til et array
 
@@ -52,6 +55,7 @@ namespace FørsteSemester
 
 
                 teamsList.Add(Teams);
+                teamsList.Add(Teams); //tilføjer det oprettede Class objekt til listen
             }
 
             return teamsList;
