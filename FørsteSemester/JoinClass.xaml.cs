@@ -35,9 +35,14 @@ namespace FørsteSemester
             List<Class> Classes = member.LoadTeams(); //Der laves en liste af Classes som indeholder alle holdene der er oprettet
             for (int i = 0; i < Classes.Count; i++) //For loop der går igennem alle holdene i listen
             {
-                //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
-                //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
-                char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
+                if (Classes[i].GetAvailableSpots() == Classes[i].GetJoinedAmount()) //Tjekker om der er ledige pladser på holdet
+                {
+                    Classes[i].SetStatus(true); //Hvis der ikke er ledige pladser sættes status til true (fuldt hold)
+                }
+
+                    //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
+                    //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
+                    char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
                 string Køn = "";
 
                 switch (GetRequiredGenderInChar) //Switch case der tjekker værdien af GetRequiredGenderInChar, og tager char forkortelsen og laver om til en string
@@ -58,10 +63,8 @@ namespace FørsteSemester
                         break;
                 }
 
-                if (Classes[i].GetStatus() == false) //Get status refere til om holdet er fyldt, så hvis ikke holdet er fyldt vil denne if statment virke
-                {
-
-                    ListBoxItem item = new ListBoxItem();
+                //Opretter et ListBoxItem for hvert hold, og fylder det med information om holdet ved at lave et stackpanel
+                ListBoxItem item = new ListBoxItem();
                     StackPanel stackPanel = new StackPanel();
                     item.Content = stackPanel;
                     TextBlock classNameText = new TextBlock();
@@ -71,32 +74,39 @@ namespace FørsteSemester
                     TextBlock ClassGenderText = new TextBlock();
                     ClassGenderText.Text = $"Tilladte Køn: {Køn}";
                     TextBlock AlderText = new TextBlock();
-                    AlderText.Text = $"Alders Grænse: {Classes[i].GetRequiredMinAge()} - {Classes[i].GetRequiredMaxAge()} år";                  
-                    TextBlock ledigePladser = new TextBlock();
-                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}"; //Fix regnestykke
+                    AlderText.Text = $"Alders Grænse: {Classes[i].GetRequiredMinAge()} - {Classes[i].GetRequiredMaxAge()} år";  // Der vises aldersgrænse som minimums og maksimums alder      
+                TextBlock ledigePladser = new TextBlock();
+                    ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}"; // Der beregnes ledige pladser ved at trække joinedAmount fra availableSpots
 
-
-                    stackPanel.Children.Add(classNameText);
+                // nedeunder tilføjes alle TextBlock elementerne til stackpanelet
+                stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
                     stackPanel.Children.Add(ClassGenderText);
                     stackPanel.Children.Add(AlderText);
-                    //stackPanel.Children.Add(ClassMaxAge);
                     stackPanel.Children.Add(ledigePladser);
 
 
-                    if (member.GetJoinedClasses().Contains(Classes[i].GetClassID()))
+                if (member.GetJoinedClasses().Contains(Classes[i].GetClassID()))
+                {
+                    ListBoxItem tomitem = new ListBoxItem();
+                    ClassesList.Items.Add(tomitem);
+                    tomitem.IsEnabled = false;
+                    tomitem.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    if (Classes[i].GetStatus() == true)
                     {
-                        ListBoxItem tomitem = new ListBoxItem();
-                        ClassesList.Items.Add(tomitem);
-                        tomitem.IsEnabled = false;
-                        tomitem.Visibility = Visibility.Hidden;
+                        //Tilføjer item til listen med holdet
+                        item.BorderBrush = Brushes.Red;
+                        ClassesList.Items.Add(item);
                     }
                     else
                     {
-                        //Tilføjer item til listen med holdet
                         ClassesList.Items.Add(item);
                     }
                 }
+                
             }
         }
         private void Tilmeld_Click(object sender, RoutedEventArgs e)
