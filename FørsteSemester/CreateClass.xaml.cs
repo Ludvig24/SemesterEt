@@ -28,9 +28,12 @@ namespace FørsteSemester
             InitializeComponent();
         }
 
+        //Opretter et hold baseret på input fra tekstboksene når knappen "OpretHold" bliver klikket
         private void OpretHold_Click(object sender, RoutedEventArgs e)
         {
-            char gender = 'B';
+            char gender = 'B'; //standardværdi for begge køn
+
+            //if sætning som tjekker det køn der er valgt i dropdown og sætter det tilsvarende char
             if (KønBox.Text == "Kvinde")
             {
                 gender = 'F';
@@ -40,13 +43,15 @@ namespace FørsteSemester
                 gender = 'M'; 
             }
 
+            //Kalder CreateClass metoden fra Admin klassen med de værdier der er indtastet i tekstboksene
             admin.CreateClass(AktivitetBox.Text, HoldNavnBox.Text, Convert.ToByte(PladsBox.Text), gender ,Convert.ToByte(AlderMaxBox.Text), Convert.ToByte(AlderMinBox.Text));
-            MessageBox.Show("Hold oprettet!");
+            MessageBox.Show("Hold oprettet!"); //Besked der viser at holdet er oprettet
             this.Close();
             Adminmenu adminmenu = new Adminmenu(admin);
             adminmenu.Show();
         }
 
+        //Går tilbage til Adminmenu vinduet når "TilbageKnap" bliver klikket
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();

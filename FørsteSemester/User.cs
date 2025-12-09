@@ -28,13 +28,13 @@ namespace FørsteSemester
         //metode til at loade alle hold fra tekstfilen og gemme dem i en liste af Class objekter
         public List<Class> LoadTeams()
         {
-            string[] lines = System.IO.File.ReadAllLines(filepath);
-            List<Class> teamsList = new List<Class>();
+            string[] lines = System.IO.File.ReadAllLines(filepath); //array der indeholder alle linjer i tekstfilen
+            List<Class> teamsList = new List<Class>();//opretter en liste til at gemme Class objekterne
 
 
             for (int i = 0; i < lines.Count(); i++)
             {
-                string teamData = lines[i];
+                string teamData = lines[i]; //laver array indeks i om til en string variabel
                 Class Teams = new Class();
                 string[] Teamsplit = teamData.Split(";"); //splitter ved ; for at tilføje dataen til et array
 
@@ -49,9 +49,7 @@ namespace FørsteSemester
                 Teams.SetClassID(Convert.ToInt32(Teamsplit[8]));
                 Teams.SetMemberIDsInClass(Teamsplit);
 
-
-
-                teamsList.Add(Teams);
+                teamsList.Add(Teams); //tilføjer det oprettede Class objekt til listen
             }
 
             return teamsList;

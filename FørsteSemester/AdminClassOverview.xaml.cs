@@ -28,15 +28,15 @@ namespace FørsteSemester
             this.admin = admin;
             InitializeComponent();
 
-            //Her har jeg koppieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
+            //Her har jeg kopieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
 
-            List<Class> membersClasses = new List<Class>();
-            List<Class> Classes = admin.LoadTeams();
+            List<Class> membersClasses = new List<Class>(); 
+            List<Class> Classes = admin.LoadTeams();//liste over oprettede hold
             
             for (int i = 0; i < Classes.Count; i++)
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
-                //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
+                //brugervenligt at se hele ordet for kønnet end kun engelsk forbogstav
                 char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
                 string Køn = "";
                 if (GetRequiredGenderInChar == 'F')
@@ -52,7 +52,7 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
-                ListBoxItem item = new ListBoxItem();
+                ListBoxItem item = new ListBoxItem();//opretter en ListBoxItem
 
                 StackPanel stackPanel = new StackPanel();
                 item.Content = stackPanel;
@@ -80,6 +80,7 @@ namespace FørsteSemester
             }
         }
 
+        //Knap der lukker vinduet og går tilbage til Adminmenu vinduet
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
