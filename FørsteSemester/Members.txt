@@ -1,7 +1,6 @@
 Admin;Admin;M;45;Admin;admin;admin;1
-Test;Person;M;23;Bynavn;a;a;2;3
+Test;Person;M;23;Bynavn;a;a;2;8;3
 Mark;Markensen;M;30;Markenstrup;m;m;3
 c;c;F;25;C;c;c;4
 b;b;F;50;b;b;b;5
-;;M;25;;;;6
-Rasmus;Mortensen;M;27;8600;franner;1234qwer;7
+Rasmus;Mortensen;M;27;8600;franner;1234qwer;6

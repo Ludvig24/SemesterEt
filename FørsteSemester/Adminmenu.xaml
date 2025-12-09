@@ -9,8 +9,9 @@
         Title="Adminmenu" Height="700" Width="450">
     <Grid>
         <Button Content="Oversigt over hold" Name="OversightOverHold" HorizontalAlignment="Center" Margin="0,191,0,0" VerticalAlignment="Top" Height="84" Width="150" Click="OversightOverHold_Click"/>
-        <Button Content="Opret Hold" HorizontalAlignment="Center" Margin="0,342,0,0" VerticalAlignment="Top" Click="OpretHold_Click" Height="88" Width="150"/>
+        <Button Content="Opret Hold" HorizontalAlignment="Center" Margin="0,323,0,0" VerticalAlignment="Top" Click="OpretHold_Click" Height="88" Width="150"/>
         <Button Content="Logud" Name="TilbageKnap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="46" Width="70" Click="TilbageKnap_Click" />
+        <Button x:Name="Medlemsoversigt" Content="Oversigt over Medlemmer" HorizontalAlignment="Center" Margin="0,461,0,0" VerticalAlignment="Top" Height="88" Width="150" Click="Medlemsoversigt_Click"/>
 
     </Grid>
 </Window>

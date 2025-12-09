@@ -30,8 +30,6 @@ namespace FørsteSemester
             member.SetUserName(username.ToLower());
             member.SetPassword(password);
 
-            //member.SetEmail(email); Dette vil være nice at have med, men er ikke need 
-            //member.SetPhoneNumber(PhoneNumber);
 
             //Sætter unikt UserID til medlemmet baseret på antal medlemmer i systemet
             int membercount = LoadMember().Count + 1;

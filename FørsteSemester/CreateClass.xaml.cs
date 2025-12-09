@@ -20,7 +20,6 @@ namespace FørsteSemester
     /// </summary>
     public partial class CreateClass : Window
     {
-        Window window;
         Admin admin;
 
         internal CreateClass(Admin admin)
