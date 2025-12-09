@@ -19,13 +19,17 @@ namespace FørsteSemester
     /// </summary>
     public partial class Adminmenu : Window
     {
+        //Her opretter vi et admin objekt som kan bruges i hele klassen
         Admin admin;
-         internal Adminmenu(Admin admin)
+        //Konstruktor for Adminmenu klassen, som tager et Admin objekt som parameter
+        internal Adminmenu(Admin admin)
         {
+            //Her opretter vi komponenterne i vinduet. og så gemmer vi admin som vi fik fra tidligere vindue til admin der er i dettevindue
             InitializeComponent();
             this.admin = admin;
         }
 
+        //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void OpretHold_Click(object sender, RoutedEventArgs e)
         {
             CreateClass createclass = new CreateClass(admin);
@@ -33,6 +37,7 @@ namespace FørsteSemester
             this.Hide();
         }
 
+        //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -40,6 +45,7 @@ namespace FørsteSemester
             mainWindow.Show();
         }
 
+        //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void OversightOverHold_Click(object sender, RoutedEventArgs e)
         {
             AdminClassOverview adminClassOverview = new AdminClassOverview(this, admin);
@@ -47,6 +53,7 @@ namespace FørsteSemester
             this.Hide();
         }
 
+        //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void Medlemsoversigt_Click(object sender, RoutedEventArgs e)
         {
            

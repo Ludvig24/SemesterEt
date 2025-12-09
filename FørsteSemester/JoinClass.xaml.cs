@@ -19,30 +19,33 @@ namespace FørsteSemester
     /// </summary>
     public partial class JoinClass : Window
     {
+        //Deklarerer window og member for at kunne bruge dem i denne klasse
         Window window;
         Member member;
 
+        //Constructor for JoinClass som tager et window og et member objekt som parametre
         internal JoinClass(Window window, Member member)
         {
+            // Kopler de parameter der er sendt med fra tidligere vindue sammmen med dette vindues nye parametere
             this.window = window;
             this.member = member;
-            InitializeComponent();
+            InitializeComponent(); // Og opretter komponenterne i vinduet
 
 
-            List<Class> Classes = member.LoadTeams();
-            for (int i = 0; i < Classes.Count; i++)
+            List<Class> Classes = member.LoadTeams(); //Der laves en liste af Classes som indeholder alle holdene der er oprettet
+            for (int i = 0; i < Classes.Count; i++) //For loop der går igennem alle holdene i listen
             {
-                char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
                 //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
+                char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
                 string Køn = "";
 
-                switch (GetRequiredGenderInChar)
+                switch (GetRequiredGenderInChar) //Switch case der tjekker værdien af GetRequiredGenderInChar, og tager char forkortelsen og laver om til en string
                 {
                     case 'F':
 
                         Køn = "Kvinde";
-                        break;
+                        break; //Der bruges break for at den kører videre og ikke til næste case
 
                     case 'M':
 
@@ -59,7 +62,6 @@ namespace FørsteSemester
                 {
 
                     ListBoxItem item = new ListBoxItem();
-                    //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                     StackPanel stackPanel = new StackPanel();
                     item.Content = stackPanel;
                     TextBlock classNameText = new TextBlock();
@@ -69,9 +71,7 @@ namespace FørsteSemester
                     TextBlock ClassGenderText = new TextBlock();
                     ClassGenderText.Text = $"Tilladte Køn: {Køn}";
                     TextBlock AlderText = new TextBlock();
-                    AlderText.Text = $"Alders Grænse: {Classes[i].GetRequiredMinAge()} - {Classes[i].GetRequiredMaxAge()} år";
-                    //TextBlock ClassMaxAge = new TextBlock();
-                    //ClassMaxAge.Text = $"Maksimum Alder: {Classes[i].GetRequiredMaxAge()}";
+                    AlderText.Text = $"Alders Grænse: {Classes[i].GetRequiredMinAge()} - {Classes[i].GetRequiredMaxAge()} år";                  
                     TextBlock ledigePladser = new TextBlock();
                     ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}"; //Fix regnestykke
 
