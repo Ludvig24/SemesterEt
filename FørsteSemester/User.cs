@@ -57,11 +57,6 @@ namespace FørsteSemester
             return teamsList;
         }
 
-        public void ShowRooms()
-        {
-
-        }
-
         public string GetName()
         {
             return name;
