@@ -47,5 +47,14 @@ namespace FørsteSemester
             adminClassOverview.Show();
             this.Hide();
         }
+
+        private void Medlemsoversigt_Click(object sender, RoutedEventArgs e)
+        {
+           
+            MemberOverView memberOverView = new MemberOverView(this, admin);
+            memberOverView.Show();
+            this.Hide();
+        }
     }
+    
 }
