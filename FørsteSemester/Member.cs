@@ -85,8 +85,7 @@ namespace FørsteSemester
 
                             List<string> lineList = new List<string>(lineArray); //omkonverterer lineArray til en liste så vi kan bruge RemoveAt metoden
                             lineList.RemoveAt(i); // vi kalder RemoveAt() for at fjerne elementet på plads "i" i lineList
-                            string[] newLine = lineList.ToArray(); //vi konverterer lineList tilbage til et nyt array kaldet newLine med ToArray() metoden
-                            lines[x] = string.Join(";", newLine);//kalder join på newLine og sender ";" med som parameter. Dette sammenskriver hver elememt i newLine sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i lines arrayet på plads x (den iteration i foreach loopet vi er nået til)
+                            lines[x] = string.Join(";", lineList);//kalder join på lineList og sender ";" med som parameter. Dette sammenskriver hver elememt i lineList sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i lines arrayet på plads x (den iteration i foreach loopet vi er nået til)
 
 
                         }
@@ -140,8 +139,7 @@ namespace FørsteSemester
 
                     List<string> memberList = new List<string>(memberSplit); //omkonverterer memberSplit til en liste så vi kan bruge RemoveAt metoden
                     memberList.RemoveAt(y); //kalder RemoveAt() på memberList for at fjerne elementet på index y
-                    string[] newMemberLine = memberList.ToArray(); //vi konverterer memberList tilbage til et nyt array kaldet newMemberLine med ToArray() metoden
-                    memberLines[linenumber] = string.Join(";", newMemberLine); //kalder join på newMemberLine og sender ";" med som parameter. Dette sammenskriver hver elememt i newMemberLine sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i MemberLines arrayet på plads linenumber
+                    memberLines[linenumber] = string.Join(";", memberList); //kalder join på memberList og sender ";" med som parameter. Dette sammenskriver hver elememt i newMemberLine sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i MemberLines arrayet på plads linenumber
                 }
 
                 y++;
