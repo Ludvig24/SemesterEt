@@ -23,8 +23,6 @@ namespace FørsteSemester
         private string city;
         private string password;
         private string userName;
-        private string email;
-        private int phoneNumber;
         private int userID;
 
         //metode til at loade alle hold fra tekstfilen og gemme dem i en liste af Class objekter
@@ -132,26 +130,6 @@ namespace FørsteSemester
         public void SetPassword(string password)
         {
             this.password = password;
-        }
-
-        public string GetEmail()
-        {
-            return email;
-        }
-
-        public void SetEmail(string email)
-        {
-            this.email = email;
-        }
-
-        public int GetPhoneNumber()
-        {
-            return phoneNumber;
-        }
-
-        public void SetPhoneNumber(int phoneNumber)
-        {
-            this.phoneNumber = phoneNumber;
         }
 
         public int GetUserID()
