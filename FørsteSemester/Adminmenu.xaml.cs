@@ -20,7 +20,6 @@ namespace FørsteSemester
     public partial class Adminmenu : Window
     {
         Admin admin;
-        Window window;
          internal Adminmenu(Admin admin)
         {
             InitializeComponent();
