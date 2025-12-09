@@ -49,8 +49,6 @@ namespace FørsteSemester
                 Teams.SetClassID(Convert.ToInt32(Teamsplit[8]));
                 Teams.SetMemberIDsInClass(Teamsplit);
 
-
-
                 teamsList.Add(Teams); //tilføjer det oprettede Class objekt til listen
             }
 
