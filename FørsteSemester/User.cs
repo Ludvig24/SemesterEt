@@ -9,12 +9,12 @@ namespace FørsteSemester
 {
     class User 
     {
-        //Opretter sti til Classes filen
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
+        //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere mappen "Documents" med stien til Classes.txt
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //Finder stien til mappen "Documents" som er ens for alle computere
+        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
 
-        //attributter til User klassen
+        //Attributter til User klassen
         private string name;
         private string surname;
         private char gender;
@@ -24,18 +24,17 @@ namespace FørsteSemester
         private string userName;
         private int userID;
 
-        //metode til at loade alle hold fra tekstfilen og gemme dem i en liste af Class objekter
+        //Metode LoadTeams til at loade alle hold fra tekstfilen og gemme dem i en liste af Class objekter
         public List<Class> LoadTeams()
         {
-            string[] lines = System.IO.File.ReadAllLines(filepath); //array der indeholder alle linjer i tekstfilen
-            List<Class> teamsList = new List<Class>();//opretter en liste til at gemme Class objekterne
-
+            string[] lines = System.IO.File.ReadAllLines(filepath); //Array der indeholder alle linjer i tekstfilen
+            List<Class> teamsList = new List<Class>();//Opretter en liste til at gemme Class objekterne
 
             for (int i = 0; i < lines.Count(); i++)
             {
-                string teamData = lines[i]; //laver array indeks i om til en string variabel
+                string teamData = lines[i]; //Laver array indeks i om til en string variabel
                 Class Teams = new Class();
-                string[] Teamsplit = teamData.Split(";"); //splitter ved ; for at tilføje dataen til et array
+                string[] Teamsplit = teamData.Split(";"); //Splitter ved ; for at tilføje dataen til et array
 
                 Teams.SetActivity(Teamsplit[0]);
                 Teams.SetClassName(Teamsplit[1]);
@@ -48,12 +47,13 @@ namespace FørsteSemester
                 Teams.SetClassID(Convert.ToInt32(Teamsplit[8]));
                 Teams.SetMemberIDsInClass(Teamsplit);
 
-                teamsList.Add(Teams); //tilføjer det oprettede Class objekt til listen
+                teamsList.Add(Teams); //Tilføjer det oprettede Class objekt til listen
             }
 
             return teamsList;
         }
 
+        //Get set metoder
         public string GetName()
         {
             return name;
