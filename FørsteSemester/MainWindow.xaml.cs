@@ -22,12 +22,10 @@ namespace FørsteSemester
             UserManager.LoadMember();
             UserManager.GetUserData(5);
             UserManager.GetUserData(3);
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             CreateMember createMemberWindow = new CreateMember(this);
             createMemberWindow.Show();
             
@@ -38,17 +36,17 @@ namespace FørsteSemester
         {
             
             
-            Member loginMember = UserManager.Login(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
-            Admin loginAdmin = UserManager.AdminLogin(BrugernavnBox.Text.ToLower(), PasswordBox.Text);
+            Member loginMember = UserManager.Login(BrugernavnBox.Text.ToLower(), PasswordBox.Text); //Checker om der er et medlem med det brugernavn og password
+            Admin loginAdmin = UserManager.AdminLogin(BrugernavnBox.Text.ToLower(), PasswordBox.Text); //Checker om der er en admin med det brugernavn og password
 
-            if (loginAdmin != null)
+            if (loginAdmin != null) //Hvis at loginAdmin ikke er null køres amdin login
             {
                 Adminmenu createAdminmenu = new Adminmenu(loginAdmin);
                 createAdminmenu.Show();
                 this.Hide();
             }
 
-            else if (loginMember != null)
+            else if (loginMember != null) //hvis loginMember ikke er null køres member login
             {
                 Mainmenu createMainmenu = new Mainmenu(this, loginMember);
                 BrugernavnBox.Clear();
@@ -56,7 +54,7 @@ namespace FørsteSemester
                 createMainmenu.Show();
                 this.Hide();
             }
-            else
+            else //ellers vises fejllogin beskeden
             {
                 Fejllogin.Visibility = Visibility.Visible;
 
