@@ -23,7 +23,7 @@ namespace FørsteSemester
         Window window;
         Admin admin;
 
-        internal AdminClassOverview(Window window, Admin admin)
+        internal AdminClassOverview(Window window, Admin admin) //Constructor til AmdminClassOverview - tager et Window og et Admin objekt som parameter
         {
             //Her opretter vi komponenterne i vinduet. og så gemmer vi window og admin som vi fik fra tidligere vindue, til window og admin der er i dettevindue
             this.window = window;
@@ -35,6 +35,7 @@ namespace FørsteSemester
             List<Class> membersClasses = new List<Class>(); 
             List<Class> Classes = admin.LoadTeams();//liste over oprettede hold
             
+            //for loop der for hver Class opretter en ListBoxItem der indholder informationerne omkring den Class
             for (int i = 0; i < Classes.Count; i++)
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
@@ -56,10 +57,10 @@ namespace FørsteSemester
 
                 ListBoxItem item = new ListBoxItem();//opretter en ListBoxItem
 
-                StackPanel stackPanel = new StackPanel();
-                item.Content = stackPanel;
-                TextBlock classNameText = new TextBlock();
-                classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
+                StackPanel stackPanel = new StackPanel(); //opretter en instans af StackPanel som vi bruger til at stable en række tekstfelter i WPF vinduet
+                item.Content = stackPanel; //tildeler stackPanel til vores ListBoxItem
+                TextBlock classNameText = new TextBlock(); //opretter en instans af TextBlock
+                classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}"; //tildeler Textblocken navnet på den Class på index "i" i Classes gennem GetClassName()
                 TextBlock classActivityText = new TextBlock();
                 classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
                 TextBlock ClassGenderText = new TextBlock();
@@ -71,6 +72,7 @@ namespace FørsteSemester
                 TextBlock antalPladser = new TextBlock();
                 antalPladser.Text = $"Antal Pladser: {Classes[i].GetAvailableSpots()}";
 
+                //Tilføjer alle TextBlocke som Children af vores stackPanel hvilket medfører at de bliver stablet i WPF
                 stackPanel.Children.Add(classNameText);
                 stackPanel.Children.Add(classActivityText);
                 stackPanel.Children.Add(ClassGenderText);
@@ -78,6 +80,7 @@ namespace FørsteSemester
                 stackPanel.Children.Add(antalTilmeldte);
                 stackPanel.Children.Add(antalPladser);
 
+                //Tilføjer vores ListBoxItem item til selve ListBoxen ClassesListBox
                 ClassesListBox.Items.Add(item);
             }
         }

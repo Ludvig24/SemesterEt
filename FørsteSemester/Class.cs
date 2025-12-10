@@ -172,7 +172,8 @@ namespace FørsteSemester
             return memberIDsInClass;
         }
 
-        public void SetMemberIDsInClass(string[] memberIDsInClass) //
+        //Metode til at tildele MemberIDs til listen 
+        public void SetMemberIDsInClass(string[] memberIDsInClass) 
         {
             
             for (int i = 9; i < memberIDsInClass.Length; i++) //Starter fra index 9 for at undgå de første attributter i klassen

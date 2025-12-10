@@ -33,6 +33,8 @@ namespace FørsteSemester
 
             List<Class> membersClasses = new List<Class>();
             List<Class> Classes = member.LoadTeams();
+
+            //foreach loop der for hvert objekt i listen Classes tjekker om memberens liste af classID'er indeholder classID'et for den class vi er nået til i loopet
             foreach (Class cls in Classes)
             {
                 if (member.GetJoinedClasses().Contains(cls.GetClassID()))
@@ -40,6 +42,8 @@ namespace FørsteSemester
                     membersClasses.Add(cls);
                 }
             }   
+
+            //loop der opretter en 
             for (int i = 0; i < membersClasses.Count; i++)
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere

@@ -11,14 +11,14 @@ namespace FørsteSemester
 {
     internal class Admin : User
     {
-        //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere mappen "Documents" med stien til Classes.txt
+        //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinerer stien til mappen "Documents" med stien til Classes.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
-
-        //Metoden CreateClass, hvor vi oprette et hold med følgende parametre, med de forskellige attributter et hold skal have
+        
+        //Metoden CreateClass, hvor vi opretter et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
-            //Attributterne et hold skal have
+            //Setter attributterne et hold skal have
             Class Team = new Class();
             Team.SetActivity(activity);
             Team.SetClassName(classname);
@@ -28,7 +28,7 @@ namespace FørsteSemester
             Team.SetRequiredGender(requiredGender);
             Team.SetRequiredMaxAge(requiredMaxAge);
             Team.SetRequiredMinAge(requiredMinAge);
-
+            
             //Genererer et unikt hold ID ved at tjekke, hvor mange hold der allerede er oprettet og sikre, at det nye ID ikke allerede er i brug
             int TeamID = LoadTeams().Count + 1;//Sætter TeamID til at være lig med antallet af hold, der allerede er oprettet + 1
             while (true)
@@ -54,7 +54,7 @@ namespace FørsteSemester
             List<string> data = new List<string>(); //Opretter en liste til at gemme den ønskede data
             string dataPoint = ""; //Tom string variabel til at holde den ønskede data midlertidigt
             string[] lines = System.IO.File.ReadAllLines(filepath); //Henter data fra tekstfilen i et array
-            for (int i = 0; i < lines.Count(); i++) //Looper igennem array og splitter ved hver ;
+            for (int i = 0; i < lines.Count(); i++) //Looper igennem arrayet lines og splitter ved hver ;
             {
                 string ClassData = lines[i]; 
                 string[] ClassSplit = ClassData.Split(";");
@@ -81,9 +81,9 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetRequiredMinAge()+";");
                 streamWriter.Write(team.GetClassID());
                 
-                if(team.GetMemberIDsInClass() != null)
+                if(team.GetMemberIDsInClass() != null) //tjekker om der er nogle memberID'er i team objektet - hvis ikke skrives der ingenting i filen
                 {
-                    streamWriter.Write(team.GetMemberIDsInClass() + ";");
+                    streamWriter.Write(team.GetMemberIDsInClass() + ";"); //hvis GetMemberIDsInClass() returnerer noget skrives de ned i filen efterfulgt af et semikolon
                 }
                 
                 streamWriter.WriteLine();

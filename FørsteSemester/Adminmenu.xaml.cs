@@ -24,7 +24,7 @@ namespace FørsteSemester
         //Konstruktor for Adminmenu klassen, som tager et Admin objekt som parameter
         internal Adminmenu(Admin admin)
         {
-            //Her opretter vi komponenterne i vinduet. og så gemmer vi admin som vi fik fra tidligere vindue til admin der er i dettevindue
+            //Her opretter vi komponenterne i vinduet. og så gemmer vi admin som vi fik fra tidligere vindue til admin der er i dette vindue
             InitializeComponent();
             this.admin = admin;
         }
