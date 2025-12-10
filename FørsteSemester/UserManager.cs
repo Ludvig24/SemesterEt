@@ -131,7 +131,7 @@ namespace FørsteSemester
                 {
                     Member loginMember = new Member(); //der oprettes et objekt af member klassen
                     loginMember = LoadMember()[i]; //tildeler member objektet det specifikke member objekt vi er kommet til i loopen
-                    return loginMember;
+                    return loginMember; //returnerer member objektet
 
                 }
                 else //hvis der ikke findes et match øges i med 1 og loopet starter forfra

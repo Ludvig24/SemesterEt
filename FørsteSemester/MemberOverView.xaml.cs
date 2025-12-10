@@ -34,7 +34,7 @@ namespace FørsteSemester
             List<Member> members = UserManager.LoadMember(); //opretter liste af members
             for (int i = 0; i < members.Count; i++) //loop der går igennem listen af members
             {
-                MembersListBox.Items.Add("Brugernavn: " + members[i].GetUserName() + ", Navn: " + members[i].GetName() + " " + members[i].GetSurname() + ", Alder: " + members[i].GetAge() + ", Køn: " + members[i].GetGender()); //udskriver medlem i listbox
+                MembersListBox.Items.Add("Brugernavn: " + members[i].GetUserName() + ", Navn: " + members[i].GetName() + " " + members[i].GetSurname() + ", Alder: " + members[i].GetAge() + ", Køn: " + members[i].GetGender() + ", By: " + members[i].GetCity()); //udskriver medlem i listbox
                 MembersListBox.Items.Add("-----------------------------------------------------" );
 
             }
