@@ -11,11 +11,11 @@ namespace FørsteSemester
 {
     internal class Admin : User
     {
-        //Opretter sti til mappen "Documents" også kombinere det med stien ind til Classes.txt filen
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
+        //Statiske variabler til at finde stien til tekstfilen hvor hold data bliver gemt. kombinere mappen "Documents" med stien til Classes.txt
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
+        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
-        //Fields/Attribut for Klassen Admin
+        //Opretter en liste af Member objekter
         List<Member> memberList = new List<Member>();
 
         //Metoden CreateClass, hvor vi oprette et hold med følgende parametre, med de forskellige attributter et hold skal have
@@ -32,18 +32,18 @@ namespace FørsteSemester
             Team.SetRequiredMaxAge(requiredMaxAge);
             Team.SetRequiredMinAge(requiredMinAge);
 
-            //Tager mængen af hold og + 1, og sætter det som ID for det nye hold
-            int TeamID = LoadTeams().Count + 1;
+            //Genererer et unikt hold ID ved at tjekke hvor mange hold der allerede er oprettet og sikre at det nye ID ikke allerede er i brug
+            int TeamID = LoadTeams().Count + 1;//sætter TeamID til at være lig med antallet af hold der allerede er oprettet + 1
             while (true)
             {
-                if (GetClassData(8).Contains(TeamID.ToString())) //ændret GetClassData() fra (9) til (8)
+                if (GetClassData(8).Contains(TeamID.ToString())) //tjekker om det genererede TeamID allerede findes i listen af hold ID'er
                 {
-                    TeamID = TeamID + 1;
+                    TeamID = TeamID + 1; //hvis det gør, øges TeamID med 1 og tjekket gentages
                 }
                 else
                 {
-                    Team.SetClassID(TeamID);
-                    break;
+                    Team.SetClassID(TeamID); //hvis det ikke gør, sættes holdets ID til det genererede TeamID
+                    break; //bryder while loopet
                 }
 
             }
@@ -54,12 +54,12 @@ namespace FørsteSemester
         //Metode til at få en en specifik type date fra alle hold i en liste baseret på deres indeks (int a)
         public static List<string> GetClassData(int a) 
         {
-            List<string> data = new List<string>();
-            string dataPoint = "";
+            List<string> data = new List<string>(); //opretter en liste til at gemme den ønskede data
+            string dataPoint = ""; //tom string variabel til at holde den ønskede data midlertidigt
             string[] lines = System.IO.File.ReadAllLines(filepath); //henter data fra tekstfilen i et array
             for (int i = 0; i < lines.Count(); i++) //looper igennem array og splitter ved hver ;
             {
-                string ClassData = lines[i];
+                string ClassData = lines[i]; 
                 string[] ClassSplit = ClassData.Split(";");
                 dataPoint = ClassSplit[a];
                 data.Add(dataPoint);
