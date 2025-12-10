@@ -43,6 +43,8 @@ namespace FørsteSemester
                 gender = 'M'; 
             }
 
+            if(AktivitetBox.Text == null || HoldNavnBox.Text == null || PladsBox.Text == null || Convert.ToByte(AlderMaxBox.Text) > 130 || Convert.ToByte(AlderMinBox.Text) < 14)
+
             //Kalder CreateClass metoden fra Admin klassen med de værdier der er indtastet i tekstboksene
             admin.CreateClass(AktivitetBox.Text, HoldNavnBox.Text, Convert.ToByte(PladsBox.Text), gender ,Convert.ToByte(AlderMaxBox.Text), Convert.ToByte(AlderMinBox.Text));
             MessageBox.Show("Hold oprettet!"); //Besked der viser at holdet er oprettet
