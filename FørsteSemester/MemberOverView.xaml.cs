@@ -31,14 +31,16 @@ namespace FørsteSemester
             InitializeComponent();
             this.window = window;
             this.admin = admin;
-            List<Member> members = UserManager.LoadMember();
-            for (int i = 0; i < members.Count; i++)
+            List<Member> members = UserManager.LoadMember(); //opretter liste af members
+            for (int i = 0; i < members.Count; i++) //loop der går igennem listen af members
             {
-                MembersListBox.Items.Add("Brugernavn: " + members[i].GetUserName() + ", Navn: " + members[i].GetName() + " " + members[i].GetSurname() + ", Alder: " + members[i].GetAge() + ", Køn: " + members[i].GetGender());
+                MembersListBox.Items.Add("Brugernavn: " + members[i].GetUserName() + ", Navn: " + members[i].GetName() + " " + members[i].GetSurname() + ", Alder: " + members[i].GetAge() + ", Køn: " + members[i].GetGender()); //udskriver medlem i listbox
                 MembersListBox.Items.Add("-----------------------------------------------------" );
 
             }
         }
+
+        //Går tilbage til Adminmenu vinduet når "TilbageKnap" bliver klikket
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
