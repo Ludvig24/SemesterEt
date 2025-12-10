@@ -59,11 +59,23 @@ namespace FørsteSemester
             }
             if (Convert.ToByte(AlderMinBox.Text) < 14)
             {
+                if (Convert.ToByte(AlderMinBox.Text) > 130)
+                {
+                    MessageBox.Show("Den minimale alder må ikke være over 130 år!"); //Besked der viser at den minimale alder er for høj
+                    return; //Afslutter metoden hvis betingelsen er opfyldt
+                }
+
                 MessageBox.Show("Den minimale alder skal være mindst 14 år!"); //Besked der viser at den minimale alder er for lav
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
             if (Convert.ToByte(AlderMaxBox.Text) > 130)
             {
+                if (Convert.ToByte(AlderMaxBox.Text) <= 14)
+                {
+                    MessageBox.Show("Den maksimale alder skal være mindst 14 år!"); //Besked der viser at den maksimale alder er for lav
+                    return; //Afslutter metoden hvis betingelsen er opfyldt
+                }
+
                 MessageBox.Show("Den maksimale alder må ikke være over 130 år!"); //Besked der viser at den maksimale alder er for høj
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
