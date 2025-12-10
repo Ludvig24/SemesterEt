@@ -13,7 +13,6 @@ namespace FørsteSemester
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
 
-        List<Class> ClassList = new List<Class>();
 
         //attributter til User klassen
         private string name;

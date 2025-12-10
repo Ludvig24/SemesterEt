@@ -47,7 +47,7 @@ namespace FørsteSemester
 
         //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void OversightOverHold_Click(object sender, RoutedEventArgs e)
-        {
+        { //Opretter et AdminClassOverview vindue og sender Adminmenu vinduet og Admin objektet som parametre
             AdminClassOverview adminClassOverview = new AdminClassOverview(this, admin);
             adminClassOverview.Show();
             this.Hide();
@@ -56,7 +56,7 @@ namespace FørsteSemester
         //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void Medlemsoversigt_Click(object sender, RoutedEventArgs e)
         {
-           
+            //Opretter et MemberOverView vindue og sender Adminmenu vinduet og Admin objektet som parametre
             MemberOverView memberOverView = new MemberOverView(this, admin);
             memberOverView.Show();
             this.Hide();

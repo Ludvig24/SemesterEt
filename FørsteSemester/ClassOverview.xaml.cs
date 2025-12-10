@@ -19,11 +19,12 @@ namespace FørsteSemester
     /// </summary>
     public partial class ClassOverview : Window
     {
-
+        //Her opretter vi to objekter som kan bruges i hele klassen
         Window window;
         Member member;
         internal ClassOverview(Window window, Member member)
         {
+            //Her opretter vi komponenterne i vinduet. og så gemmer vi window og member som vi fik fra tidligere vindue, til window og member der er i dettevindue
             this.window = window;
             this.member = member;
             InitializeComponent();
@@ -43,8 +44,8 @@ namespace FørsteSemester
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
                 //brugervenligt at se hele ordet for kønnet end kun engelsk forbukstav
-                char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
-                string Køn = "";
+                char GetRequiredGenderInChar = Classes[i].GetRequiredGender(); //Henter kønnet for det pågældende hold
+                string Køn = ""; //Tom string variabel til at holde kønnet som tekst
                 if (GetRequiredGenderInChar == 'F')
                 {
                     Køn = "Kvinde";

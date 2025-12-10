@@ -19,17 +19,19 @@ namespace FørsteSemester
     /// </summary>
     public partial class AdminClassOverview : Window
     {
+        //Her opretter vi to objekter som kan bruges i hele klassen
         Window window;
         Admin admin;
 
         internal AdminClassOverview(Window window, Admin admin)
         {
+            //Her opretter vi komponenterne i vinduet. og så gemmer vi window og admin som vi fik fra tidligere vindue, til window og admin der er i dettevindue
             this.window = window;
             this.admin = admin;
             InitializeComponent();
 
-            //Her har jeg kopieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
 
+            //Her har jeg kopieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
             List<Class> membersClasses = new List<Class>(); 
             List<Class> Classes = admin.LoadTeams();//liste over oprettede hold
             

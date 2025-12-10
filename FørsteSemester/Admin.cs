@@ -15,9 +15,6 @@ namespace FørsteSemester
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
-        //Opretter en liste af Member objekter
-        List<Member> memberList = new List<Member>();
-
         //Metoden CreateClass, hvor vi oprette et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {

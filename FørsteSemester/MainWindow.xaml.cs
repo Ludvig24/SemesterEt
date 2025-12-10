@@ -19,9 +19,6 @@ namespace FørsteSemester
         public MainWindow()
         {
             InitializeComponent();
-            UserManager.LoadMember();
-            UserManager.GetUserData(5);
-            UserManager.GetUserData(3);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
