@@ -33,7 +33,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="Fejllogin" Foreground="Red" Visibility="Hidden" HorizontalAlignment="Left" Height="34" Margin="150,511,0,0" TextWrapping="Wrap" Text="Brugernavn og Password matcher ikke" VerticalAlignment="Top" Width="150" TextAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Fejllogin" Foreground="Red" IsEnabled="False" Visibility="Hidden" HorizontalAlignment="Left" Height="34" Margin="150,511,0,0" TextWrapping="Wrap" Text="Brugernavn og Password matcher ikke" VerticalAlignment="Top" Width="150" TextAlignment="Center" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
