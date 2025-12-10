@@ -63,8 +63,8 @@ namespace FørsteSemester
 
             //Tjekker om aktivitet og holdnavn kun indeholder bogstaver
             string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxyzæøå"; //string over alle tilladte bogstaver i inputfelterne aktivitet og holdnavn
-            string activityClassName = (AktivitetBox.Text + HoldNavnBox.Text).ToLower(); //variabel der indeholder aktivitet og holdnavn, gør dem til lover så det kan sammenlignes
-            for (int i = 0; i < allowedOnlyLetters.Length; i++) //for loop der itererer activityClassName variabel som et array
+            string activityClassName = ( HoldNavnBox.Text).ToLower(); //variabel der indeholder aktivitet og holdnavn, gør dem til lover så det kan sammenlignes
+            for (int i = 0; i < activityClassName.Length; i++) //for loop der itererer activityClassName variabel som et array
             {
                 if (!allowedOnlyLetters.Contains(activityClassName[i])) //if statement der tjekker om activityClassName indeholder noget andet end de tilladte bogstaver defineret i allowedOnlyLetters
                 {
