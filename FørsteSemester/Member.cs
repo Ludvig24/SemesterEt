@@ -10,44 +10,45 @@ namespace FørsteSemester
 {
     class Member : User
     {
-        //Opretter sti til mappen "Documents" også kombinere det med stien ind til Members.txt filen og Classes.txt
-        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt");
-        static string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt");
+        //Statiske variabler til at finde stien til tekstfilen, hvor hold data og Medlem data bliver gemt. Kombinere mappen "Documents" med stien til Classes.txt eller Members.txt
+        static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
+        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt"); // Kombinerer stien til mappen "Documents" med stien til Members.txt filen
+        static string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
+        //Attributter for klassen Member
         private string joinedClass = "";
         private List<int> joinedClasses = new List<int>();
 
-        //metode som tilføjer et holds ID til brugeren i Members filen
+        //Metode JoinClass, som tilføjer et holds ID til brugeren i Members filen
         public void JoinClass(int classID, int userID)
         {
             joinedClasses.Add(classID); //Tilføjer HoldId til listen joinedClasses
-            List<string> userIDs = UserManager.GetUserData(7); //henter alle UserIDs med GetUserData() metoden
+            List<string> userIDs = UserManager.GetUserData(7); //Henter alle UserIDs med GetUserData() metoden
             string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer stien filepath peger på (members.txt)
-            classID.ToString(); //konverterer classID til en string
-            joinedClass = ";" + classID; //sætter joinedClass lig semikolon + classID for at matche formattet i tekstfilen Members.txt
-            //bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på
+            classID.ToString(); //Konverterer classID til en string
+            joinedClass = ";" + classID; //Sætter joinedClass lig semikolon + classID for at matche formattet i tekstfilen Members.txt
+            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
             {
-                int lineNumber = 0; //opretter variabel der holder styr på linjenummer i tekstfilen
+                int lineNumber = 0; //Opretter variabel, der holder styr på linjenummer i tekstfilen
 
-                //for loop der itererer gennem userIDs listen
+                //For loop, der itererer gennem userIDs listen
                 for (int i = 0; i < userIDs.Count; i++)
                 {
-                    //if statement der tjekker om userID fra input er det samme som userIDs på index i
+                    //If statement, der tjekker om userID fra input er det samme som userIDs på index i
                     if (userID.ToString() == userIDs[i])
                     {
-                        lineNumber = i; //hvis if statement udsagn er sandt tildeles linenumber i
+                        lineNumber = i; //Hvis if statement udsagn er sandt tildeles linenumber i
                     }
                 }
 
-                lines[lineNumber] = lines[lineNumber] + joinedClass;  //vi appender joinedclass variablen på pladsen "linenumber" i arrayet lines
+                lines[lineNumber] = lines[lineNumber] + joinedClass;  //Vi appender joinedclass variablen på pladsen "linenumber" i arrayet lines
 
-                //for loop der kører så længe i er mindre end længden på lines
+                //For loop der kører så længe i er mindre end længden på lines
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    streamWriter.Write(lines[i]); // for hver iteration kaldes Write på streamWriter objektet. lines på index i skrives ned i tekstfilen Members.txtx
-                    streamWriter.WriteLine(); //kalder writeLine efter hver linje er skrevet
+                    streamWriter.Write(lines[i]); // For hver iteration kaldes Write på streamWriter objektet. Lines på index i skrives ned i tekstfilen Members.txt
+                    streamWriter.WriteLine(); //Kalder writeLine efter hver linje er skrevet
                 }
 
             }
@@ -63,47 +64,47 @@ namespace FørsteSemester
             string[] lines = System.IO.File.ReadAllLines(classesFilepath);  //Læser alle linjer stien classesFilepath peger på
             string[] memberLines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer stien filepath peger på (members.txt)
 
-            //foreach loop der iterer gennem arrayet lines
-            int x = 0; //tællervariabel der anvendes længere nede
+            //Foreach loop der iterer gennem arrayet lines
+            int x = 0; //Tællervariabel der anvendes længere nede
             foreach (string line in lines)
             {
-                //opretter array der indeholder dataet fra en bestemt linje i Classes.txt
-                string[] lineArray = line.Split(";"); //for hver iteration kaldes Split() på ";" på den string loopet er nået til og resultatet gemmes i et string array
+                //Opretter array der indeholder dataet fra en bestemt linje i Classes.txt
+                string[] lineArray = line.Split(";"); //For hver iteration kaldes Split() på ";" på den string loopet er nået til og resultatet gemmes i et string array
 
-                //if statement der tjekker om plads 8 i lineArray (klassens id) er lig med classID variablen fra input
+                //If statement der tjekker om plads 8 i lineArray (klassens id) er lig med classID variablen fra input
                 if (lineArray[8] == classID.ToString())
                 {
-                    //hvis if statement er sandt køres et for loop der itererer gennem arrayet lineArray fra plads 9 da det er derfra og frem hvor userIDs i classes er gemt
+                    //Hvis if statement er sandt køres et for loop der itererer gennem arrayet lineArray fra plads 9, da det er derfra og frem, hvor userIDs i classes er gemt
                     for (int i = 9; i < lineArray.Count(); i++)
                     {
-                        //if statement tjekker for hver iteration om memberens id står i arrayet lineArray
+                        //If statement tjekker for hver iteration om memberens id står i arrayet lineArray
                         if (lineArray[i] == GetUserID().ToString())
                         {
-                            int currentJoinedAmount = Convert.ToInt32(lineArray[4]);//Hvis if statement er sandt gemmes antallet af tilmeldte brugere som står på index 4 i linearray i en int variabel
-                            currentJoinedAmount--; //vi trækker 1 fra currentJoinedAmount
-                            lineArray[4] = currentJoinedAmount.ToString(); // tildeler den nye værdi af currentJoinedAmount på plads 4 i arrayet lineArray
+                            int currentJoinedAmount = Convert.ToInt32(lineArray[4]);//Hvis if statement er sandt gemmes antallet af tilmeldte brugere, som står på index 4 i linearray i en int variabel
+                            currentJoinedAmount--; //Vi trækker 1 fra currentJoinedAmount
+                            lineArray[4] = currentJoinedAmount.ToString(); //Tildeler den nye værdi af currentJoinedAmount på plads 4 i arrayet lineArray
 
-                            List<string> lineList = new List<string>(lineArray); //omkonverterer lineArray til en liste så vi kan bruge RemoveAt metoden
-                            lineList.RemoveAt(i); // vi kalder RemoveAt() for at fjerne elementet på plads "i" i lineList
-                            lines[x] = string.Join(";", lineList);//kalder join på lineList og sender ";" med som parameter. Dette sammenskriver hver elememt i lineList sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i lines arrayet på plads x (den iteration i foreach loopet vi er nået til)
+                            List<string> lineList = new List<string>(lineArray); //Omkonverterer lineArray til en liste så vi kan bruge RemoveAt metoden
+                            lineList.RemoveAt(i); // Vi kalder RemoveAt() for at fjerne elementet på plads "i" i lineList
+                            lines[x] = string.Join(";", lineList);//Kalder join på lineList og sender ";" med som parameter. Dette sammenskriver hver elememt i lineList sammen til en string, hvor hvert element er separeret med et semikolon. Resultatet gemmes i lines arrayet på plads x (den iteration i foreach loopet vi er nået til)
 
 
                         }
                     }
                 }
-                x++; //tæller x op med 1
+                x++; //Tæller x op med 1
 
             }
 
 
 
-            //bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil classesFilepath peger på
+            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil classesFilepath peger på
             using (StreamWriter streamWriter = new StreamWriter(classesFilepath)) //har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
             {
-                //for loop der itererer gennem lines arrayet
+                //For loop der itererer gennem lines arrayet
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    //for hver iteration skrives den string på index "i" ned i txt filen Classes
+                    //For hver iteration skrives den string på index "i" ned i txt filen Classes
                     streamWriter.Write(lines[i]);
                     streamWriter.WriteLine();
 
@@ -111,47 +112,47 @@ namespace FørsteSemester
             }
 
             
-            int z = 0; //tællervariabel for while loop
-            int linenumber = 0; //int variabel der holder styr på linjenummer i tekstfilen Members.txt
-            List<string> userIDs = UserManager.GetUserData(7); //gemmer alle userIDs fra textfilen Members.txt i en liste af strings
-            //while loop der itererer gennem userIDs listen
+            int z = 0; //Tællervariabel for while loop
+            int linenumber = 0; //Int variabel der holder styr på linjenummer i tekstfilen Members.txt
+            List<string> userIDs = UserManager.GetUserData(7); //Gemmer alle userIDs fra textfilen Members.txt i en liste af strings
+            //While loop der itererer gennem userIDs listen
             while (z < userIDs.Count())
             {
-                //if statement der tjekker om userID'et for memberen er det samme som userIDs på index z
+                //If statement der tjekker om userID'et for memberen er det samme som userIDs på index z
                 if (userIDs[z] == GetUserID().ToString())
                 {
-                    linenumber = z; //hvis if statement er sandt tildeles variablen linenumber z
+                    linenumber = z; //Hvis if statement er sandt tildeles variablen linenumber z
                 }
 
                 z++;
             }
 
-            string member = memberLines[linenumber]; //opretter en string og tildeler den element på index "lineumber" i arrayet memberLines
-            string[] memberSplit = member.Split(";"); //splitter stringen member ved hvert semikolon så vi har et array kaldet memberSplit med alt memberens data
+            string member = memberLines[linenumber]; //Opretter en string og tildeler den element på index "lineumber" i arrayet memberLines
+            string[] memberSplit = member.Split(";"); //Splitter stringen member ved hvert semikolon så vi har et array kaldet memberSplit med alt memberens data
 
-            //hvile loop der itererer fra index 8 i memberSplit arrayet
+            //While loop der itererer fra index 8 i memberSplit arrayet
             int y = 8;
             while (y < memberSplit.Count())
             {
-                //if statement der tjekker om index y i memberSplit er lig med classID fra input
+                //If statement der tjekker om index y i memberSplit er lig med classID fra input
                 if (memberSplit[y] == classID.ToString())
                 {
 
-                    List<string> memberList = new List<string>(memberSplit); //omkonverterer memberSplit til en liste så vi kan bruge RemoveAt metoden
-                    memberList.RemoveAt(y); //kalder RemoveAt() på memberList for at fjerne elementet på index y
-                    memberLines[linenumber] = string.Join(";", memberList); //kalder join på memberList og sender ";" med som parameter. Dette sammenskriver hver elememt i newMemberLine sammen til en string hvor hvert element er separeret med et semikolon. Resultatet gemmes i MemberLines arrayet på plads linenumber
+                    List<string> memberList = new List<string>(memberSplit); //Omkonverterer memberSplit til en liste så vi kan bruge RemoveAt metoden
+                    memberList.RemoveAt(y); //Kalder RemoveAt() på memberList for at fjerne elementet på index y
+                    memberLines[linenumber] = string.Join(";", memberList); //Kalder join på memberList og sender ";" med som parameter. Dette sammenskriver hver elememt i newMemberLine sammen til en string, hvor hvert element er separeret med et semikolon. Resultatet gemmes i MemberLines arrayet på plads linenumber
                 }
 
                 y++;
             }
 
-            //bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på (Members.txt)
+            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på (Members.txt)
             using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
             {
-                //for loop der itererer gennem memberLines arrayet
+                //For loop der itererer gennem memberLines arrayet
                 for (int i = 0; i < memberLines.Length; i++)
                 {
-                    //for hver iteration skrives den string på index "i" ned i txt filen Members
+                    //For hver iteration skrives den string på index "i" ned i txt filen Members
                     streamWriter.Write(memberLines[i]);
                     streamWriter.WriteLine();
                 }
