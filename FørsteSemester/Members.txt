@@ -9,6 +9,4 @@ Ellen;Ripley;F;32;Space;alienhunter;Nostromo1;8;9
 Beatrix;Kiddo;F;28;Texas;blackmamba;PaiMei4;9;9
 Roy;Batty;M;40;Los Angeles;nexus6;MoreHumanThanHuman;10
 John;McClane;M;38;New York;diehard;YippeeKiYay;11
-a;a;M;25;a;a;a;12
-arstars;arstarts;x;123;rarst;arstart;arstartrs;13
-arstrat;arstart;F;123;artsarstars;starstarst;arstartasrt;14
+a;a;M;25;a;a;a;12;3;16jhgf;jhgf;F;51;iuy;l;l;13

@@ -178,11 +178,12 @@ namespace FørsteSemester
             return memberIDsInClass;
         }
 
-        public void SetMemberIDsInClass(string[] memberIDsInClass)
+        public void SetMemberIDsInClass(string[] memberIDsInClass) //½
         {
-
+            
             for (int i = 9; i < memberIDsInClass.Length; i++) //starter fra index 9 for at undgå de første attributter i klassen
             {
+                //tilføjer hvert medlems ID til memberIDsInClass attributten
                 this.memberIDsInClass = this.memberIDsInClass + memberIDsInClass[i];
 
             }
