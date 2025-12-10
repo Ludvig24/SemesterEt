@@ -32,7 +32,7 @@ namespace FørsteSemester
         {
             byte age; //tom byte variabel
             char gender = 'x'; //default placeholder til køn variabel
-            string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxzæøå"; //string over alle tilladte bogstaver i inputfelterne fornavn, efternavn og by
+            string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxyzæøå"; //string over alle tilladte bogstaver i inputfelterne fornavn, efternavn og by
             string NameSurCity = (FornavnBox.Text + EfternavnBox.Text + ByBox.Text).ToLower(); //variabel der indeholder fornavn, efternavn og by
 
             //if statement der tjekker om der er tomme input felter
