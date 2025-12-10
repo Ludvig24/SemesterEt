@@ -43,7 +43,7 @@ namespace FørsteSemester
                 }
             }   
 
-            //loop der opretter en 
+            //loop der opretter en ListBoxItem for hver class memberen er tilmeldt.
             for (int i = 0; i < membersClasses.Count; i++)
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
@@ -63,6 +63,7 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
+                
                 ListBoxItem item = new ListBoxItem();
                 //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                 StackPanel stackPanel = new StackPanel();
@@ -100,7 +101,7 @@ namespace FørsteSemester
 
         private void FrameldHold_Click(object sender, RoutedEventArgs e)
         {
-            // Ensure an item is selected
+            // if statement der tjekker om brugeren har klikket på listboxen
             if (ClassesListBox.SelectedItem == null)
             {
                 MessageBox.Show("Vælg et hold først.", "Ingen markering");

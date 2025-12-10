@@ -31,7 +31,7 @@ namespace FørsteSemester
             InitializeComponent(); // Initialiserer komponenterne i vinduet
         }
 
-        //Opretter et hold baseret på input fra tekstboksene når knappen "OpretHold" bliver klikket
+        //Opretter et hold baseret på input fra tekstboksene når knappen "OpretHold" bliver klikket på
         private void OpretHold_Click(object sender, RoutedEventArgs e)
         {
             char gender = 'B'; //standardværdi for begge køn
@@ -54,15 +54,15 @@ namespace FørsteSemester
                 gender = 'M';
             }
 
-            if (AktivitetBox.Text == string.Empty || HoldNavnBox.Text == string.Empty || PladsBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty)
             //Tjekker om nogle af tekstboksene er tomme eller om aldersgrænserne er udenfor rimelige værdier
+            if (AktivitetBox.Text == string.Empty || HoldNavnBox.Text == string.Empty || PladsBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty)
             {
                 MessageBox.Show("Udfyld venligst alle felter korrekt!"); //Besked der viser at nogle felter ikke er udfyldt korrekt
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
 
             //Tjekker om aktivitet og holdnavn kun indeholder bogstaver
-            string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxyzæøå "; //string over alle tilladte bogstaver i inputfelterne aktivitet og holdnavn
+            string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxyzæøå"; //string over alle tilladte bogstaver i inputfelterne aktivitet og holdnavn
             string activityClassName = ( HoldNavnBox.Text).ToLower(); //variabel der indeholder aktivitet og holdnavn, gør dem til lover så det kan sammenlignes
             for (int i = 0; i < activityClassName.Length; i++) //for loop der itererer activityClassName variabel som et array
             {
