@@ -41,12 +41,12 @@ namespace FørsteSemester
             {
                 gender = 'F';
             }
-            else if (KønBox.Text == "Mand") 
-            { 
-                gender = 'M'; 
+            else if (KønBox.Text == "Mand")
+            {
+                gender = 'M';
             }
 
-            if(AktivitetBox.Text == string.Empty || HoldNavnBox.Text == string.Empty || PladsBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty || Convert.ToByte(AlderMaxBox.Text) > 130 || Convert.ToByte(AlderMinBox.Text) < 14)
+            if (AktivitetBox.Text == string.Empty || HoldNavnBox.Text == string.Empty || PladsBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty || Convert.ToByte(AlderMaxBox.Text) > 130 || Convert.ToByte(AlderMinBox.Text) < 14)
             //Tjekker om nogle af tekstboksene er tomme eller om aldersgrænserne er udenfor rimelige værdier
             {
                 MessageBox.Show("Udfyld venligst alle felter korrekt!"); //Besked der viser at nogle felter ikke er udfyldt korrekt
@@ -57,13 +57,24 @@ namespace FørsteSemester
                 MessageBox.Show("Den maksimale alder skal være højere end den minimale alder!"); //Besked der viser at aldersgrænserne er forkerte
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
-            if (Convert.ToByte(AlderMinBox.Text) < 14)
+
+            if (Convert.ToByte(AlderMinBox.Text) <= 14)
             {
+                if(Convert.ToByte(AlderMaxBox.Text) >= 130)
+                {
+                    MessageBox.Show("Den maksimale alder må ikke være over 130 år!"); //Besked der viser at den maksimale alder er for høj
+                    return; //Afslutter metoden hvis betingelsen er opfyldt
+                }
                 MessageBox.Show("Den minimale alder skal være mindst 14 år!"); //Besked der viser at den minimale alder er for lav
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
-            if (Convert.ToByte(AlderMaxBox.Text) > 130)
+            if (Convert.ToByte(AlderMaxBox.Text) >= 130)
             {
+                if (Convert.ToByte(AlderMinBox.Text) <= 14)
+                {
+                    MessageBox.Show("Den minimale alder skal være mindst 14 år!"); //Besked der viser at den minimale alder er for lav
+                    return; //Afslutter metoden hvis betingelsen er opfyldt
+                }
                 MessageBox.Show("Den maksimale alder må ikke være over 130 år!"); //Besked der viser at den maksimale alder er for høj
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
