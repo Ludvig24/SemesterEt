@@ -33,15 +33,15 @@ namespace FørsteSemester
 
         private void Logud_Click(object sender, RoutedEventArgs e)
         {
-            this.Close(); //lukker Mainmenu vinduet
-            window.Show(); //viser login vinduet
+            this.Close(); //Lukker Mainmenu vinduet
+            window.Show(); //Viser login vinduet
         }
 
         private void Tilmeld_Click(object sender, RoutedEventArgs e) 
         {
             JoinClass joinClass = new JoinClass(this, member); //Opretter et JoinClass vindue og sender Mainmenu vinduet og Member objektet som parametre
-            joinClass.Show(); //viser JoinClass vinduet
-            this.Hide(); //gemmer Mainmenu vinduet
+            joinClass.Show(); //Viser JoinClass vinduet
+            this.Hide(); //Gemmer Mainmenu vinduet
 
 
         }
@@ -49,9 +49,9 @@ namespace FørsteSemester
         private void MineHold_Click(object sender, RoutedEventArgs e)
         {
             ClassOverview classOverview = new ClassOverview(this, member); //Opretter et ClassOverview vindue og sender Mainmenu vinduet og Member objektet som parametre
-            classOverview.Show(); //viser ClassOverview vinduet
+            classOverview.Show(); //Viser ClassOverview vinduet
 
-            this.Hide(); //gemmer Mainmenu vinduet
+            this.Hide(); //Gemmer Mainmenu vinduet
         }
     }
     

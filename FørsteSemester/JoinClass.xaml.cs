@@ -19,7 +19,7 @@ namespace FørsteSemester
     /// </summary>
     public partial class JoinClass : Window
     {
-        //Deklarerer window og member for at kunne bruge dem i denne klasse
+        //Opretter window og member objekter for at kunne bruge dem i denne klasse
         Window window;
         Member member;
 
@@ -64,11 +64,11 @@ namespace FørsteSemester
                 }
 
                 //Opretter et ListBoxItem for hvert hold, og fylder det med information om holdet ved at lave et stackpanel
-                ListBoxItem item = new ListBoxItem();
-                    StackPanel stackPanel = new StackPanel();
-                    item.Content = stackPanel;
-                    TextBlock classNameText = new TextBlock();
-                    classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
+                ListBoxItem item = new ListBoxItem(); //Opretter en ListBoxItem
+                StackPanel stackPanel = new StackPanel(); //Opretter en instans af StackPanel som vi bruger til at stable en række tekstfelter i WPF vinduet
+                item.Content = stackPanel;//Tildeler stackPanel til vores ListBoxItem
+                TextBlock classNameText = new TextBlock(); //Opretter en instans af TextBlock
+                classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}";
                     TextBlock classActivityText = new TextBlock();
                     classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
                     TextBlock ClassGenderText = new TextBlock();
@@ -78,7 +78,7 @@ namespace FørsteSemester
                 TextBlock ledigePladser = new TextBlock();
                     ledigePladser.Text = $"Ledige pladser: {Classes[i].GetAvailableSpots() - Classes[i].GetJoinedAmount()}"; // Der beregnes ledige pladser ved at trække joinedAmount fra availableSpots
 
-                // nedeunder tilføjes alle TextBlock elementerne til stackpanelet
+                // Nedeunder tilføjes alle TextBlock elementerne til stackpanelet
                     stackPanel.Children.Add(classNameText);
                     stackPanel.Children.Add(classActivityText);
                     stackPanel.Children.Add(ClassGenderText);
@@ -86,7 +86,9 @@ namespace FørsteSemester
                     stackPanel.Children.Add(ledigePladser);
 
                 //Her laves en if sætning der tjekker om medlemmet allerede er tilmeldt holdet
-                //Hvis medlemmet er tilmeldt holdet, tilføjes et tomt og usynligt item i listen i stedet for holdet
+                //Hvis medlemmet er tilmeldt holdet, tilføjes et tomt og usynligt item i listen i stedet for holdet.
+                //Dette gøres for at forhindre at medlemmet kan tilmelde sig det samme hold flere gange
+                //Der tilføjet et tomt item i stedet for at fjerne holdet fra listen, for at bevare rækkefølgen af holdene i listen
                 if (member.GetJoinedClasses().Contains(Classes[i].GetClassID()))
                 {
                     ListBoxItem tomitem = new ListBoxItem(); //Opretter et tomt ListBoxItem
@@ -181,7 +183,9 @@ namespace FørsteSemester
                 }
                 i++;
             }
-            //  Her blokkere vi den box efter tilmelding, så man ikke tilmelder sig det samme hold flere gange
+            //Når medlemmet tilmelder sig holdet, tilføjes et tomt og usynligt item i listen i stedet for holdet.
+            //Dette gøres for at forhindre at medlemmet kan tilmelde sig det samme hold flere gange
+            //Der tilføjet et tomt item i stedet for at fjerne holdet fra listen, for at bevare rækkefølgen af holdene i listen
             ListBoxItem tomitem = new ListBoxItem(); //Opretter et tomt ListBoxItem
             ListBoxItem listBoxItem = (ListBoxItem)ClassesList.SelectedItem; //Henter det valgte item i listen
             listBoxItem = tomitem; //Erstatter det valgte item med et tomt item
@@ -192,8 +196,8 @@ namespace FørsteSemester
 
         }
 
-        
-        private void Tilbageknap_Click(object sender, RoutedEventArgs e) // Metode der sender en tilbage til tidligere vindue
+        // Metode der sender en tilbage til tidligere vindue
+        private void Tilbageknap_Click(object sender, RoutedEventArgs e) 
         {
             this.Hide(); // Skjuler det nuværende vindue
             window.Show(); // Viser det tidligere vindue

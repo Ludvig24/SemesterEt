@@ -29,17 +29,18 @@ namespace FørsteSemester
             this.member = member;
             InitializeComponent();
 
-            //Her har jeg koppieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
-
+            //Opretter en liste der skal indeholde de hold som memberen er tilmeldt
             List<Class> membersClasses = new List<Class>();
+            //Henter alle hold fra systemet
             List<Class> Classes = member.LoadTeams();
 
             //foreach loop der for hvert objekt i listen Classes tjekker om memberens liste af classID'er indeholder classID'et for den class vi er nået til i loopet
-            foreach (Class cls in Classes)
+            foreach (Class Class in Classes)
             {
-                if (member.GetJoinedClasses().Contains(cls.GetClassID()))
+                //Hvis memberen er tilmeldt holdet, tilføjes holdet til membersClasses listen
+                if (member.GetJoinedClasses().Contains(Class.GetClassID()))
                 {
-                    membersClasses.Add(cls);
+                    membersClasses.Add(Class);
                 }
             }   
 
@@ -63,11 +64,10 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
-                ListBoxItem item = new ListBoxItem();
-                //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
-                StackPanel stackPanel = new StackPanel();
-                item.Content = stackPanel;
-                TextBlock classNameText = new TextBlock();
+                ListBoxItem item = new ListBoxItem();//Opretter en ListBoxItem
+                StackPanel stackPanel = new StackPanel();//Opretter en instans af StackPanel som vi bruger til at stable en række tekstfelter i WPF vinduet
+                item.Content = stackPanel;//Tildeler stackPanel til vores ListBoxItem
+                TextBlock classNameText = new TextBlock();//Opretter en instans af TextBlock
                 classNameText.Text = $"Holdnavn: {membersClasses[i].GetClassName()}";
                 TextBlock classActivityText = new TextBlock();
                 classActivityText.Text = $"Aktivitet: {membersClasses[i].GetActivity()}";
@@ -75,26 +75,22 @@ namespace FørsteSemester
                 antalPladser.Text = $"Antal pladser: {membersClasses[i].GetAvailableSpots()}";
                 TextBlock ledigePladser = new TextBlock();
                 ledigePladser.Text = $"Ledige pladser: {membersClasses[i].GetAvailableSpots() - membersClasses[i].GetJoinedAmount()}";
-                // store the class ID on the ListBoxItem.Tag (preferred) so we can read it later from the selected item
+                //Gemmer classID'et i Tag egenskaben af ListBoxItem, så vi kan bruge det senere når vi skal framelde medlemmet
                 item.Tag = membersClasses[i].GetClassID();
 
-
-               
-
+                //Tilføjer alle TextBlocke som Children af vores stackPanel hvilket medfører at de bliver stablet i WPF
                 stackPanel.Children.Add(classNameText);
                 stackPanel.Children.Add(classActivityText);
                 stackPanel.Children.Add(ledigePladser);
-
+                //Tilføjer ListBoxItem til ListBoxen i WPF vinduet
                 ClassesListBox.Items.Add(item);
-
-
-
-
             }
         }
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
+            //Går tilbage til det tidligere vindue når "TilbageKnap" bliver klikket
             this.Hide();
+            //Viser det tidligere vindue igen
             window.Show();
         }
 
@@ -107,24 +103,27 @@ namespace FørsteSemester
                 return;
             }
 
-            // Get selected ListBoxItem and read the class ID from its Tag
-            ListBoxItem selectedItem = (ListBoxItem)ClassesListBox.SelectedItem;
+            // Henter det valgte ListBoxItem og dets classID fra Tag egenskaben
+            ListBoxItem selectedItem = (ListBoxItem)ClassesListBox.SelectedItem;//Den forstår ikke hvad den er, så minder den lige om den er en ListBoxItem
             int classID = Convert.ToInt32(selectedItem.Tag);
 
-            // Do the leave operation using the selected class ID
+            // Henter alle hold fra systemet
             List<Class> Teams = member.LoadTeams();
+            // Frameld medlemmet fra det valgte hold
             member.LeaveClass(classID);
 
-            // Update joined counts in memory (if needed)
+            // Opdater joinedAmount for det pågældende hold i Teams listen
             for (int i = 0; i < Teams.Count; i++)
             {
+                // Tjekker om det nuværende holds classID matcher det valgte classID
                 if (classID == Teams[i].GetClassID())
                 {
-                    Teams[i].SetJoinedAmount(Teams[i].GetJoinedAmount() - 1);
+                    // Sænker joinedAmount med 1
+                    Teams[i].SetJoinedAmount(Teams[i].GetJoinedAmount() - 1); //Den henter det nuværende joinedAmount og sætter det til det nuværende -1
                 }
             }
 
-            // Refresh the list (simple approach: clear; you may want to repopulate)
+            // Fjerner det valgte hold fra ListBoxen i WPF vinduet
             ClassesListBox.Items.RemoveAt(ClassesListBox.SelectedIndex);
         }
     }
