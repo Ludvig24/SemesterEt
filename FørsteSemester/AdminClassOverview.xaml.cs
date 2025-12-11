@@ -30,12 +30,10 @@ namespace FørsteSemester
             this.admin = admin;
             InitializeComponent();
 
-
-            //Her har jeg kopieret koden fra JoinClass for at vise de hold som medlemmet er tilmeldt
             List<Class> membersClasses = new List<Class>(); 
-            List<Class> Classes = admin.LoadTeams();//liste over oprettede hold
+            List<Class> Classes = admin.LoadTeams();//Liste over oprettede hold
             
-            //for loop der for hver Class opretter en ListBoxItem der indholder informationerne omkring den Class
+            //For loop der for hver Class opretter en ListBoxItem der indholder informationerne omkring den Class
             for (int i = 0; i < Classes.Count; i++)
             {
                 //Nedenfor konverteres char til string for at kunne vises i listen og for at det er mere
@@ -55,12 +53,12 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
-                ListBoxItem item = new ListBoxItem();//opretter en ListBoxItem
+                ListBoxItem item = new ListBoxItem();//Opretter en ListBoxItem
 
-                StackPanel stackPanel = new StackPanel(); //opretter en instans af StackPanel som vi bruger til at stable en række tekstfelter i WPF vinduet
-                item.Content = stackPanel; //tildeler stackPanel til vores ListBoxItem
-                TextBlock classNameText = new TextBlock(); //opretter en instans af TextBlock
-                classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}"; //tildeler Textblocken navnet på den Class på index "i" i Classes gennem GetClassName()
+                StackPanel stackPanel = new StackPanel(); //Opretter en instans af StackPanel som vi bruger til at stable en række tekstfelter i WPF vinduet
+                item.Content = stackPanel; //Tildeler stackPanel til vores ListBoxItem
+                TextBlock classNameText = new TextBlock(); //Opretter en instans af TextBlock
+                classNameText.Text = $"Holdnavn: {Classes[i].GetClassName()}"; //Tildeler Textblocken navnet på den Class på index "i" i Classes gennem GetClassName()
                 TextBlock classActivityText = new TextBlock();
                 classActivityText.Text = $"Aktivitet: {Classes[i].GetActivity()}";
                 TextBlock ClassGenderText = new TextBlock();

@@ -32,7 +32,7 @@ namespace FørsteSemester
         //Her opretter vi et nyt vindue, lukker det gamle vindue ned og viser det nye der lige er blevet oprettet
         private void OpretHold_Click(object sender, RoutedEventArgs e)
         {
-            CreateClass createclass = new CreateClass(admin);
+            CreateClass createclass = new CreateClass(admin); //Opretter et CreateClass vindue og sender en instans af Admin som parameter
             createclass.Show();
             this.Hide();
         }
