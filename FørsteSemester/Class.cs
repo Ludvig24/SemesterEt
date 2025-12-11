@@ -73,7 +73,6 @@ namespace FørsteSemester
 
         //Get Set metoder
         //Bruges til at hente og sætte atributterne i andre klasser
-
         public string GetActivity()
         {
             return activity;
