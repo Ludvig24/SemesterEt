@@ -27,18 +27,17 @@ namespace FørsteSemester
         //Metoden AddMemberIDToClass, som tilføje et medlems ID til et specifikt hold 
         public void AddMemberIDToClass(int UserID, int classID)
         {
-            //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere mappen "Documents" med stien til Classes.txt
+            //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere stien til mappen "Documents" med stien til Classes.txt
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
             string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
-            classID.ToString();
-
-            string MemberIDClass = "0"; //Starter med 0 for at undgå fejl ved første tilføjelse
+            string MemberIDClass; //Opretter en string variabel til at holde medlems ID'et 
             MemberIDClass = ";" + UserID; //Tilføjer et semicolon før ID'et for at matche formatet i tekstfilen
             string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i tekstfilen Classes.txt og gemmer dem i arrayet lines 
             List<string> ClassIDs = Admin.GetClassData(8); //Opretter en liste over class Id'er via GetClassData metoden
 
-            using (StreamWriter streamWriter = new StreamWriter(filepath)) //har ikke skrevet true - medfører at append er false - vi overskriver filen
+            // using indebærer at StreamWriter objektet automatisk lukkes efter brug, da filen ellers kan blive låst og utilgængelig for andre operationer
+            using (StreamWriter streamWriter = new StreamWriter(filepath)) //Vi åbner en StreamWriter til at skrive i filen Classes.txt. Vi skriver ikke "true" som andet parameter, fordi vi vil overskrive filen med de opdaterede data
             {
                 //Opretter int variabel lineNumber
                 int lineNumber = 0;
@@ -55,8 +54,8 @@ namespace FørsteSemester
 
                 string[] currentClass = lines[lineNumber].Split(";"); //Gemmer informationerne om den class på linjen "lineNumber" i et string array. Split kaldes for at splitte stringen op ved hvert ;
                 int CurrentJoinAmount = Convert.ToInt32(currentClass[4]); //Opretter en int og gemmer værdien på index 4 (som svarer til joinedAmount) i currentClass arrayet. Convert.ToInt32 kaldes for at konverterer fra string til int
-                CurrentJoinAmount++;  //Tæller CurrentJoinAmount op med 
-                currentClass[4] = CurrentJoinAmount.ToString();  // Tildeler index 4 i currentClass den nye værdi af 
+                CurrentJoinAmount++;  //Tæller CurrentJoinAmount op med 1
+                currentClass[4] = CurrentJoinAmount.ToString();  // Tildeler index 4 i currentClass den nye værdi af currentJoinAmount
                 string classStringJoined = string.Join(";", currentClass);  //Kalder string.Join og kombinerer hvert element i currentClass arrayet med et semicolon og gemmer det i en string
                 lines[lineNumber] = classStringJoined; //Erstatter elementet på pladsen "lineNumber" i arrayet lines med den nye string classStringJoined
                 lines[lineNumber] = lines[lineNumber] + MemberIDClass; // Tilføjer stringen på pladsen "linenumber" i lines arrayet stringen MemberIDClass
@@ -73,10 +72,7 @@ namespace FørsteSemester
         }
 
         //Get Set metoder
-        public void getStatus()
-        {
-
-        }
+        //Bruges til at hente og sætte atributterne i andre klasser
 
         public string GetActivity()
         {
@@ -172,11 +168,11 @@ namespace FørsteSemester
             return memberIDsInClass;
         }
 
-        //Metode til at tildele MemberIDs til listen 
+        //SetMetode til at tildele MemberIDs til listen 
         public void SetMemberIDsInClass(string[] memberIDsInClass) 
         {
             
-            for (int i = 9; i < memberIDsInClass.Length; i++) //Starter fra index 9 for at undgå de første attributter i klassen
+            for (int i = 9; i < memberIDsInClass.Length; i++) //Starter fra index 9 for at undgå de første 9 attributter som ikke er medlems ID'er
             {
                 //Tilføjer hvert medlems ID til memberIDsInClass attributten
                 this.memberIDsInClass = this.memberIDsInClass + memberIDsInClass[i];
