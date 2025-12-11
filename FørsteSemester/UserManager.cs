@@ -9,7 +9,7 @@ namespace FørsteSemester
 {
     internal abstract class UserManager
     {
-        //Statiske variabler til at finde stien til tekstfilen, hvor Medlem data bliver gemt. Kombinere mappen "Documents" med stien til Members.txt
+        //Statiske variabler til at finde stien til tekstfilen, hvor Medlem data bliver gemt. Kombinere stien til mappen "Documents" med stien til Members.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt"); // Kombinerer stien til mappen "Documents" med stien til Members.txt filen
 
@@ -52,9 +52,10 @@ namespace FørsteSemester
 
         //Metode SaveMember, der tilføjer medlemmet til Members.txt filen
         public static void SaveMember(Member member)
-        {   
+        {
             //Bruger en StreamWriter til at skrive memberens oplysninger ned på en linje i den text fil filepath peger på
-            using (StreamWriter streamWriter = new StreamWriter(filepath, true)) //Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append hver gang der skrives frem for at overskrive
+            // Using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
+            using (StreamWriter streamWriter = new StreamWriter(filepath, true)) //Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
             {
                 //Kalder Write på hver af memberens oplysninger gennem Get metoder. Der sættes ; bagerst på hver linjen så den nemt kan splittes
                 streamWriter.Write(member.GetName() + ";");
@@ -85,7 +86,6 @@ namespace FørsteSemester
                 string memberData = lines[i]; //Opretter en string hvor linjen på plads "i" i lines gemmes
                 Member member = new Member(); //Opretter et member objekt
                 string[] memberSplit = memberData.Split(";"); //Kalder Split(";") på stringen memberData og gemmer hvert elememt i arrayet memberSplit 
-                List<int> JoinedClasses = new List<int>(); //Opretter en liste af typen int
 
                 //Sætter alle oplysninger for member objektet
                 member.SetName(memberSplit[0]);
@@ -97,7 +97,8 @@ namespace FørsteSemester
                 member.SetPassword(memberSplit[6]);
                 member.SetUserID(Convert.ToInt32(memberSplit[7]));
                 
-                //For loop der itererer fra index 8 i membesplit og frem
+                List<int> JoinedClasses = new List<int>(); //Opretter en liste af typen int
+                //For loop der itererer fra index 8 i membesplit og frem. Dette er fordi at alle classID'er et medlem er tilmeldt starter fra index 8 og frem i members.txt
                 for (int j = 8; j < memberSplit.Count(); j++)
                 {
                     JoinedClasses.Add(Convert.ToInt32(memberSplit[j])); //For hver iteration tilføjes stringen på plads j i membersplit til listen JoinedClasses
@@ -159,10 +160,7 @@ namespace FørsteSemester
                     Admin loginAdmin = new Admin(); //Opretter objekt af klassen Admin
                     string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i filen filepath peger på og gemmer det i et string array
                     string adminLine = lines[0]; //Gemmer stringen på index 0 i en string kaldet adminLine
-
-                    //hey hvad fanden? Vi kalder split nedenunder i adminData linjen anyway kan vi så ikke bare fjerne det der:
-                    adminLine.Split(";"); //kalder split på stringen ved hvert ";"
-                    string[] adminData = adminLine.Split(";");
+                    string[] adminData = adminLine.Split(";");//Kalder split på stringen ved hvert ";"
 
                     //Sætter alle oplysninger for Admin objektet med Set metoder
                     loginAdmin.SetName(adminData[0]);
