@@ -19,22 +19,20 @@ namespace FørsteSemester
     /// </summary>
     public partial class MemberOverView : Window
     {
+        //Her opretter vi to objekter som kan bruges i hele klassen
         Admin admin;
         Window window;
         
-        public MemberOverView()
+        internal MemberOverView(Window window, Admin admin) //Constructor til MemberOverView - tager et Window og et Admin objekt som parameter
         {
-            InitializeComponent();
-        }
-        internal MemberOverView(Window window, Admin admin)
-        {
+            //Her opretter vi komponenterne i vinduet. og så gemmer vi window og admin som vi fik fra tidligere vindue, til window og admin der er i dettevindue
             InitializeComponent();
             this.window = window;
             this.admin = admin;
-            List<Member> members = UserManager.LoadMember(); //opretter liste af members
-            for (int i = 0; i < members.Count; i++) //loop der går igennem listen af members
+            List<Member> members = UserManager.LoadMember(); //Opretter liste af members
+            for (int i = 0; i < members.Count; i++) //Loop der går igennem listen af members
             {
-                MembersListBox.Items.Add("Brugernavn: " + members[i].GetUserName() + ", Navn: " + members[i].GetName() + " " + members[i].GetSurname() + ", Alder: " + members[i].GetAge() + ", Køn: " + members[i].GetGender() + ", By: " + members[i].GetCity()); //udskriver medlem i listbox
+                MembersListBox.Items.Add("Brugernavn: " + members[i].GetUserName() + ", Navn: " + members[i].GetName() + " " + members[i].GetSurname() + ", Alder: " + members[i].GetAge() + ", Køn: " + members[i].GetGender() + ", By: " + members[i].GetCity()); //Udskriver medlem i listbox
                 MembersListBox.Items.Add("-----------------------------------------------------" );
 
             }
@@ -44,7 +42,7 @@ namespace FørsteSemester
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            Adminmenu adminmenu = new Adminmenu(admin);
+            Adminmenu adminmenu = new Adminmenu(admin); //Opretter et Adminmenu vindue og sender en instans af Admin som parameter
             adminmenu.Show();
         }
     }

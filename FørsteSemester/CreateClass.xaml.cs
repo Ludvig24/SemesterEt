@@ -34,17 +34,15 @@ namespace FørsteSemester
         //Opretter et hold baseret på input fra tekstboksene når knappen "OpretHold" bliver klikket på
         private void OpretHold_Click(object sender, RoutedEventArgs e)
         {
-            char gender = 'B'; //standardværdi for begge køn
+            char gender = 'B'; //Standardværdi for begge køn
 
-
-           
             if ((AktivitetBox.Text + HoldNavnBox.Text).Contains(";"))
             {
                 MessageBox.Show("Aktivitet og Holdnavn må ikke indeholde ;"); //Besked der viser at aktivitet eller holdnavn indeholder semikolon
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
 
-            //if sætning som tjekker det køn der er valgt i dropdown og sætter det tilsvarende char
+            //If sætning som tjekker det køn der er valgt i dropdown og sætter det tilsvarende char
             if (KønBox.Text == "Kvinde")
             {
                 gender = 'F';
@@ -55,18 +53,18 @@ namespace FørsteSemester
             }
 
             //Tjekker om nogle af tekstboksene er tomme eller om aldersgrænserne er udenfor rimelige værdier
-            if (AktivitetBox.Text == string.Empty || HoldNavnBox.Text == string.Empty || PladsBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty || AlderMaxBox.Text == string.Empty || AlderMinBox.Text == string.Empty)
+            if (AktivitetBox.Text == string.Empty || HoldNavnBox.Text == string.Empty || PladsBox.Text == string.Empty || AlderMinBox.Text == string.Empty || AlderMaxBox.Text == string.Empty)
             {
                 MessageBox.Show("Udfyld venligst alle felter korrekt!"); //Besked der viser at nogle felter ikke er udfyldt korrekt
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
 
             //Tjekker om aktivitet og holdnavn kun indeholder bogstaver
-            string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxyzæøå"; //string over alle tilladte bogstaver i inputfelterne aktivitet og holdnavn
-            string activityClassName = ( HoldNavnBox.Text).ToLower(); //variabel der indeholder aktivitet og holdnavn, gør dem til lover så det kan sammenlignes
-            for (int i = 0; i < activityClassName.Length; i++) //for loop der itererer activityClassName variabel som et array
+            string allowedOnlyLetters = "abcdefghijklmnopqrstuvwxyzæøå"; //String over alle tilladte bogstaver i inputfelterne aktivitet og holdnavn
+            string activityClassName = HoldNavnBox.Text.ToLower(); //Variabel der indeholder aktivitet og holdnavn, gør dem til lower så det kan sammenlignes
+            for (int i = 0; i < activityClassName.Length; i++) //For loop der itererer activityClassName variabel som et array
             {
-                if (!allowedOnlyLetters.Contains(activityClassName[i])) //if statement der tjekker om activityClassName indeholder noget andet end de tilladte bogstaver defineret i allowedOnlyLetters
+                if (!allowedOnlyLetters.Contains(activityClassName[i])) //If statement der tjekker om activityClassName indeholder noget andet end de tilladte bogstaver defineret i allowedOnlyLetters
                 {
                     MessageBox.Show("Aktivitet og Holdnavn må kun indeholde bogstaver!"); //Besked der viser at aktivitet eller holdnavn indeholder ulovlige tegn
                     return; //Afslutter metoden hvis betingelsen er opfyldt
@@ -78,25 +76,16 @@ namespace FørsteSemester
                 MessageBox.Show("Den maksimale alder skal være højere end den minimale alder!"); //Besked der viser at aldersgrænserne er forkerte
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
-
-            if (Convert.ToByte(AlderMinBox.Text) <= 14)
+            //Tjekker om den minimale alder er indenfor rimelige værdier
+            if (Convert.ToByte(AlderMinBox.Text) <= 14 || Convert.ToByte(AlderMinBox.Text) >= 130)
             {
-                if(Convert.ToByte(AlderMaxBox.Text) >= 130)
-                {
-                    MessageBox.Show("Den maksimale alder må ikke være over 130 år!"); //Besked der viser at den maksimale alder er for høj
-                    return; //Afslutter metoden hvis betingelsen er opfyldt
-                }
-                MessageBox.Show("Den minimale alder skal være mindst 14 år!"); //Besked der viser at den minimale alder er for lav
+                MessageBox.Show("Den minimale alder skal være mellem 14 og 140 år!"); //Besked der viser at den minimale alder er for lav
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
-            if (Convert.ToByte(AlderMaxBox.Text) >= 130)
+            //Tjekker om den maksimale alder er indenfor rimelige værdier
+            if (Convert.ToByte(AlderMaxBox.Text) > 130 || Convert.ToByte(AlderMaxBox.Text) <= 14)
             {
-                if (Convert.ToByte(AlderMinBox.Text) <= 14)
-                {
-                    MessageBox.Show("Den minimale alder skal være mindst 14 år!"); //Besked der viser at den minimale alder er for lav
-                    return; //Afslutter metoden hvis betingelsen er opfyldt
-                }
-                MessageBox.Show("Den maksimale alder må ikke være over 130 år!"); //Besked der viser at den maksimale alder er for høj
+                MessageBox.Show("Den maksimale alder skal være mellem 14 og 130 år!"); //Besked der viser at den maksimale alder er for høj
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
             if (Convert.ToByte(PladsBox.Text) <= 0)
@@ -115,6 +104,7 @@ namespace FørsteSemester
             //Kalder CreateClass metoden fra Admin klassen med de værdier der er indtastet i tekstboksene
             admin.CreateClass(AktivitetBox.Text, HoldNavnBox.Text, Convert.ToByte(PladsBox.Text), gender ,Convert.ToByte(AlderMaxBox.Text), Convert.ToByte(AlderMinBox.Text)); //Opretter holdet
             MessageBox.Show("Hold oprettet!"); //Besked der viser at holdet er oprettet
+            //Lukker dette vindue ned for at gå tilbage til Adminmenu vinduet.
             this.Close();
             Adminmenu adminmenu = new Adminmenu(admin);
             adminmenu.Show();
@@ -124,7 +114,7 @@ namespace FørsteSemester
         private void TilbageKnap_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            Adminmenu adminmenu = new Adminmenu(admin); //Opretter et nyt Adminmenu vindue
+            Adminmenu adminmenu = new Adminmenu(admin); //Opretter et nyt Adminmenu vindue og sender Admin objektet som parameter
             adminmenu.Show();
         }
     }
