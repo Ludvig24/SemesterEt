@@ -18,7 +18,7 @@
         <Grid Grid.ColumnSpan="2"/>
 
         <Button x:Name="Loggin" Content="Login" HorizontalAlignment="Left" Margin="174,342,0,0" VerticalAlignment="Top" Height="48" Width="102" Click="Loggin_Click" FontSize="14" Grid.ColumnSpan="2"/>
-        <Button Content="Opret Bruger" HorizontalAlignment="Left" Margin="174,439,0,0" VerticalAlignment="Top" Height="48" Width="102" Click="Button_Click" RenderTransformOrigin="-0.469,0.596" FontSize="14" Grid.ColumnSpan="2"/>
+        <Button Content="Opret Bruger" HorizontalAlignment="Left" Margin="174,439,0,0" VerticalAlignment="Top" Height="48" Width="102" Click="CreateMember_Click" RenderTransformOrigin="-0.469,0.596" FontSize="14" Grid.ColumnSpan="2"/>
         <TextBox x:Name="BrugernavnBox" HorizontalAlignment="Left" Margin="165,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Height="18"/>
         <TextBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="165,289,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Height="18"/>
         <Label x:Name="BrugerNavn" Content="Brugernavn" HorizontalAlignment="Left" Margin="159,207,0,0" VerticalAlignment="Top" Height="28" Width="92" FontSize="16" Grid.ColumnSpan="2"/>

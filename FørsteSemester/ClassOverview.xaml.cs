@@ -63,7 +63,6 @@ namespace FørsteSemester
                     Køn = "Begge køn";
                 }
 
-                
                 ListBoxItem item = new ListBoxItem();
                 //item.Content = $"{Classes[i].GetClassName()} - {Classes[i].GetActivity()} - Ledige pladser: {Classes[i].GetAvailableSpots()}";
                 StackPanel stackPanel = new StackPanel();

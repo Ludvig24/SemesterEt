@@ -18,32 +18,34 @@ namespace FørsteSemester
     {
         public MainWindow()
         {
+            // Kommand der initialiserer komponenterne i vinduet
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        { //Metode til at åbne CreateMember vinduet
+        //Metode til at åbne CreateMember vinduet
+        private void CreateMember_Click(object sender, RoutedEventArgs e)
+        {
+            //Opretter et CreateMember vindue og sender en instands af MainWindow som parameter
             CreateMember createMemberWindow = new CreateMember(this);
             createMemberWindow.Show();
-            
+            //Lukker MainWindow vinduet
             this.Hide();
         }
 
+        //Metode til at logge ind som enten medlem eller admin
         private void Loggin_Click(object sender, RoutedEventArgs e)
         {
-
-            //Metode til at logge ind som enten medlem eller admin
             Member loginMember = UserManager.Login(BrugernavnBox.Text.ToLower(), PasswordBox.Text); //Checker om der er et medlem med det brugernavn og password
             Admin loginAdmin = UserManager.AdminLogin(BrugernavnBox.Text.ToLower(), PasswordBox.Text); //Checker om der er en admin med det brugernavn og password
 
-            if (loginAdmin != null) //Hvis at loginAdmin ikke er null køres amdin login
+            if (loginAdmin != null) //Hvis at loginAdmin ikke er null køres admin login
             {
                 Adminmenu createAdminmenu = new Adminmenu(loginAdmin);
                 createAdminmenu.Show();
                 this.Hide();
             }
 
-            else if (loginMember != null) //hvis loginMember ikke er null køres member login
+            else if (loginMember != null) //Hvis loginMember ikke er null køres member login
             {
                 Mainmenu createMainmenu = new Mainmenu(this, loginMember); //Opretter et Mainmenu vindue og sender MainWindow vinduet og Member objektet som parametre
                 BrugernavnBox.Clear();//Rydder brugernavn og password felterne så man kan gåtilbage til login vinduet uden at de tidligere værdier står der
@@ -51,7 +53,7 @@ namespace FørsteSemester
                 createMainmenu.Show();
                 this.Hide();
             }
-            else //ellers vises fejllogin beskeden
+            else //Ellers vises fejllogin beskeden
             {
                 Fejllogin.Visibility = Visibility.Visible;
 
