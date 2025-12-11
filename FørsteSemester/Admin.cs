@@ -18,13 +18,13 @@ namespace FørsteSemester
         //Metoden CreateClass, hvor vi opretter et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
         {
-            //Setter attributterne et hold skal have
+            //Sætter attributterne et hold skal have
             Class Team = new Class();
             Team.SetActivity(activity);
             Team.SetClassName(classname);
-            Team.SetStatus(false);
+            Team.SetStatus(false); // Sætter status til false, så holdet som standart ikke er fyldt. Status er nemlig om holdet er fyldt
             Team.SetAvailableSpots(availableSpots);
-            Team.SetJoinedAmount(0);
+            Team.SetJoinedAmount(0); // Sætter joinedAmount til 0, da der ikke er nogen medlemmer på holdet ved oprettelse
             Team.SetRequiredGender(requiredGender);
             Team.SetRequiredMaxAge(requiredMaxAge);
             Team.SetRequiredMinAge(requiredMinAge);
@@ -56,19 +56,21 @@ namespace FørsteSemester
             string[] lines = System.IO.File.ReadAllLines(filepath); //Henter data fra tekstfilen i et array
             for (int i = 0; i < lines.Count(); i++) //Looper igennem arrayet lines og splitter ved hver ;
             {
-                string ClassData = lines[i]; 
-                string[] ClassSplit = ClassData.Split(";");
-                dataPoint = ClassSplit[a];
-                data.Add(dataPoint);
+                string ClassData = lines[i]; //Henter en linje fra tekstfilen
+                string[] ClassSplit = ClassData.Split(";"); //Splitter linjen ved ; og gemmer det i et array
+                dataPoint = ClassSplit[a]; //Henter den ønskede data baseret på det givne indeks a
+                data.Add(dataPoint); //Tilføjer den ønskede data til listen
             }
 
-            return data;
+            return data; //Returnerer listen med den ønskede data
         }
 
         //Metoden SaveClass, som gemmer et hold og tiføjer hold objekt til en tekstfil
         public void SaveClass(Class team)
         {
-            using (StreamWriter streamWriter = new StreamWriter(filepath, true))
+            //Bruger en StreamWriter til at skrive Class oplysninger ned på en linje i den text fil filepath peger på
+            // Using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
+            using (StreamWriter streamWriter = new StreamWriter(filepath, true))//Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
             {
                 //Skriver attriutterne ned og skiller ved ;
                 streamWriter.Write(team.GetActivity()+ ";");
@@ -81,9 +83,9 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetRequiredMinAge()+";");
                 streamWriter.Write(team.GetClassID());
                 
-                if(team.GetMemberIDsInClass() != null) //tjekker om der er nogle memberID'er i team objektet - hvis ikke skrives der ingenting i filen
+                if(team.GetMemberIDsInClass() != null) //Tjekker om der er nogle memberID'er i team objektet - hvis ikke skrives der ingenting i filen
                 {
-                    streamWriter.Write(team.GetMemberIDsInClass() + ";"); //hvis GetMemberIDsInClass() returnerer noget skrives de ned i filen efterfulgt af et semikolon
+                    streamWriter.Write(team.GetMemberIDsInClass() + ";"); //Hvis GetMemberIDsInClass() returnerer noget skrives de ned i filen efterfulgt af et semikolon
                 }
                 
                 streamWriter.WriteLine();
