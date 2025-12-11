@@ -1,11 +1,11 @@
 Cirkeltræning;Hennings Cirkeltræning;False;15;0;M;25;40;1
 Styrketræning;Dortes Powerlift;False;20;0;F;18;30;2
-Reformer Pilates;Pers Pilates;False;40;2;B;20;60;3;2;12
+Reformer Pilates;Pers Pilates;False;40;1;B;20;60;3;2
 Step;Stigs Step;False;15;0;F;25;40;4
 Step;dafs;False;15;0;F;20;30;5
 Reformer Pilates;Hop;False;15;0;B;20;80;6
 Styrketræning;Young Lift;False;5;0;F;15;25;7
 Yoga;YogaBasserne;False;14;1;B;16;65;8;2
-Step;Stop on Ground;False;5;5;B;15;80;9;2;4;8;7;9
+Step;Stop on Ground;False;5;5;B;15;80;9;4;8;7;9;2
 Styrketræning;Junior lift;False;5;0;B;15;20;10
 Styrketræning;Arnolds Styrketræning;False;5;0;B;70;18;11

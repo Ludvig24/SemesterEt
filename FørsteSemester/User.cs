@@ -9,7 +9,7 @@ namespace FørsteSemester
 {
     class User 
     {
-        //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere mappen "Documents" med stien til Classes.txt
+        //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere stien til mappen "Documents" med stien til Classes.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //Finder stien til mappen "Documents" som er ens for alle computere
         static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
@@ -35,7 +35,7 @@ namespace FørsteSemester
                 string teamData = lines[i]; //Laver array indeks i om til en string variabel
                 Class Teams = new Class();
                 string[] Teamsplit = teamData.Split(";"); //Splitter ved ; for at tilføje dataen til et array
-
+                //Vi sætter atributter med set metoder på Class objektet Teams
                 Teams.SetActivity(Teamsplit[0]);
                 Teams.SetClassName(Teamsplit[1]);
                 Teams.SetStatus(Convert.ToBoolean(Teamsplit[2]));
@@ -50,7 +50,7 @@ namespace FørsteSemester
                 teamsList.Add(Teams); //Tilføjer det oprettede Class objekt til listen
             }
 
-            return teamsList;
+            return teamsList; //Returnerer listen
         }
 
         //Get set metoder
