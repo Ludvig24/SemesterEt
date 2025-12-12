@@ -79,8 +79,8 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetAvailableSpots()+";");
                 streamWriter.Write(team.GetJoinedAmount()+";");
                 streamWriter.Write(team.GetRequiredGender()+";");
+                streamWriter.Write(team.GetRequiredMinAge() + ";");
                 streamWriter.Write(team.GetRequiredMaxAge()+";");
-                streamWriter.Write(team.GetRequiredMinAge()+";");
                 streamWriter.Write(team.GetClassID());
                 
                 if(team.GetMemberIDsInClass() != null) //Tjekker om der er nogle memberID'er i team objektet - hvis ikke skrives der ingenting i filen
