@@ -53,7 +53,7 @@ namespace FørsteSemester
         //Metode SaveMember, der tilføjer medlemmet til Members.txt filen
         public static void SaveMember(Member member)
         {
-            //Bruger en StreamWriter til at skrive memberens oplysninger ned på en linje i den text fil filepath peger på
+            //Bruger en StreamWriter til at skrive memberens oplysninger ned på en linje i den text fil memberFilepath peger på
             // Using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
             using (StreamWriter streamWriter = new StreamWriter(filepath, true)) //Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
             {
@@ -158,7 +158,7 @@ namespace FørsteSemester
                 if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")//Hvis der findes et match mellem username og password i input og text fil samt at UserID på plads i er 1:
                 {
                     Admin loginAdmin = new Admin(); //Opretter objekt af klassen Admin
-                    string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i filen filepath peger på og gemmer det i et string array
+                    string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i filen memberFilepath peger på og gemmer det i et string array
                     string adminLine = lines[0]; //Gemmer stringen på index 0 i en string kaldet adminLine
                     string[] adminData = adminLine.Split(";");//Kalder split på stringen ved hvert ";"
 
@@ -192,7 +192,7 @@ namespace FørsteSemester
         {
             List<string> data = new List<string>(); //Opretter en liste af strings
             string dataPoint = ""; //Opretter en tom string
-            string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i den fil filepath peger på og gemmer dem i et string array
+            string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i den fil memberFilepath peger på og gemmer dem i et string array
             
             //For loop der itererer gennem hver linje i lines
             for (int i = 0; i < lines.Count(); i++)

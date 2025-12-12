@@ -68,7 +68,7 @@ namespace FørsteSemester
         //Metoden SaveClass, som gemmer et hold og tiføjer hold objekt til en tekstfil
         public void SaveClass(Class team)
         {
-            //Bruger en StreamWriter til at skrive Class oplysninger ned på en linje i den text fil filepath peger på
+            //Bruger en StreamWriter til at skrive Class oplysninger ned på en linje i den text fil memberFilepath peger på
             // Using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
             using (StreamWriter streamWriter = new StreamWriter(filepath, true))//Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
             {

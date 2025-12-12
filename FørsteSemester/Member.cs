@@ -12,7 +12,7 @@ namespace FørsteSemester
     {
         //Statiske variabler til at finde stien til tekstfilen, hvor hold data og Medlem data bliver gemt. Kombinere mappen "Documents" med stien til Classes.txt eller Members.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt"); // Kombinerer stien til mappen "Documents" med stien til Members.txt filen
+        static string memberFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt"); // Kombinerer stien til mappen "Documents" med stien til Members.txt filen
         static string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
         //Attributter for klassen Member
@@ -24,11 +24,11 @@ namespace FørsteSemester
         {
             joinedClasses.Add(classID); //Tilføjer HoldId til listen joinedClasses
             List<string> userIDs = UserManager.GetUserData(7); //Henter alle UserIDs med GetUserData() metoden
-            string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer stien filepath peger på (members.txt)
+            string[] lines = System.IO.File.ReadAllLines(memberFilepath); //Læser alle linjer stien memberFilepath peger på (members.txt)
             classID.ToString(); //Konverterer classID til en string
             joinedClass = ";" + classID; //Sætter joinedClass lig semikolon + classID for at matche formattet i tekstfilen Members.txt
-            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på
-            using (StreamWriter streamWriter = new StreamWriter(filepath)) //Vi åbner en StreamWriter til at skrive i filen Classes.txt. Vi skriver ikke "true" som andet parameter, fordi vi vil overskrive filen med de opdaterede data
+            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil memberFilepath peger på
+            using (StreamWriter streamWriter = new StreamWriter(memberFilepath)) //Vi åbner en StreamWriter til at skrive i filen Classes.txt. Vi skriver ikke "true" som andet parameter, fordi vi vil overskrive filen med de opdaterede data
             {
                 int lineNumber = 0; //Opretter variabel, der holder styr på linjenummer i tekstfilen
 
@@ -63,7 +63,7 @@ namespace FørsteSemester
             joinedClasses.Remove(classID);
 
             string[] lines = System.IO.File.ReadAllLines(classesFilepath);  //Læser alle linjer stien classesFilepath peger på
-            string[] memberLines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer stien filepath peger på (members.txt)
+            string[] memberLines = System.IO.File.ReadAllLines(memberFilepath); //Læser alle linjer stien memberFilepath peger på (members.txt)
 
             //Foreach loop der iterer gennem arrayet lines
             int x = 0; //Tællervariabel der anvendes længere nede
@@ -154,7 +154,7 @@ namespace FørsteSemester
 
             //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje
             //i den text fil membersFilepath peger på (Members.txt)
-            using (StreamWriter streamWriter = new StreamWriter(filepath)) //Har ikke overloadet med true
+            using (StreamWriter streamWriter = new StreamWriter(memberFilepath)) //Har ikke overloadet med true
                                                                            //medfører at append er false
                                                                            //vi overskriver dermed filen
             {
