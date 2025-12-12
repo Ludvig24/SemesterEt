@@ -112,7 +112,8 @@ namespace FørsteSemester
             //Fjerner classID fra medlemmet i Members.txt filen
             int z = 0; //Tællervariabel for while loop
             int linenumber = 0; //Int variabel der holder styr på linjenummer i tekstfilen Members.txt
-            List<string> userIDs = UserManager.GetUserData(7); //Gemmer alle userIDs fra textfilen Members.txt i en liste af strings
+            List<string> userIDs = UserManager.GetUserData(7); //Gemmer alle userIDs fra textfilen
+                                                               //Members.txt i en liste af strings
             //while loop der itererer gennem userIDs listen
             while (z < userIDs.Count())
             {
@@ -125,8 +126,11 @@ namespace FørsteSemester
                 z++;
             }
 
-            string member = memberLines[linenumber]; //Opretter en string og tildeler den element på index "lineumber" i arrayet memberLines
-            string[] memberSplit = member.Split(";"); //Splitter stringen member ved hvert semikolon så vi har et array kaldet memberSplit med alt memberens data
+            string member = memberLines[linenumber]; //Opretter en string og tildeler den element
+                                                     //på index "lineumber" i arrayet memberLines
+
+            string[] memberSplit = member.Split(";"); //Splitter stringen member ved hvert semikolon
+                                                      //så vi har et array kaldet memberSplit med alt memberens data
 
             //while loop der itererer fra index 8 i memberSplit arrayet. Index 8 og frem er nemlig hvor classID'erne for de hold medlemmet er tilmeldt er gemt
             int y = 8;
@@ -136,16 +140,23 @@ namespace FørsteSemester
                 if (memberSplit[y] == classID.ToString())
                 {
                     //Hvis if statement er sandt fjernes classID'et fra memberSplit arrayet
-                    List<string> memberList = new List<string>(memberSplit); //Omkonverterer memberSplit til en liste så vi kan bruge RemoveAt metoden
+                    List<string> memberList = new List<string>(memberSplit); //Omkonverterer memberSplit til
+                                                                             //en liste så vi kan bruge RemoveAt metoden
                     memberList.RemoveAt(y); //Kalder RemoveAt() på memberList for at fjerne elementet på index y
-                    memberLines[linenumber] = string.Join(";", memberList); //Kalder join på memberList og sender ";" med som parameter. Dette sammenskriver hver elememt i newMemberLine sammen til en string, hvor hvert element er separeret med et semikolon. Resultatet gemmes i MemberLines arrayet på plads linenumber
+                    memberLines[linenumber] = string.Join(";", memberList); //Kalder join på memberList og sender ";" med som parameter.
+                                                                            //Dette sammenskriver hver elememt i newMemberLine sammen til en string,
+                                                                            //hvor hvert element er separeret med et semikolon.
+                                                                            //Resultatet gemmes i MemberLines arrayet på plads linenumber
                 }
 
                 y++;
             }
 
-            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil membersFilepath peger på (Members.txt)
-            using (StreamWriter streamWriter = new StreamWriter(membersFilepath)) //Har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
+            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje
+            //i den text fil membersFilepath peger på (Members.txt)
+            using (StreamWriter streamWriter = new StreamWriter(membersFilepath)) //Har ikke overloadet med true -
+                                                                                  //medfører at append er false -
+                                                                                  //vi overskriver dermed filen
             {
                 //for loop der itererer gennem memberLines arrayet
                 for (int i = 0; i < memberLines.Length; i++)
