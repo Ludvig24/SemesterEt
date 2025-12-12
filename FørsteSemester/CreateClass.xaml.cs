@@ -42,7 +42,7 @@ namespace FørsteSemester
                 return; //Afslutter metoden hvis betingelsen er opfyldt
             }
 
-            //If sætning som tjekker det køn der er valgt i dropdown og sætter det tilsvarende char
+            //if sætning som tjekker det køn der er valgt i dropdown og sætter det tilsvarende char
             if (KønBox.Text == "Kvinde")
             {
                 gender = 'F';

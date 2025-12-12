@@ -11,7 +11,7 @@ namespace FørsteSemester
     {
         //Statiske variabler til at finde stien til tekstfilen, hvor Medlem data bliver gemt. Kombinere stien til mappen "Documents" med stien til Members.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt"); // Kombinerer stien til mappen "Documents" med stien til Members.txt filen
+        static string membersFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Members.txt"); // Kombinerer stien til mappen "Documents" med stien til Members.txt filen
 
         //Metoden CreateMember, hvor der oprettes et medlem med relevante parametre
         public static void CreateMember(string name, string surname, char gender, byte age, string city, string username, string password)
@@ -31,7 +31,7 @@ namespace FørsteSemester
             int membercount = LoadMember().Count + 1;
             while (true)
             {
-                //If statement der tjekker det UserID vi kalder membercount allerede findes i vores program
+                //if statement der tjekker det UserID vi kalder membercount allerede findes i vores program
                 if (GetUserData(7).Contains(membercount.ToString())) //Tjekker om listen returnerert med GetUserData indeholder værdien gemt i membercount
                 {
                     membercount = membercount + 1; //Tæller membercount variablen op med 1
@@ -53,9 +53,9 @@ namespace FørsteSemester
         //Metode SaveMember, der tilføjer medlemmet til Members.txt filen
         public static void SaveMember(Member member)
         {
-            //Bruger en StreamWriter til at skrive memberens oplysninger ned på en linje i den text fil filepath peger på
-            // Using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
-            using (StreamWriter streamWriter = new StreamWriter(filepath, true)) //Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
+            //Bruger en StreamWriter til at skrive memberens oplysninger ned på en linje i den text fil membersFilepath peger på
+            //using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
+            using (StreamWriter streamWriter = new StreamWriter(membersFilepath, true)) //Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
             {
                 //Kalder Write på hver af memberens oplysninger gennem Get metoder. Der sættes ; bagerst på hver linjen så den nemt kan splittes
                 streamWriter.Write(member.GetName() + ";");
@@ -76,11 +76,11 @@ namespace FørsteSemester
         {
 
             //Opretter et string array kaldet lines. Vi tildeler arrayet alle linjer i filen Members.txt via ReadAllLines
-            string[] lines = System.IO.File.ReadAllLines(filepath);
+            string[] lines = System.IO.File.ReadAllLines(membersFilepath);
 
             List<Member> members = new List<Member>(); //Liste af typen Member
 
-            //For loop der itererer gennem arrayet lines.
+            //for loop der itererer gennem arrayet lines.
             for (int i = 0; i < lines.Count(); i++)
             {
                 string memberData = lines[i]; //Opretter en string hvor linjen på plads "i" i lines gemmes
@@ -98,7 +98,7 @@ namespace FørsteSemester
                 member.SetUserID(Convert.ToInt32(memberSplit[7]));
                 
                 List<int> JoinedClasses = new List<int>(); //Opretter en liste af typen int
-                //For loop der itererer fra index 8 i membesplit og frem. Dette er fordi at alle classID'er et medlem er tilmeldt starter fra index 8 og frem i members.txt
+                //for loop der itererer fra index 8 i membesplit og frem. Dette er fordi at alle classID'er et medlem er tilmeldt starter fra index 8 og frem i members.txt
                 for (int j = 8; j < memberSplit.Count(); j++)
                 {
                     JoinedClasses.Add(Convert.ToInt32(memberSplit[j])); //For hver iteration tilføjes stringen på plads j i membersplit til listen JoinedClasses
@@ -107,7 +107,7 @@ namespace FørsteSemester
                 members.Add(member); //Tilføjer member objektet til listen members
             }
 
-            //Returner liste af members
+            //Returnerer liste af members
             return members;
         }
 
@@ -119,7 +119,7 @@ namespace FørsteSemester
             List<string> Usernames = GetUserData(5); //Henter en liste af alle usernames i members.txt
             List<string> Passwords = GetUserData(6); //Henter en liste af alle passwords i members.txt
 
-            //While loop der itererer gennem members og tjekker om username og password i input passer med username og password for en bestemt member i filen members.txt
+            //while loop der itererer gennem members og tjekker om username og password i input passer med username og password for en bestemt member i filen members.txt
             int i = 0;
             while (i < LoadMember().Count)
             {
@@ -149,7 +149,7 @@ namespace FørsteSemester
             List<string> Passwords = GetUserData(6);
             List<string> UserID = GetUserData(7);
 
-            //While loop der itererer gennem members og tjekker om username og password i input passer med username og password for en bestemt member i filen members.txt
+            //while loop der itererer gennem members og tjekker om username og password i input passer med username og password for en bestemt member i filen members.txt
             //Der tjekkes om userID'et på den bestemte bruger er 1 da det er vores Admins id
             int i = 0;
             while (i < LoadMember().Count)
@@ -158,7 +158,7 @@ namespace FørsteSemester
                 if (Username == Usernames[i] && Password == Passwords[i] && UserID[i] == "1")//Hvis der findes et match mellem username og password i input og text fil samt at UserID på plads i er 1:
                 {
                     Admin loginAdmin = new Admin(); //Opretter objekt af klassen Admin
-                    string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i filen filepath peger på og gemmer det i et string array
+                    string[] lines = System.IO.File.ReadAllLines(membersFilepath); //Læser alle linjer i filen membersFilepath peger på og gemmer det i et string array
                     string adminLine = lines[0]; //Gemmer stringen på index 0 i en string kaldet adminLine
                     string[] adminData = adminLine.Split(";");//Kalder split på stringen ved hvert ";"
 
@@ -192,9 +192,9 @@ namespace FørsteSemester
         {
             List<string> data = new List<string>(); //Opretter en liste af strings
             string dataPoint = ""; //Opretter en tom string
-            string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i den fil filepath peger på og gemmer dem i et string array
+            string[] lines = System.IO.File.ReadAllLines(membersFilepath); //Læser alle linjer i den fil membersFilepath peger på og gemmer dem i et string array
             
-            //For loop der itererer gennem hver linje i lines
+            //for loop der itererer gennem hver linje i lines
             for (int i = 0; i < lines.Count(); i++)
             {
                 string memberData = lines[i]; //Opretter en string kaldet memberData som vi tildeler værdien a lines på index i.

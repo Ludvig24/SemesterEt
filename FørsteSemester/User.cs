@@ -11,7 +11,7 @@ namespace FørsteSemester
     {
         //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere stien til mappen "Documents" med stien til Classes.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //Finder stien til mappen "Documents" som er ens for alle computere
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
+        static string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
 
         //Attributter til User klassen
@@ -27,7 +27,7 @@ namespace FørsteSemester
         //Metode LoadTeams til at loade alle hold fra tekstfilen og gemme dem i en liste af Class objekter
         public List<Class> LoadTeams()
         {
-            string[] lines = System.IO.File.ReadAllLines(filepath); //Array der indeholder alle linjer i tekstfilen
+            string[] lines = System.IO.File.ReadAllLines(classesFilepath); //Array der indeholder alle linjer i tekstfilen
             List<Class> teamsList = new List<Class>();//Opretter en liste til at gemme Class objekterne
 
             for (int i = 0; i < lines.Count(); i++)
