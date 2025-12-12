@@ -8,4 +8,4 @@ Styrketræning;Young Lift;False;5;0;F;15;25;7
 Yoga;YogaBasserne;False;15;0;B;16;65;8
 Step;Stop on Ground;False;5;5;B;15;80;9;4;8;7;9;2
 Styrketræning;Junior lift;False;5;0;B;15;20;10
-Styrketræning;Arnolds Styrketræning;False;5;0;B;70;18;11
+Styrketræning;Arnolds Styrketræning;False;5;0;B;18;70;11

@@ -33,7 +33,7 @@ namespace FørsteSemester
 
 
             List<Class> Classes = member.LoadTeams(); //Der laves en liste af Classes som indeholder alle holdene der er oprettet
-            for (int i = 0; i < Classes.Count; i++) //For loop der går igennem alle holdene i listen
+            for (int i = 0; i < Classes.Count; i++) //for loop der går igennem alle holdene i listen
             {
                 if (Classes[i].GetAvailableSpots() == Classes[i].GetJoinedAmount()) //Tjekker om der er ledige pladser på holdet
                 {
@@ -45,7 +45,7 @@ namespace FørsteSemester
                     char GetRequiredGenderInChar = Classes[i].GetRequiredGender();
                 string Køn = "";
 
-                switch (GetRequiredGenderInChar) //Switch case der tjekker værdien af GetRequiredGenderInChar, og tager char forkortelsen og laver om til en string
+                switch (GetRequiredGenderInChar) //switch case der tjekker værdien af GetRequiredGenderInChar, og tager char forkortelsen og laver om til en string
                 {
                     case 'F':
 

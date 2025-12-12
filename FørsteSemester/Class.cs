@@ -29,15 +29,15 @@ namespace FørsteSemester
         {
             //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinere stien til mappen "Documents" med stien til Classes.txt
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
-            string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
+            string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); // Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
 
             string MemberIDClass; //Opretter en string variabel til at holde medlems ID'et 
             MemberIDClass = ";" + UserID; //Tilføjer et semicolon før ID'et for at matche formatet i tekstfilen
-            string[] lines = System.IO.File.ReadAllLines(filepath); //Læser alle linjer i tekstfilen Classes.txt og gemmer dem i arrayet lines 
+            string[] lines = System.IO.File.ReadAllLines(classesFilepath); //Læser alle linjer i tekstfilen Classes.txt og gemmer dem i arrayet lines 
             List<string> ClassIDs = Admin.GetClassData(8); //Opretter en liste over class Id'er via GetClassData metoden
 
             // using indebærer at StreamWriter objektet automatisk lukkes efter brug, da filen ellers kan blive låst og utilgængelig for andre operationer
-            using (StreamWriter streamWriter = new StreamWriter(filepath)) //Vi åbner en StreamWriter til at skrive i filen Classes.txt. Vi skriver ikke "true" som andet parameter, fordi vi vil overskrive filen med de opdaterede data
+            using (StreamWriter streamWriter = new StreamWriter(classesFilepath)) //Vi åbner en StreamWriter til at skrive i filen Classes.txt. Vi skriver ikke "true" som andet parameter, fordi vi vil overskrive filen med de opdaterede data
             {
                 //Opretter int variabel lineNumber
                 int lineNumber = 0;
@@ -45,7 +45,7 @@ namespace FørsteSemester
                 //Loop der itererer gennem listen ClassIDs og ser hvornår ClassIDs på index i er lig classID variablen
                 for (int i = 0; i < ClassIDs.Count; i++)
                 {
-                    //If statement der tjekker, hvornår det class id i ClassIDs på index i er lig med classID 
+                    //if statement der tjekker, hvornår det class id i ClassIDs på index i er lig med classID 
                     if (classID.ToString() == ClassIDs[i])
                     {
                         lineNumber = i; //Sætter lineNumber lig med i for at få den linje i lines hvor id'et classID er
@@ -60,7 +60,7 @@ namespace FørsteSemester
                 lines[lineNumber] = classStringJoined; //Erstatter elementet på pladsen "lineNumber" i arrayet lines med den nye string classStringJoined
                 lines[lineNumber] = lines[lineNumber] + MemberIDClass; // Tilføjer stringen på pladsen "linenumber" i lines arrayet stringen MemberIDClass
 
-                //For loop der skriver arrayet lines ned i text filen Classes.txt. Loopet kører så længe tællervariablen i er mindre end længden på lines arrayet
+                //for loop der skriver arrayet lines ned i text filen Classes.txt. Loopet kører så længe tællervariablen i er mindre end længden på lines arrayet
                 //for hver iteration skrives stringen på index "i" i lines arrayet ned i filen Classes.txt
                 for (int i = 0; i < lines.Length; i++)
                 {

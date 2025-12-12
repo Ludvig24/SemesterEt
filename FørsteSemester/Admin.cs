@@ -13,7 +13,7 @@ namespace FørsteSemester
     {
         //Statiske variabler til at finde stien til tekstfilen, hvor hold data bliver gemt. Kombinerer stien til mappen "Documents" med stien til Classes.txt
         static string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //Finder stien til mappen "Documents" som er ens for alle computere
-        static string filepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
+        static string classesFilepath = Path.Combine(dir, "GitHub\\SemesterEt\\FørsteSemester\\Classes.txt"); //Kombinerer stien til mappen "Documents" med stien til Classes.txt filen
         
         //Metoden CreateClass, hvor vi opretter et hold med følgende parametre, med de forskellige attributter et hold skal have
         public void CreateClass(string activity, string classname, int availableSpots, char requiredGender, byte requiredMaxAge, byte requiredMinAge)
@@ -53,7 +53,7 @@ namespace FørsteSemester
         {
             List<string> data = new List<string>(); //Opretter en liste til at gemme den ønskede data
             string dataPoint = ""; //Tom string variabel til at holde den ønskede data midlertidigt
-            string[] lines = System.IO.File.ReadAllLines(filepath); //Henter data fra tekstfilen i et array
+            string[] lines = System.IO.File.ReadAllLines(classesFilepath); //Henter data fra tekstfilen i et array
             for (int i = 0; i < lines.Count(); i++) //Looper igennem arrayet lines og splitter ved hver ;
             {
                 string ClassData = lines[i]; //Henter en linje fra tekstfilen
@@ -69,8 +69,8 @@ namespace FørsteSemester
         public void SaveClass(Class team)
         {
             //Bruger en StreamWriter til at skrive Class oplysninger ned på en linje i den text fil memberFilepath peger på
-            // Using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
-            using (StreamWriter streamWriter = new StreamWriter(filepath, true))//Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
+            //using indebære at den skal åbne og lukke filen korrekt efter brug, så man kan tilgå filen igen senere. Filen kan ikke tilgås flere steder samtidig så længe streamWriter er åben
+            using (StreamWriter streamWriter = new StreamWriter(classesFilepath, true))//Filepath er stien til den fil vi vil skrive i, og vi skriver true for at sige at den skal append(Tilføjer, ikke overskriver) hver gang der skrives frem for at overskrive
             {
                 //Skriver attriutterne ned og skiller ved ;
                 streamWriter.Write(team.GetActivity()+ ";");
@@ -79,8 +79,8 @@ namespace FørsteSemester
                 streamWriter.Write(team.GetAvailableSpots()+";");
                 streamWriter.Write(team.GetJoinedAmount()+";");
                 streamWriter.Write(team.GetRequiredGender()+";");
+                streamWriter.Write(team.GetRequiredMinAge() + ";");
                 streamWriter.Write(team.GetRequiredMaxAge()+";");
-                streamWriter.Write(team.GetRequiredMinAge()+";");
                 streamWriter.Write(team.GetClassID());
                 
                 if(team.GetMemberIDsInClass() != null) //Tjekker om der er nogle memberID'er i team objektet - hvis ikke skrives der ingenting i filen

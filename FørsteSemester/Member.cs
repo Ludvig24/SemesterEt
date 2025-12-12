@@ -32,10 +32,10 @@ namespace FørsteSemester
             {
                 int lineNumber = 0; //Opretter variabel, der holder styr på linjenummer i tekstfilen
 
-                //For loop, der itererer gennem userIDs listen
+                //for loop, der itererer gennem userIDs listen
                 for (int i = 0; i < userIDs.Count; i++)
                 {
-                    //If statement, der tjekker om userID fra input er det samme som userIDs på index i
+                    //if statement, der tjekker om userID fra input er det samme som userIDs på index i
                     if (userID.ToString() == userIDs[i])
                     {
                         lineNumber = i; //Hvis if statement udsagn er sandt tildeles linenumber i
@@ -44,7 +44,7 @@ namespace FørsteSemester
 
                 lines[lineNumber] = lines[lineNumber] + joinedClass;  //Vi appender joinedclass variablen på pladsen "linenumber" i arrayet lines
 
-                //For loop der kører så længe i er mindre end længden på lines
+                //for loop der kører så længe i er mindre end længden på lines
                 for (int i = 0; i < lines.Length; i++)
                 {
                     //Smider det vi lige har sat sammen ind i vores textfil
@@ -65,20 +65,20 @@ namespace FørsteSemester
             string[] lines = System.IO.File.ReadAllLines(classesFilepath);  //Læser alle linjer stien classesFilepath peger på
             string[] memberLines = System.IO.File.ReadAllLines(memberFilepath); //Læser alle linjer stien memberFilepath peger på (members.txt)
 
-            //Foreach loop der iterer gennem arrayet lines
+            //foreach loop der iterer gennem arrayet lines
             int x = 0; //Tællervariabel der anvendes længere nede
             foreach (string line in lines)
             {
                 //Opretter array der indeholder dataet fra en bestemt linje i Classes.txt
                 string[] lineArrayClass = line.Split(";"); //For hver iteration kaldes Split() på ";" på den string loopet er nået til og resultatet gemmes i et string array
 
-                //If statement der tjekker om plads 8 i lineArrayClass (klassens id) er lig med classID variablen fra input
+                //if statement der tjekker om plads 8 i lineArrayClass (klassens id) er lig med classID variablen fra input
                 if (lineArrayClass[8] == classID.ToString())
                 {
                     //Hvis if statement er sandt køres et for loop der itererer gennem arrayet lineArrayClass fra plads 9, da det er derfra og frem, hvor userIDs i classes er gemt
                     for (int i = 9; i < lineArrayClass.Count(); i++)
                     {
-                        //If statement tjekker for hver iteration om memberens id står i arrayet lineArrayClass
+                        //if statement tjekker for hver iteration om memberens id står i arrayet lineArrayClass
                         if (lineArrayClass[i] == GetUserID().ToString())
                         {
                             int currentJoinedAmount = Convert.ToInt32(lineArrayClass[4]);//Hvis if statement er sandt gemmes antallet af tilmeldte brugere, som står på index 4 i linearray i en int variabel
@@ -99,10 +99,10 @@ namespace FørsteSemester
             //Bruger en StreamWriter til at skrive klassens opdaterede oplysninger ned på en linje i den text fil classesFilepath peger på
             using (StreamWriter streamWriter = new StreamWriter(classesFilepath)) //Har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
             {
-                //For loop der itererer gennem lines arrayet
+                //for loop der itererer gennem lines arrayet
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    //For hver iteration skrives den string på index "i" ned i txt filen Classes
+                    //for hver iteration skrives den string på index "i" ned i txt filen Classes
                     streamWriter.Write(lines[i]);
                     streamWriter.WriteLine();
 
@@ -111,13 +111,13 @@ namespace FørsteSemester
 
             //Fjerner classID fra medlemmet i Members.txt filen
             int z = 0; //Tællervariabel for while loop
-            int linenumber = 0; //int variabel der holder styr på linjenummer i tekstfilen Members.txt
+            int linenumber = 0; //Int variabel der holder styr på linjenummer i tekstfilen Members.txt
             List<string> userIDs = UserManager.GetUserData(7); //Gemmer alle userIDs fra textfilen
                                                                //Members.txt i en liste af strings
             //while loop der itererer gennem userIDs listen
             while (z < userIDs.Count())
             {
-                //If statement der tjekker om userID'et for memberen er det samme som userIDs på index z
+                //if statement der tjekker om userID'et for memberen er det samme som userIDs på index z
                 if (userIDs[z] == GetUserID().ToString())
                 {
                     linenumber = z; //Hvis if statement er sandt tildeles variablen linenumber z
@@ -132,11 +132,11 @@ namespace FørsteSemester
             string[] memberSplit = member.Split(";"); //Splitter stringen member ved hvert semikolon
                                                       //så vi har et array kaldet memberSplit med alt memberens data
 
-            //While loop der itererer fra index 8 i memberSplit arrayet. Index 8 og frem er nemlig hvor classID'erne for de hold medlemmet er tilmeldt er gemt
+            //while loop der itererer fra index 8 i memberSplit arrayet. Index 8 og frem er nemlig hvor classID'erne for de hold medlemmet er tilmeldt er gemt
             int y = 8;
             while (y < memberSplit.Count())
             {
-                //If statement der tjekker om index y i memberSplit er lig med classID fra input
+                //if statement der tjekker om index y i memberSplit er lig med classID fra input
                 if (memberSplit[y] == classID.ToString())
                 {
                     //Hvis if statement er sandt fjernes classID'et fra memberSplit arrayet
@@ -153,12 +153,12 @@ namespace FørsteSemester
             }
 
             //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje
-            //i den text fil membersFilepath peger på (Members.txt)
-            using (StreamWriter streamWriter = new StreamWriter(memberFilepath)) //Har ikke overloadet med true
-                                                                           //medfører at append er false
-                                                                           //vi overskriver dermed filen
+            //i den text fil memberFilepath peger på (Members.txt)
+            using (StreamWriter streamWriter = new StreamWriter(memberFilepath)) //Har ikke overloadet med true -
+                                                                                  //medfører at append er false -
+                                                                                  //vi overskriver dermed filen
             {
-                //For loop der itererer gennem memberLines arrayet
+                //for loop der itererer gennem memberLines arrayet
                 for (int i = 0; i < memberLines.Length; i++)
                 {
                     //For hver iteration skrives den string på index "i" ned i txt filen Members
