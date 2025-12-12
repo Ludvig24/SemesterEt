@@ -152,8 +152,11 @@ namespace FørsteSemester
                 y++;
             }
 
-            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje i den text fil filepath peger på (Members.txt)
-            using (StreamWriter streamWriter = new StreamWriter(filepath)) //Har ikke overloadet med true - medfører at append er false - vi overskriver dermed filen
+            //Bruger en StreamWriter til at skrive memberens opdaterede oplysninger ned på en linje
+            //i den text fil membersFilepath peger på (Members.txt)
+            using (StreamWriter streamWriter = new StreamWriter(filepath)) //Har ikke overloadet med true
+                                                                           //medfører at append er false
+                                                                           //vi overskriver dermed filen
             {
                 //For loop der itererer gennem memberLines arrayet
                 for (int i = 0; i < memberLines.Length; i++)
